@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 
 const props = defineProps({
   overview: { type: Object, default: null },
+  specification: { type: Object, default: null },
   allTerms: { type: Array, default: () => [] },
   selectedLang: { type: String, default: 'javascript' },
   languages: { type: Array, default: () => [] },
@@ -13,6 +14,7 @@ const emit = defineEmits(['update:selectedLang', 'select-node'])
 
 const experienceMode = ref(false)
 const collapsedChars = ref(new Set())
+const collapsedSpecs = ref(new Set())
 
 const roadmap = computed(() => {
   if (!props.overview) return []
@@ -52,6 +54,17 @@ function toggleCollapse(charId) {
 
 function isCollapsed(charId) {
   return collapsedChars.value.has(charId)
+}
+
+function toggleSpecCollapse(catId) {
+  const next = new Set(collapsedSpecs.value)
+  if (next.has(catId)) next.delete(catId)
+  else next.add(catId)
+  collapsedSpecs.value = next
+}
+
+function isSpecCollapsed(catId) {
+  return collapsedSpecs.value.has(catId)
 }
 
 function selectNode(item, level) {
@@ -157,7 +170,54 @@ function selectNode(item, level) {
           </ul>
         </li>
       </ul>
-      <p v-if="roadmap.length === 0" class="empty">データなし</p>
+      <!-- 言語仕様 -->
+      <template v-if="specification?.categories?.length">
+        <div class="spec-divider">
+          <span class="spec-divider-label">言語仕様</span>
+        </div>
+        <ul class="tree-root">
+          <li v-for="cat in specification.categories" :key="cat.id" class="tree-branch">
+            <div
+              class="tree-item spec-cat-item"
+              :class="{ active: selectedNodeId === cat.id }"
+            >
+              <button
+                class="collapse-toggle"
+                @click.stop="toggleSpecCollapse(cat.id)"
+              >
+                <span class="collapse-icon">{{ isSpecCollapsed(cat.id) ? '▶' : '▼' }}</span>
+              </button>
+              <span class="dot dot-spec-cat"></span>
+              <button
+                class="tree-label spec-cat-label"
+                @click="selectNode(cat, 'spec-category')"
+              >
+                {{ cat.nameJa || cat.name }}
+              </button>
+            </div>
+            <ul
+              v-if="!isSpecCollapsed(cat.id) && cat.items.length"
+              class="tree-children"
+            >
+              <li v-for="item in cat.items" :key="item.id">
+                <div
+                  class="tree-item spec-item"
+                  :class="{ active: selectedNodeId === item.id }"
+                >
+                  <span class="dot dot-spec"></span>
+                  <button
+                    class="tree-label spec-label"
+                    @click="selectNode(item, 'spec-item')"
+                  >
+                    {{ item.termJa || item.term }}
+                  </button>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </template>
+      <p v-if="roadmap.length === 0 && !specification?.categories?.length" class="empty">データなし</p>
     </nav>
   </aside>
 </template>
@@ -346,6 +406,43 @@ function selectNode(item, level) {
 }
 
 .term-label {
+  font-weight: 400;
+  font-size: 0.78rem;
+  color: #666;
+}
+
+/* 言語仕様セクション */
+.spec-divider {
+  margin: 16px 12px 8px;
+  border-top: 1px solid #ddd;
+  padding-top: 8px;
+}
+
+.spec-divider-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dot-spec-cat {
+  background: #7b1fa2;
+}
+
+.dot-spec {
+  background: #9c27b0;
+  width: 5px;
+  height: 5px;
+}
+
+.spec-cat-label {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #1a1a1a;
+}
+
+.spec-label {
   font-weight: 400;
   font-size: 0.78rem;
   color: #666;

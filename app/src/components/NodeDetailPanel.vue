@@ -3,7 +3,8 @@ const props = defineProps({
   node: { type: Object, required: true },
   overview: { type: Object, default: null },
   allTerms: { type: Array, default: () => [] },
-  versions: { type: Array, default: () => [] }
+  versions: { type: Array, default: () => [] },
+  specification: { type: Object, default: null }
 })
 
 const emit = defineEmits(['close', 'select-node'])
@@ -11,7 +12,9 @@ const emit = defineEmits(['close', 'select-node'])
 const levelConfig = {
   characteristic: { icon: '📘', label: '基礎', color: '#1976d2', bg: '#e3f2fd' },
   concept: { icon: '📗', label: '中級', color: '#2e7d32', bg: '#e8f5e9' },
-  term: { icon: '📙', label: '実践', color: '#e65100', bg: '#fff3e0' }
+  term: { icon: '📙', label: '実践', color: '#e65100', bg: '#fff3e0' },
+  'spec-category': { icon: '📂', label: '仕様', color: '#7b1fa2', bg: '#f3e5f5' },
+  'spec-item': { icon: '📄', label: '仕様', color: '#9c27b0', bg: '#f3e5f5' }
 }
 
 function getRelatedConcepts() {
@@ -42,6 +45,19 @@ function getTermVersion() {
     }
   }
   return null
+}
+
+function getSpecCategoryItems() {
+  if (props.node.level !== 'spec-category') return []
+  return props.node.items || []
+}
+
+function getParentCategory() {
+  if (props.node.level !== 'spec-item') return null
+  if (!props.specification?.categories) return null
+  return props.specification.categories.find(c =>
+    c.items.some(item => item.id === props.node.id)
+  )
 }
 
 function navigateTo(item, level) {
@@ -144,6 +160,47 @@ function navigateTo(item, level) {
         <div class="tags">
           <span v-for="tag in node.tags" :key="tag" class="tag">{{ tag }}</span>
         </div>
+      </div>
+      <div v-if="node.sourceUrl" class="detail-section">
+        <a :href="node.sourceUrl" target="_blank" rel="noopener" class="docs-link">ドキュメントを見る</a>
+      </div>
+    </template>
+
+    <!-- 仕様カテゴリの詳細 -->
+    <template v-if="node.level === 'spec-category'">
+      <div v-if="getSpecCategoryItems().length" class="detail-section">
+        <h3 class="section-label">含まれる項目（{{ getSpecCategoryItems().length }}件）</h3>
+        <div class="related-list">
+          <button
+            v-for="item in getSpecCategoryItems()"
+            :key="item.id"
+            class="related-item"
+            @click="navigateTo(item, 'spec-item')"
+          >
+            <span class="related-icon">📄</span>
+            <div class="related-info">
+              <span class="related-name">{{ item.termJa || item.term }}</span>
+              <span v-if="item.termJa" class="related-sub">{{ item.term }}</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </template>
+
+    <!-- 仕様アイテムの詳細 -->
+    <template v-if="node.level === 'spec-item'">
+      <div v-if="getParentCategory()" class="detail-section">
+        <span class="parent-label">カテゴリ:</span>
+        <button class="parent-link" @click="navigateTo(getParentCategory(), 'spec-category')">
+          📂 {{ getParentCategory().nameJa || getParentCategory().name }}
+        </button>
+      </div>
+      <div class="detail-section">
+        <p class="detail-meaning">{{ node.meaning }}</p>
+      </div>
+      <div v-if="node.example" class="detail-section">
+        <h3 class="section-label">コード例</h3>
+        <pre class="code-example"><code>{{ node.example }}</code></pre>
       </div>
       <div v-if="node.sourceUrl" class="detail-section">
         <a :href="node.sourceUrl" target="_blank" rel="noopener" class="docs-link">ドキュメントを見る</a>
