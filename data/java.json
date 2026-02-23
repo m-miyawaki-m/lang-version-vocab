@@ -1,0 +1,52 @@
+{
+  "language": "java",
+  "displayName": "Java",
+  "source": "https://docs.oracle.com/en/java/",
+  "versions": [
+    {
+      "version": "21",
+      "releaseDate": "2023-09",
+      "terms": [
+        {
+          "id": "java-21-virtual-threads",
+          "term": "Virtual Threads",
+          "termJa": "仮想スレッド",
+          "type": "concept",
+          "category": "concurrency",
+          "meaning": "軽量なスレッド実装。OS スレッドではなく JVM が管理する",
+          "example": "Thread.startVirtualThread(() -> { System.out.println(\"Hello\"); });",
+          "tags": ["スレッド", "並行処理", "Project Loom"],
+          "sourceUrl": "https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html"
+        },
+        {
+          "id": "java-21-pattern-matching-switch",
+          "term": "Pattern Matching for switch",
+          "termJa": "switch のパターンマッチング",
+          "type": "syntax",
+          "category": "control-flow",
+          "meaning": "switch 式でパターンマッチングを使用できる機能",
+          "example": "switch (obj) { case Integer i -> System.out.println(i); case String s -> System.out.println(s); }",
+          "tags": ["switch", "パターンマッチング"],
+          "sourceUrl": "https://docs.oracle.com/en/java/javase/21/language/pattern-matching.html"
+        }
+      ]
+    },
+    {
+      "version": "17",
+      "releaseDate": "2021-09",
+      "terms": [
+        {
+          "id": "java-17-sealed-classes",
+          "term": "Sealed Classes",
+          "termJa": "シールクラス",
+          "type": "syntax",
+          "category": "class",
+          "meaning": "継承を許可するクラスを明示的に制限する機能",
+          "example": "public sealed class Shape permits Circle, Rectangle { }",
+          "tags": ["クラス", "継承"],
+          "sourceUrl": "https://docs.oracle.com/en/java/javase/17/language/sealed-classes-and-interfaces.html"
+        }
+      ]
+    }
+  ]
+}

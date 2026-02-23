@@ -1,0 +1,102 @@
+{
+  "language": "javascript",
+  "displayName": "JavaScript",
+  "source": "https://developer.mozilla.org/ja/docs/Web/JavaScript",
+  "versions": [
+    {
+      "version": "ES2024",
+      "releaseDate": "2024-06",
+      "terms": [
+        {
+          "id": "js-es2024-groupby",
+          "term": "Object.groupBy()",
+          "termJa": "グループ化",
+          "type": "api",
+          "category": "object",
+          "meaning": "イテラブルの要素をコールバック関数の戻り値でグループ化する静的メソッド",
+          "example": "Object.groupBy([1,2,3,4], n => n % 2 === 0 ? 'even' : 'odd')",
+          "tags": ["Object", "配列操作"],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Object/groupBy"
+        },
+        {
+          "id": "js-es2024-promise-withresolvers",
+          "term": "Promise.withResolvers()",
+          "termJa": "プロミスリゾルバ",
+          "type": "api",
+          "category": "async",
+          "meaning": "Promise の resolve/reject 関数を外部から取得できる静的メソッド",
+          "example": "const { promise, resolve, reject } = Promise.withResolvers()",
+          "tags": ["Promise", "非同期"],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise/withResolvers"
+        }
+      ]
+    },
+    {
+      "version": "ES2023",
+      "releaseDate": "2023-06",
+      "terms": [
+        {
+          "id": "js-es2023-findlast",
+          "term": "Array.prototype.findLast()",
+          "termJa": "配列末尾検索",
+          "type": "api",
+          "category": "array",
+          "meaning": "配列の末尾から条件に合致する最初の要素を返すメソッド",
+          "example": "[1, 2, 3, 4].findLast(n => n % 2 === 0) // 4",
+          "tags": ["Array", "検索"],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast"
+        },
+        {
+          "id": "js-es2023-toSorted",
+          "term": "Array.prototype.toSorted()",
+          "termJa": "非破壊ソート",
+          "type": "api",
+          "category": "array",
+          "meaning": "元の配列を変更せずにソートされた新しい配列を返すメソッド",
+          "example": "[3, 1, 2].toSorted() // [1, 2, 3]",
+          "tags": ["Array", "ソート", "イミュータブル"],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted"
+        }
+      ]
+    },
+    {
+      "version": "ES2015",
+      "releaseDate": "2015-06",
+      "terms": [
+        {
+          "id": "js-es2015-arrow-function",
+          "term": "Arrow Function",
+          "termJa": "アロー関数",
+          "type": "syntax",
+          "category": "function",
+          "meaning": "=> を使った簡潔な関数式。this を外側のスコープから継承する",
+          "example": "const add = (a, b) => a + b;",
+          "tags": ["関数", "構文"],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/Arrow_functions"
+        },
+        {
+          "id": "js-es2015-let-const",
+          "term": "let / const",
+          "termJa": "ブロックスコープ変数宣言",
+          "type": "syntax",
+          "category": "variable",
+          "meaning": "ブロックスコープを持つ変数宣言。const は再代入不可",
+          "example": "let count = 0; const MAX = 100;",
+          "tags": ["変数", "スコープ"],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/let"
+        },
+        {
+          "id": "js-es2015-promise",
+          "term": "Promise",
+          "termJa": "プロミス",
+          "type": "concept",
+          "category": "async",
+          "meaning": "非同期処理の最終的な完了または失敗を表すオブジェクト",
+          "example": "fetch(url).then(res => res.json()).catch(err => console.error(err))",
+          "tags": ["非同期", "コールバック"],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "language": "jquery",
+  "displayName": "jQuery",
+  "source": "https://api.jquery.com/",
+  "versions": [
+    {
+      "version": "3.0",
+      "releaseDate": "2016-06",
+      "terms": [
+        {
+          "id": "jquery-3.0-for-of",
+          "term": "for...of loop support",
+          "termJa": "for...of ループ対応",
+          "type": "concept",
+          "category": "iteration",
+          "meaning": "jQuery オブジェクトが for...of ループで反復可能になった",
+          "example": "for (let element of $('li')) { console.log(element); }",
+          "tags": ["反復", "ES2015"],
+          "sourceUrl": "https://blog.jquery.com/2016/06/09/jquery-3-0-final-released/"
+        }
+      ]
+    },
+    {
+      "version": "1.7",
+      "releaseDate": "2011-11",
+      "terms": [
+        {
+          "id": "jquery-1.7-on",
+          "term": ".on()",
+          "termJa": "イベントバインド",
+          "type": "api",
+          "category": "events",
+          "meaning": "イベントハンドラを要素にバインドする統一メソッド。bind/live/delegate を置換",
+          "example": "$('button').on('click', function() { alert('clicked'); });",
+          "tags": ["イベント", "DOM"],
+          "sourceUrl": "https://api.jquery.com/on/"
+        },
+        {
+          "id": "jquery-1.7-off",
+          "term": ".off()",
+          "termJa": "イベントアンバインド",
+          "type": "api",
+          "category": "events",
+          "meaning": "イベントハンドラを要素から取り除く統一メソッド。unbind/die/undelegate を置換",
+          "example": "$('button').off('click');",
+          "tags": ["イベント", "DOM"],
+          "sourceUrl": "https://api.jquery.com/off/"
+        }
+      ]
+    }
+  ]
+}
