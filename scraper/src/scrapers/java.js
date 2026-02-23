@@ -111,6 +111,7 @@ export class JavaScraper extends BaseScraper {
       categories: [
         {
           id: 'java-spec-primitive-types',
+          group: 'syntax',
           name: 'Primitive Types',
           nameJa: '基本型',
           items: [
@@ -123,6 +124,7 @@ export class JavaScraper extends BaseScraper {
         },
         {
           id: 'java-spec-control-flow',
+          group: 'syntax',
           name: 'Control Flow',
           nameJa: '制御構文',
           items: [
@@ -135,6 +137,7 @@ export class JavaScraper extends BaseScraper {
         },
         {
           id: 'java-spec-oop-basics',
+          group: 'syntax',
           name: 'OOP Basics',
           nameJa: 'OOP基礎',
           items: [
@@ -147,6 +150,7 @@ export class JavaScraper extends BaseScraper {
         },
         {
           id: 'java-spec-access-modifiers',
+          group: 'syntax',
           name: 'Access Modifiers',
           nameJa: 'アクセス修飾子',
           items: [
@@ -158,6 +162,7 @@ export class JavaScraper extends BaseScraper {
         },
         {
           id: 'java-spec-exception-handling',
+          group: 'syntax',
           name: 'Exception Handling',
           nameJa: '例外処理',
           items: [
@@ -168,6 +173,7 @@ export class JavaScraper extends BaseScraper {
         },
         {
           id: 'java-spec-collections',
+          group: 'api',
           name: 'Collections',
           nameJa: 'コレクション',
           items: [
@@ -179,6 +185,7 @@ export class JavaScraper extends BaseScraper {
         },
         {
           id: 'java-spec-io',
+          group: 'api',
           name: 'I/O & Streams',
           nameJa: '入出力',
           items: [

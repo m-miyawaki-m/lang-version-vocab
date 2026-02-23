@@ -215,6 +215,7 @@ export class JavaScriptScraper extends BaseScraper {
       categories: [
         {
           id: 'js-spec-data-types',
+          group: 'syntax',
           name: 'Data Types',
           nameJa: 'データ型',
           items: [
@@ -229,6 +230,7 @@ export class JavaScriptScraper extends BaseScraper {
         },
         {
           id: 'js-spec-operators',
+          group: 'syntax',
           name: 'Operators',
           nameJa: '演算子',
           items: [
@@ -241,6 +243,7 @@ export class JavaScriptScraper extends BaseScraper {
         },
         {
           id: 'js-spec-control-flow',
+          group: 'syntax',
           name: 'Control Flow',
           nameJa: '制御構文',
           items: [
@@ -253,6 +256,7 @@ export class JavaScriptScraper extends BaseScraper {
         },
         {
           id: 'js-spec-functions',
+          group: 'syntax',
           name: 'Functions',
           nameJa: '関数',
           items: [
@@ -264,6 +268,7 @@ export class JavaScriptScraper extends BaseScraper {
         },
         {
           id: 'js-spec-error-handling',
+          group: 'syntax',
           name: 'Error Handling',
           nameJa: 'エラー処理',
           items: [
@@ -274,6 +279,7 @@ export class JavaScriptScraper extends BaseScraper {
         },
         {
           id: 'js-spec-built-in-objects',
+          group: 'api',
           name: 'Built-in Objects',
           nameJa: '組み込みオブジェクト',
           items: [

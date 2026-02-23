@@ -157,6 +157,7 @@
     "categories": [
       {
         "id": "jquery-spec-selectors",
+        "group": "syntax",
         "name": "Selectors",
         "nameJa": "セレクタ",
         "items": [
@@ -204,6 +205,7 @@
       },
       {
         "id": "jquery-spec-dom-manipulation",
+        "group": "syntax",
         "name": "DOM Manipulation",
         "nameJa": "DOM操作",
         "items": [
@@ -251,6 +253,7 @@
       },
       {
         "id": "jquery-spec-traversal",
+        "group": "syntax",
         "name": "Traversal",
         "nameJa": "走査",
         "items": [
@@ -298,6 +301,7 @@
       },
       {
         "id": "jquery-spec-events",
+        "group": "syntax",
         "name": "Events",
         "nameJa": "イベント",
         "items": [
@@ -337,6 +341,7 @@
       },
       {
         "id": "jquery-spec-effects",
+        "group": "api",
         "name": "Effects",
         "nameJa": "エフェクト",
         "items": [
@@ -376,6 +381,7 @@
       },
       {
         "id": "jquery-spec-ajax",
+        "group": "api",
         "name": "AJAX",
         "nameJa": "通信",
         "items": [
@@ -415,6 +421,7 @@
       },
       {
         "id": "jquery-spec-utilities",
+        "group": "api",
         "name": "Utilities",
         "nameJa": "ユーティリティ",
         "items": [

@@ -45,6 +45,7 @@ export class JqueryScraper extends BaseScraper {
       categories: [
         {
           id: 'jquery-spec-selectors',
+          group: 'syntax',
           name: 'Selectors',
           nameJa: 'セレクタ',
           items: [
@@ -57,6 +58,7 @@ export class JqueryScraper extends BaseScraper {
         },
         {
           id: 'jquery-spec-dom-manipulation',
+          group: 'syntax',
           name: 'DOM Manipulation',
           nameJa: 'DOM操作',
           items: [
@@ -69,6 +71,7 @@ export class JqueryScraper extends BaseScraper {
         },
         {
           id: 'jquery-spec-traversal',
+          group: 'syntax',
           name: 'Traversal',
           nameJa: '走査',
           items: [
@@ -81,6 +84,7 @@ export class JqueryScraper extends BaseScraper {
         },
         {
           id: 'jquery-spec-events',
+          group: 'syntax',
           name: 'Events',
           nameJa: 'イベント',
           items: [
@@ -92,6 +96,7 @@ export class JqueryScraper extends BaseScraper {
         },
         {
           id: 'jquery-spec-effects',
+          group: 'api',
           name: 'Effects',
           nameJa: 'エフェクト',
           items: [
@@ -103,6 +108,7 @@ export class JqueryScraper extends BaseScraper {
         },
         {
           id: 'jquery-spec-ajax',
+          group: 'api',
           name: 'AJAX',
           nameJa: '通信',
           items: [
@@ -114,6 +120,7 @@ export class JqueryScraper extends BaseScraper {
         },
         {
           id: 'jquery-spec-utilities',
+          group: 'api',
           name: 'Utilities',
           nameJa: 'ユーティリティ',
           items: [
