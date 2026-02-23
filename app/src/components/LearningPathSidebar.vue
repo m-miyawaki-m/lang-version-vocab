@@ -1,6 +1,5 @@
 <script setup>
 import { ref, computed } from 'vue'
-import RoadmapBranch from './RoadmapBranch.vue'
 
 const props = defineProps({
   overview: { type: Object, default: null },
@@ -13,6 +12,7 @@ const props = defineProps({
 const emit = defineEmits(['update:selectedLang', 'select-node'])
 
 const experienceMode = ref(false)
+const collapsedChars = ref(new Set())
 
 const roadmap = computed(() => {
   if (!props.overview) return []
@@ -33,21 +33,29 @@ const roadmap = computed(() => {
 
         relatedTerms.forEach(t => placedTermIds.add(t.id))
 
-        return {
-          ...concept,
-          terms: relatedTerms
-        }
+        return { ...concept, terms: relatedTerms }
       })
 
-    return {
-      characteristic: char,
-      concepts: relatedConcepts
-    }
+    return { characteristic: char, concepts: relatedConcepts }
   })
 })
 
-function handleNavigate(node) {
-  emit('select-node', node)
+function toggleCollapse(charId) {
+  const next = new Set(collapsedChars.value)
+  if (next.has(charId)) {
+    next.delete(charId)
+  } else {
+    next.add(charId)
+  }
+  collapsedChars.value = next
+}
+
+function isCollapsed(charId) {
+  return collapsedChars.value.has(charId)
+}
+
+function selectNode(item, level) {
+  emit('select-node', { ...item, level })
 }
 </script>
 
@@ -81,18 +89,76 @@ function handleNavigate(node) {
       </div>
     </div>
 
-    <div class="sidebar-tree">
-      <RoadmapBranch
-        v-for="branch in roadmap"
-        :key="branch.characteristic.id"
-        :characteristic="branch.characteristic"
-        :concepts="branch.concepts"
-        :experienceMode="experienceMode"
-        :selectedNodeId="selectedNodeId"
-        @navigate="handleNavigate"
-      />
+    <nav class="sidebar-tree">
+      <ul class="tree-root">
+        <li v-for="branch in roadmap" :key="branch.characteristic.id" class="tree-branch">
+          <!-- 特性 -->
+          <div
+            class="tree-item char-item"
+            :class="{ active: selectedNodeId === branch.characteristic.id }"
+          >
+            <button
+              class="collapse-toggle"
+              @click.stop="toggleCollapse(branch.characteristic.id)"
+              :aria-expanded="!isCollapsed(branch.characteristic.id)"
+            >
+              <span class="collapse-icon">{{ isCollapsed(branch.characteristic.id) ? '▶' : '▼' }}</span>
+            </button>
+            <span
+              class="dot dot-char"
+            ></span>
+            <button
+              class="tree-label char-label"
+              @click="selectNode(branch.characteristic, 'characteristic')"
+            >
+              {{ branch.characteristic.termJa || branch.characteristic.term }}
+            </button>
+          </div>
+
+          <!-- 概念 + 用語 -->
+          <ul
+            v-if="!isCollapsed(branch.characteristic.id) && branch.concepts.length"
+            class="tree-children"
+          >
+            <li v-for="concept in branch.concepts" :key="concept.id" class="tree-child">
+              <div
+                class="tree-item concept-item"
+                :class="{ active: selectedNodeId === concept.id }"
+              >
+                <span class="dot dot-concept"></span>
+                <button
+                  class="tree-label concept-label"
+                  @click="selectNode(concept, 'concept')"
+                >
+                  {{ concept.termJa || concept.term }}
+                </button>
+              </div>
+
+              <ul
+                v-if="!experienceMode && concept.terms && concept.terms.length"
+                class="tree-children"
+              >
+                <li v-for="term in concept.terms" :key="term.id">
+                  <div
+                    class="tree-item term-item"
+                    :class="{ active: selectedNodeId === term.id }"
+                  >
+                    <span class="dot dot-term"></span>
+                    <button
+                      class="tree-label term-label"
+                      @click="selectNode(term, 'term')"
+                    >
+                      {{ term.termJa || term.term }}
+                    </button>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
       <p v-if="roadmap.length === 0" class="empty">データなし</p>
-    </div>
+    </nav>
   </aside>
 </template>
 
@@ -155,10 +221,134 @@ function handleNavigate(node) {
   color: #fff;
 }
 
+/* ツリー構造 */
 .sidebar-tree {
   flex: 1;
   overflow-y: auto;
-  padding: 12px;
+  padding: 8px 0;
+}
+
+.tree-root {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tree-branch {
+  margin-bottom: 2px;
+}
+
+.tree-children {
+  list-style: none;
+  padding: 0 0 0 12px;
+  margin: 0;
+  border-left: 1px solid #ddd;
+  margin-left: 19px;
+}
+
+.tree-child {
+  margin: 0;
+}
+
+/* ツリーアイテム共通 */
+.tree-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 4px;
+  margin: 1px 8px 1px 0;
+  transition: background 0.15s;
+}
+
+.tree-item:hover {
+  background: #eeeeee;
+}
+
+.tree-item.active {
+  background: #e3f2fd;
+}
+
+/* ドットインジケータ */
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot-char {
+  background: #1976d2;
+}
+
+.dot-concept {
+  background: #2e7d32;
+  width: 6px;
+  height: 6px;
+}
+
+.dot-term {
+  background: #e65100;
+  width: 5px;
+  height: 5px;
+}
+
+/* 折りたたみトグル */
+.collapse-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  color: #999;
+  font-size: 0.6rem;
+  width: 12px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.collapse-toggle:hover {
+  color: #555;
+}
+
+/* ラベル */
+.tree-label {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  font-size: 0.85rem;
+  color: #333;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.tree-label:hover {
+  color: #1976d2;
+}
+
+.char-label {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #1a1a1a;
+}
+
+.concept-label {
+  font-weight: 500;
+  font-size: 0.82rem;
+  color: #444;
+}
+
+.term-label {
+  font-weight: 400;
+  font-size: 0.78rem;
+  color: #666;
 }
 
 .empty {
