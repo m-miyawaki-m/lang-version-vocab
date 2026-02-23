@@ -63,7 +63,15 @@ async function jumpToTerm(termId) {
   await nextTick()
   const el = document.getElementById(`term-${termId}`)
   if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    const container = document.querySelector('.main-content')
+    if (container) {
+      const elRect = el.getBoundingClientRect()
+      const containerRect = container.getBoundingClientRect()
+      container.scrollTo({
+        top: container.scrollTop + elRect.top - containerRect.top - containerRect.height / 2,
+        behavior: 'smooth'
+      })
+    }
     el.classList.add('highlight')
     setTimeout(() => {
       el.classList.remove('highlight')
@@ -78,7 +86,15 @@ async function jumpToConcept(conceptId) {
   await nextTick()
   const el = document.getElementById(`concept-${conceptId}`)
   if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    const container = document.querySelector('.main-content')
+    if (container) {
+      const elRect = el.getBoundingClientRect()
+      const containerRect = container.getBoundingClientRect()
+      container.scrollTo({
+        top: container.scrollTop + elRect.top - containerRect.top - containerRect.height / 2,
+        behavior: 'smooth'
+      })
+    }
     el.classList.add('highlight')
     setTimeout(() => el.classList.remove('highlight'), 2000)
   }
@@ -88,9 +104,9 @@ async function jumpToConcept(conceptId) {
 <template>
   <div class="app">
     <header class="app-header">
-      <h1>Lang Version Vocab</h1>
+      <h1>Lang Version Vocab <span class="breadcrumb-sep">&gt;</span> <span class="breadcrumb-lang">{{ langData.displayName }}</span></h1>
     </header>
-    <div class="app-body">
+    <div class="app-layout">
       <LearningPathSidebar
         :overview="langData.overview"
         :specification="langData.specification"
@@ -100,64 +116,82 @@ async function jumpToConcept(conceptId) {
         @update:selectedLang="selectedLang = $event"
         @select-node="handleSelectNode"
       />
-      <main class="main-content">
-        <template v-if="selectedNode">
-          <NodeDetailPanel
-            :node="selectedNode"
-            :overview="langData.overview"
-            :specification="langData.specification"
-            @close="closeDetail"
-            @select-node="handleSelectNode"
-          />
-        </template>
-        <template v-else>
-          <SearchFilter
-            v-model:searchQuery="searchQuery"
-            v-model:selectedType="selectedType"
-          />
-          <TabNav v-model:activeTab="activeTab" />
-          <OverviewTab
-            v-if="activeTab === 'overview'"
-            :overview="langData.overview"
-            :allTerms="allTerms"
-            @jump-to-term="jumpToTerm"
-          />
-          <TermList
-            v-if="activeTab === 'timeline'"
-            :langData="langData"
-            :searchQuery="searchQuery"
-            :selectedType="selectedType"
-          />
-        </template>
+      <main class="main-content" :class="{ 'with-detail': selectedNode }">
+        <SearchFilter
+          v-model:searchQuery="searchQuery"
+          v-model:selectedType="selectedType"
+        />
+        <TabNav v-model:activeTab="activeTab" />
+        <OverviewTab
+          v-if="activeTab === 'overview'"
+          :overview="langData.overview"
+          :allTerms="allTerms"
+          @jump-to-term="jumpToTerm"
+        />
+        <TermList
+          v-if="activeTab === 'timeline'"
+          :langData="langData"
+          :searchQuery="searchQuery"
+          :selectedType="selectedType"
+        />
       </main>
+      <NodeDetailPanel
+        v-if="selectedNode"
+        :node="selectedNode"
+        :overview="langData.overview"
+        :specification="langData.specification"
+        @close="closeDetail"
+        @select-node="handleSelectNode"
+      />
     </div>
   </div>
 </template>
 
 <style scoped>
 .app-header {
-  padding: 16px 24px;
-  max-width: 1200px;
-  margin: 0 auto;
-  height: 64px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0 24px;
   display: flex;
   align-items: center;
+  z-index: 100;
 }
 
 .app-header h1 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #1a1a1a;
+  font-weight: 600;
 }
 
-.app-body {
-  display: flex;
-  max-width: 1200px;
-  margin: 0 auto;
+.breadcrumb-sep {
+  color: #bbb;
+  margin: 0 6px;
+  font-weight: 400;
+}
+
+.breadcrumb-lang {
+  color: #555;
+  font-weight: 500;
+}
+
+.app-layout {
+  padding-top: 48px;
 }
 
 .main-content {
-  flex: 1;
-  min-width: 0;
-  padding: 16px 24px 32px;
+  margin-left: 280px;
+  padding: 24px;
+  min-height: calc(100vh - 48px);
+  overflow-y: auto;
+  transition: margin-right 0.2s ease;
+}
+
+.main-content.with-detail {
+  margin-right: 360px;
 }
 </style>

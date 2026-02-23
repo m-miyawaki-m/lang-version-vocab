@@ -118,9 +118,11 @@ function selectNode(item, level) {
   background: #fafafa;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 64px);
-  position: sticky;
-  top: 64px;
+  height: calc(100vh - 48px);
+  position: fixed;
+  left: 0;
+  top: 48px;
+  z-index: 50;
 }
 
 .sidebar-header {

@@ -147,10 +147,16 @@ function navigateTo(item, level) {
 
 <style scoped>
 .detail-panel {
+  position: fixed;
+  right: 0;
+  top: 48px;
+  width: 360px;
+  height: calc(100vh - 48px);
   background: #fff;
-  border-radius: 8px;
-  border: 1px solid #e0e0e0;
-  overflow: hidden;
+  border-left: 1px solid #e0e0e0;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.08);
+  overflow-y: auto;
+  z-index: 60;
 }
 
 .detail-header {
