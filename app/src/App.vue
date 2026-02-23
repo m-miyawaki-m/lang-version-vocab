@@ -3,8 +3,9 @@ import { ref, computed, watch, nextTick } from 'vue'
 import SearchFilter from './components/SearchFilter.vue'
 import TabNav from './components/TabNav.vue'
 import OverviewTab from './components/OverviewTab.vue'
-import LearningPathTab from './components/LearningPathTab.vue'
 import TermList from './components/TermList.vue'
+import LearningPathSidebar from './components/LearningPathSidebar.vue'
+import NodeDetailPanel from './components/NodeDetailPanel.vue'
 
 import javascriptData from '@data/javascript.json'
 import javaData from '@data/java.json'
@@ -25,15 +26,17 @@ const searchQuery = ref('')
 const selectedType = ref('all')
 const selectedLang = ref('javascript')
 const langData = ref(dataMap['javascript'])
-const activeTab = ref(langData.value.overview ? 'overview' : 'timeline')
+const activeTab = ref('overview')
 const highlightTermId = ref(null)
+const selectedNode = ref(null)
 
 watch(selectedLang, (newLang) => {
   langData.value = dataMap[newLang]
   searchQuery.value = ''
   selectedType.value = 'all'
-  activeTab.value = langData.value.overview ? 'overview' : 'timeline'
+  activeTab.value = 'overview'
   highlightTermId.value = null
+  selectedNode.value = null
 })
 
 const allTerms = computed(() => {
@@ -41,27 +44,20 @@ const allTerms = computed(() => {
   return langData.value.versions.flatMap(v => v.terms)
 })
 
-async function jumpToCharacteristic(charId) {
-  activeTab.value = 'overview'
-  await nextTick()
-  const el = document.querySelector('.overview-tab .section:first-child')
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+function handleSelectNode(node) {
+  if (selectedNode.value && selectedNode.value.id === node.id) {
+    selectedNode.value = null
+  } else {
+    selectedNode.value = node
   }
 }
 
-async function jumpToConcept(conceptId) {
-  activeTab.value = 'overview'
-  await nextTick()
-  const el = document.getElementById(`concept-${conceptId}`)
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'center' })
-    el.classList.add('highlight')
-    setTimeout(() => el.classList.remove('highlight'), 2000)
-  }
+function closeDetail() {
+  selectedNode.value = null
 }
 
 async function jumpToTerm(termId) {
+  selectedNode.value = null
   activeTab.value = 'timeline'
   highlightTermId.value = termId
   await nextTick()
@@ -75,6 +71,18 @@ async function jumpToTerm(termId) {
     }, 2000)
   }
 }
+
+async function jumpToConcept(conceptId) {
+  selectedNode.value = null
+  activeTab.value = 'overview'
+  await nextTick()
+  const el = document.getElementById(`concept-${conceptId}`)
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    el.classList.add('highlight')
+    setTimeout(() => el.classList.remove('highlight'), 2000)
+  }
+}
 </script>
 
 <template>
@@ -82,43 +90,59 @@ async function jumpToTerm(termId) {
     <header class="app-header">
       <h1>Lang Version Vocab</h1>
     </header>
-    <main class="main-content">
-      <SearchFilter
-        v-model:searchQuery="searchQuery"
-        v-model:selectedLang="selectedLang"
-        v-model:selectedType="selectedType"
+    <div class="app-body">
+      <LearningPathSidebar
+        :overview="langData.overview"
+        :allTerms="allTerms"
+        :selectedLang="selectedLang"
         :languages="languages"
+        :selectedNodeId="selectedNode?.id || null"
+        @update:selectedLang="selectedLang = $event"
+        @select-node="handleSelectNode"
       />
-      <TabNav v-model:activeTab="activeTab" />
-      <OverviewTab
-        v-if="activeTab === 'overview'"
-        :overview="langData.overview"
-        :allTerms="allTerms"
-        @jump-to-term="jumpToTerm"
-      />
-      <LearningPathTab
-        v-if="activeTab === 'learning-path'"
-        :overview="langData.overview"
-        :allTerms="allTerms"
-        @jump-to-term="jumpToTerm"
-        @jump-to-concept="jumpToConcept"
-        @jump-to-characteristic="jumpToCharacteristic"
-      />
-      <TermList
-        v-if="activeTab === 'timeline'"
-        :langData="langData"
-        :searchQuery="searchQuery"
-        :selectedType="selectedType"
-      />
-    </main>
+      <main class="main-content">
+        <template v-if="selectedNode">
+          <NodeDetailPanel
+            :node="selectedNode"
+            :overview="langData.overview"
+            :allTerms="allTerms"
+            :versions="langData.versions || []"
+            @close="closeDetail"
+            @select-node="handleSelectNode"
+          />
+        </template>
+        <template v-else>
+          <SearchFilter
+            v-model:searchQuery="searchQuery"
+            v-model:selectedType="selectedType"
+          />
+          <TabNav v-model:activeTab="activeTab" />
+          <OverviewTab
+            v-if="activeTab === 'overview'"
+            :overview="langData.overview"
+            :allTerms="allTerms"
+            @jump-to-term="jumpToTerm"
+          />
+          <TermList
+            v-if="activeTab === 'timeline'"
+            :langData="langData"
+            :searchQuery="searchQuery"
+            :selectedType="selectedType"
+          />
+        </template>
+      </main>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .app-header {
-  padding: 24px 16px;
-  max-width: 720px;
+  padding: 16px 24px;
+  max-width: 1200px;
   margin: 0 auto;
+  height: 64px;
+  display: flex;
+  align-items: center;
 }
 
 .app-header h1 {
@@ -126,9 +150,15 @@ async function jumpToTerm(termId) {
   color: #1a1a1a;
 }
 
-.main-content {
-  max-width: 720px;
+.app-body {
+  display: flex;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 16px 32px;
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+  padding: 16px 24px 32px;
 }
 </style>
