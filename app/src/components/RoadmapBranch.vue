@@ -4,7 +4,8 @@ import RoadmapNode from './RoadmapNode.vue'
 defineProps({
   characteristic: { type: Object, required: true },
   concepts: { type: Array, default: () => [] },
-  experienceMode: { type: Boolean, default: false }
+  experienceMode: { type: Boolean, default: false },
+  selectedNodeId: { type: String, default: null }
 })
 
 const emit = defineEmits(['navigate'])
@@ -15,6 +16,7 @@ const emit = defineEmits(['navigate'])
     <RoadmapNode
       :node="{ ...characteristic, level: 'characteristic' }"
       :experienceMode="experienceMode"
+      :isActive="selectedNodeId === characteristic.id"
       @navigate="emit('navigate', $event)"
     />
     <div v-if="concepts.length" class="branch-children">
@@ -24,6 +26,7 @@ const emit = defineEmits(['navigate'])
           <RoadmapNode
             :node="{ ...concept, level: 'concept' }"
             :experienceMode="experienceMode"
+            :isActive="selectedNodeId === concept.id"
             @navigate="emit('navigate', $event)"
           />
           <div v-if="concept.terms && concept.terms.length" class="term-children">
@@ -32,6 +35,7 @@ const emit = defineEmits(['navigate'])
               <RoadmapNode
                 :node="{ ...term, level: 'term' }"
                 :experienceMode="experienceMode"
+                :isActive="selectedNodeId === term.id"
                 @navigate="emit('navigate', $event)"
               />
             </div>

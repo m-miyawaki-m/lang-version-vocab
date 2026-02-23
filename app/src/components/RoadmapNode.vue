@@ -1,7 +1,8 @@
 <script setup>
 defineProps({
   node: { type: Object, required: true },
-  experienceMode: { type: Boolean, default: false }
+  experienceMode: { type: Boolean, default: false },
+  isActive: { type: Boolean, default: false }
 })
 
 const emit = defineEmits(['navigate'])
@@ -16,7 +17,7 @@ const levelConfig = {
 <template>
   <div
     class="roadmap-node"
-    :class="[node.level, { collapsed: experienceMode && node.level === 'characteristic' }]"
+    :class="[node.level, { collapsed: experienceMode && node.level === 'characteristic', active: isActive }]"
     @click="emit('navigate', node)"
   >
     <span class="node-icon">{{ levelConfig[node.level]?.icon }}</span>
@@ -102,5 +103,11 @@ const levelConfig = {
   font-weight: 600;
   white-space: nowrap;
   flex-shrink: 0;
+}
+
+.roadmap-node.active {
+  background: #e3f2fd;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
 }
 </style>

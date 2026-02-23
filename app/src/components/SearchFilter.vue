@@ -1,12 +1,10 @@
 <script setup>
 defineProps({
   searchQuery: { type: String, default: '' },
-  selectedLang: { type: String, default: 'javascript' },
-  selectedType: { type: String, default: 'all' },
-  languages: { type: Array, default: () => [] }
+  selectedType: { type: String, default: 'all' }
 })
 
-const emit = defineEmits(['update:searchQuery', 'update:selectedLang', 'update:selectedType'])
+const emit = defineEmits(['update:searchQuery', 'update:selectedType'])
 
 const types = [
   { value: 'all', label: 'すべて' },
@@ -19,15 +17,6 @@ const types = [
 
 <template>
   <div class="filter-bar">
-    <select
-      class="filter-select lang-select"
-      :value="selectedLang"
-      @change="emit('update:selectedLang', $event.target.value)"
-    >
-      <option v-for="lang in languages" :key="lang.value" :value="lang.value">
-        {{ lang.label }}
-      </option>
-    </select>
     <input
       type="text"
       class="search-input"
@@ -68,9 +57,5 @@ const types = [
   border-radius: 6px;
   font-size: 0.95rem;
   background: #fff;
-}
-
-.lang-select {
-  font-weight: 600;
 }
 </style>
