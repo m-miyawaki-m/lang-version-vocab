@@ -20,12 +20,17 @@ export class BaseScraper {
     return null
   }
 
-  async save(versions, overview = null) {
+  async scrapeSpecification() {
+    return null
+  }
+
+  async save(versions, overview = null, specification = null) {
     const data = {
       language: this.language,
       displayName: this.displayName,
       source: this.sourceUrl,
       ...(overview ? { overview } : {}),
+      ...(specification ? { specification } : {}),
       versions
     }
 
@@ -44,10 +49,16 @@ export class BaseScraper {
       const conceptCount = overview.concepts?.length || 0
       console.log(`Found ${charCount} characteristics, ${conceptCount} concepts`)
     }
+    const specification = await this.scrapeSpecification()
+    if (specification) {
+      const catCount = specification.categories?.length || 0
+      const itemCount = specification.categories?.reduce((sum, c) => sum + c.items.length, 0) || 0
+      console.log(`Found ${itemCount} spec items across ${catCount} categories`)
+    }
     const versions = await this.scrape()
     const totalTerms = versions.reduce((sum, v) => sum + v.terms.length, 0)
     console.log(`Found ${totalTerms} terms across ${versions.length} versions`)
-    await this.save(versions, overview)
+    await this.save(versions, overview, specification)
     return versions
   }
 }
