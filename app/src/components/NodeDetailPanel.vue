@@ -2,17 +2,14 @@
 const props = defineProps({
   node: { type: Object, required: true },
   overview: { type: Object, default: null },
-  allTerms: { type: Array, default: () => [] },
-  versions: { type: Array, default: () => [] },
   specification: { type: Object, default: null }
 })
 
 const emit = defineEmits(['close', 'select-node'])
 
 const levelConfig = {
-  characteristic: { icon: '📘', label: '基礎', color: '#1976d2', bg: '#e3f2fd' },
-  concept: { icon: '📗', label: '中級', color: '#2e7d32', bg: '#e8f5e9' },
-  term: { icon: '📙', label: '実践', color: '#e65100', bg: '#fff3e0' },
+  characteristic: { icon: '📘', label: '特徴', color: '#1976d2', bg: '#e3f2fd' },
+  concept: { icon: '📗', label: '特徴', color: '#2e7d32', bg: '#e8f5e9' },
   'spec-category': { icon: '📂', label: '仕様', color: '#7b1fa2', bg: '#f3e5f5' },
   'spec-item': { icon: '📄', label: '仕様', color: '#9c27b0', bg: '#f3e5f5' }
 }
@@ -29,22 +26,6 @@ function getParentCharacteristic() {
   if (props.node.level !== 'concept') return null
   if (!props.node.characteristicId || !props.overview?.characteristics) return null
   return props.overview.characteristics.find(c => c.id === props.node.characteristicId)
-}
-
-function getRelatedTerms() {
-  if (props.node.level !== 'concept') return []
-  if (!props.node.relatedTermIds) return []
-  return props.allTerms.filter(t => props.node.relatedTermIds.includes(t.id))
-}
-
-function getTermVersion() {
-  if (props.node.level !== 'term') return null
-  for (const v of props.versions) {
-    if (v.terms.some(t => t.id === props.node.id)) {
-      return v
-    }
-  }
-  return null
 }
 
 function getSpecCategoryItems() {
@@ -115,51 +96,6 @@ function navigateTo(item, level) {
       </div>
       <div class="detail-section">
         <p class="detail-meaning">{{ node.meaning }}</p>
-      </div>
-      <div v-if="getRelatedTerms().length" class="detail-section">
-        <h3 class="section-label">関連する用語</h3>
-        <div class="related-list">
-          <button
-            v-for="term in getRelatedTerms()"
-            :key="term.id"
-            class="related-item term-item"
-            @click="navigateTo(term, 'term')"
-          >
-            <span class="related-icon">📙</span>
-            <div class="related-info">
-              <span class="related-name">{{ term.termJa || term.term }}</span>
-              <span class="related-sub">{{ term.term }}</span>
-            </div>
-          </button>
-        </div>
-      </div>
-      <div v-if="node.sourceUrl" class="detail-section">
-        <a :href="node.sourceUrl" target="_blank" rel="noopener" class="docs-link">ドキュメントを見る</a>
-      </div>
-    </template>
-
-    <!-- 用語の詳細 -->
-    <template v-if="node.level === 'term'">
-      <div class="detail-section">
-        <div class="term-badges">
-          <span v-if="node.type" class="badge" :class="node.type">{{ node.type }}</span>
-          <span v-if="node.category" class="badge category">{{ node.category }}</span>
-        </div>
-      </div>
-      <div v-if="getTermVersion()" class="detail-section">
-        <span class="version-info">{{ getTermVersion().version }} ({{ getTermVersion().releaseDate }})</span>
-      </div>
-      <div class="detail-section">
-        <p class="detail-meaning">{{ node.meaning }}</p>
-      </div>
-      <div v-if="node.example" class="detail-section">
-        <h3 class="section-label">コード例</h3>
-        <pre class="code-example"><code>{{ node.example }}</code></pre>
-      </div>
-      <div v-if="node.tags && node.tags.length" class="detail-section">
-        <div class="tags">
-          <span v-for="tag in node.tags" :key="tag" class="tag">{{ tag }}</span>
-        </div>
       </div>
       <div v-if="node.sourceUrl" class="detail-section">
         <a :href="node.sourceUrl" target="_blank" rel="noopener" class="docs-link">ドキュメントを見る</a>
@@ -350,30 +286,6 @@ function navigateTo(item, level) {
   text-decoration: underline;
 }
 
-.term-badges {
-  display: flex;
-  gap: 6px;
-}
-
-.badge {
-  font-size: 0.75rem;
-  padding: 3px 10px;
-  border-radius: 12px;
-  font-weight: 600;
-}
-
-.badge.syntax { background: #e3f2fd; color: #1565c0; }
-.badge.api { background: #f3e5f5; color: #7b1fa2; }
-.badge.concept { background: #e8f5e9; color: #2e7d32; }
-.badge.deprecation { background: #fbe9e7; color: #bf360c; }
-.badge.category { background: #fff3e0; color: #e65100; }
-
-.version-info {
-  font-size: 0.85rem;
-  color: #1976d2;
-  font-weight: 600;
-}
-
 .code-example {
   background: #f8f8f8;
   border: 1px solid #eee;
@@ -386,20 +298,6 @@ function navigateTo(item, level) {
   font-family: 'SF Mono', 'Fira Code', monospace;
   font-size: 0.85rem;
   color: #333;
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.tag {
-  font-size: 0.75rem;
-  padding: 3px 10px;
-  border-radius: 4px;
-  background: #f0f0f0;
-  color: #555;
 }
 
 .docs-link {

@@ -94,7 +94,6 @@ async function jumpToConcept(conceptId) {
       <LearningPathSidebar
         :overview="langData.overview"
         :specification="langData.specification"
-        :allTerms="allTerms"
         :selectedLang="selectedLang"
         :languages="languages"
         :selectedNodeId="selectedNode?.id || null"
@@ -106,8 +105,6 @@ async function jumpToConcept(conceptId) {
           <NodeDetailPanel
             :node="selectedNode"
             :overview="langData.overview"
-            :allTerms="allTerms"
-            :versions="langData.versions || []"
             :specification="langData.specification"
             @close="closeDetail"
             @select-node="handleSelectNode"

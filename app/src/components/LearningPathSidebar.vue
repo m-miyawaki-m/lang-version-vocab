@@ -1,10 +1,9 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 
 const props = defineProps({
   overview: { type: Object, default: null },
   specification: { type: Object, default: null },
-  allTerms: { type: Array, default: () => [] },
   selectedLang: { type: String, default: 'javascript' },
   languages: { type: Array, default: () => [] },
   selectedNodeId: { type: String, default: null }
@@ -12,60 +11,22 @@ const props = defineProps({
 
 const emit = defineEmits(['update:selectedLang', 'select-node'])
 
-const experienceMode = ref(false)
-const collapsedChars = ref(new Set())
-const collapsedSpecs = ref(new Set())
-
-const roadmap = computed(() => {
+const features = computed(() => {
   if (!props.overview) return []
-
-  const characteristics = props.overview.characteristics || []
-  const concepts = props.overview.concepts || []
-  const terms = props.allTerms || []
-
-  const placedTermIds = new Set()
-
-  return characteristics.map(char => {
-    const relatedConcepts = concepts
-      .filter(c => c.characteristicId === char.id)
-      .map(concept => {
-        const relatedTerms = (concept.relatedTermIds || [])
-          .map(termId => terms.find(t => t.id === termId))
-          .filter(t => t && !placedTermIds.has(t.id))
-
-        relatedTerms.forEach(t => placedTermIds.add(t.id))
-
-        return { ...concept, terms: relatedTerms }
-      })
-
-    return { characteristic: char, concepts: relatedConcepts }
-  })
+  const chars = (props.overview.characteristics || []).map(c => ({ ...c, level: 'characteristic' }))
+  const concepts = (props.overview.concepts || []).map(c => ({ ...c, level: 'concept' }))
+  return [...chars, ...concepts]
 })
 
-function toggleCollapse(charId) {
-  const next = new Set(collapsedChars.value)
-  if (next.has(charId)) {
-    next.delete(charId)
-  } else {
-    next.add(charId)
-  }
-  collapsedChars.value = next
-}
+const syntaxCategories = computed(() => {
+  if (!props.specification?.categories) return []
+  return props.specification.categories.filter(c => c.group === 'syntax')
+})
 
-function isCollapsed(charId) {
-  return collapsedChars.value.has(charId)
-}
-
-function toggleSpecCollapse(catId) {
-  const next = new Set(collapsedSpecs.value)
-  if (next.has(catId)) next.delete(catId)
-  else next.add(catId)
-  collapsedSpecs.value = next
-}
-
-function isSpecCollapsed(catId) {
-  return collapsedSpecs.value.has(catId)
-}
+const apiCategories = computed(() => {
+  if (!props.specification?.categories) return []
+  return props.specification.categories.filter(c => c.group === 'api')
+})
 
 function selectNode(item, level) {
   emit('select-node', { ...item, level })
@@ -84,140 +45,67 @@ function selectNode(item, level) {
           {{ lang.label }}
         </option>
       </select>
-      <div class="mode-toggle">
-        <button
-          class="mode-btn"
-          :class="{ active: !experienceMode }"
-          @click="experienceMode = false"
-        >
-          初心者
-        </button>
-        <button
-          class="mode-btn"
-          :class="{ active: experienceMode }"
-          @click="experienceMode = true"
-        >
-          経験者
-        </button>
-      </div>
     </div>
 
     <nav class="sidebar-tree">
-      <ul class="tree-root">
-        <li v-for="branch in roadmap" :key="branch.characteristic.id" class="tree-branch">
-          <!-- 特性 -->
-          <div
-            class="tree-item char-item"
-            :class="{ active: selectedNodeId === branch.characteristic.id }"
-          >
-            <button
-              class="collapse-toggle"
-              @click.stop="toggleCollapse(branch.characteristic.id)"
-              :aria-expanded="!isCollapsed(branch.characteristic.id)"
-            >
-              <span class="collapse-icon">{{ isCollapsed(branch.characteristic.id) ? '▶' : '▼' }}</span>
-            </button>
-            <span
-              class="dot dot-char"
-            ></span>
-            <button
-              class="tree-label char-label"
-              @click="selectNode(branch.characteristic, 'characteristic')"
-            >
-              {{ branch.characteristic.termJa || branch.characteristic.term }}
-            </button>
-          </div>
-
-          <!-- 概念 + 用語 -->
-          <ul
-            v-if="!isCollapsed(branch.characteristic.id) && branch.concepts.length"
-            class="tree-children"
-          >
-            <li v-for="concept in branch.concepts" :key="concept.id" class="tree-child">
-              <div
-                class="tree-item concept-item"
-                :class="{ active: selectedNodeId === concept.id }"
-              >
-                <span class="dot dot-concept"></span>
-                <button
-                  class="tree-label concept-label"
-                  @click="selectNode(concept, 'concept')"
-                >
-                  {{ concept.termJa || concept.term }}
-                </button>
-              </div>
-
-              <ul
-                v-if="!experienceMode && concept.terms && concept.terms.length"
-                class="tree-children"
-              >
-                <li v-for="term in concept.terms" :key="term.id">
-                  <div
-                    class="tree-item term-item"
-                    :class="{ active: selectedNodeId === term.id }"
-                  >
-                    <span class="dot dot-term"></span>
-                    <button
-                      class="tree-label term-label"
-                      @click="selectNode(term, 'term')"
-                    >
-                      {{ term.termJa || term.term }}
-                    </button>
-                  </div>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <!-- 言語仕様 -->
-      <template v-if="specification?.categories?.length">
-        <div class="spec-divider">
-          <span class="spec-divider-label">言語仕様</span>
+      <!-- 言語の特徴 -->
+      <template v-if="features.length">
+        <div class="section-divider">
+          <span class="section-label">言語の特徴</span>
         </div>
-        <ul class="tree-root">
-          <li v-for="cat in specification.categories" :key="cat.id" class="tree-branch">
-            <div
-              class="tree-item spec-cat-item"
-              :class="{ active: selectedNodeId === cat.id }"
+        <ul class="section-list">
+          <li v-for="item in features" :key="item.id">
+            <button
+              class="list-item"
+              :class="{ active: selectedNodeId === item.id }"
+              @click="selectNode(item, item.level)"
             >
-              <button
-                class="collapse-toggle"
-                @click.stop="toggleSpecCollapse(cat.id)"
-              >
-                <span class="collapse-icon">{{ isSpecCollapsed(cat.id) ? '▶' : '▼' }}</span>
-              </button>
-              <span class="dot dot-spec-cat"></span>
-              <button
-                class="tree-label spec-cat-label"
-                @click="selectNode(cat, 'spec-category')"
-              >
-                {{ cat.nameJa || cat.name }}
-              </button>
-            </div>
-            <ul
-              v-if="!isSpecCollapsed(cat.id) && cat.items.length"
-              class="tree-children"
-            >
-              <li v-for="item in cat.items" :key="item.id">
-                <div
-                  class="tree-item spec-item"
-                  :class="{ active: selectedNodeId === item.id }"
-                >
-                  <span class="dot dot-spec"></span>
-                  <button
-                    class="tree-label spec-label"
-                    @click="selectNode(item, 'spec-item')"
-                  >
-                    {{ item.termJa || item.term }}
-                  </button>
-                </div>
-              </li>
-            </ul>
+              <span class="dot" :class="item.level === 'characteristic' ? 'dot-feature' : 'dot-concept'"></span>
+              <span class="item-label">{{ item.termJa || item.term }}</span>
+            </button>
           </li>
         </ul>
       </template>
-      <p v-if="roadmap.length === 0 && !specification?.categories?.length" class="empty">データなし</p>
+
+      <!-- 基本構文 -->
+      <template v-if="syntaxCategories.length">
+        <div class="section-divider">
+          <span class="section-label">基本構文</span>
+        </div>
+        <ul class="section-list">
+          <li v-for="cat in syntaxCategories" :key="cat.id">
+            <button
+              class="list-item"
+              :class="{ active: selectedNodeId === cat.id }"
+              @click="selectNode(cat, 'spec-category')"
+            >
+              <span class="dot dot-syntax"></span>
+              <span class="item-label">{{ cat.nameJa || cat.name }}</span>
+            </button>
+          </li>
+        </ul>
+      </template>
+
+      <!-- 標準API -->
+      <template v-if="apiCategories.length">
+        <div class="section-divider">
+          <span class="section-label">標準API</span>
+        </div>
+        <ul class="section-list">
+          <li v-for="cat in apiCategories" :key="cat.id">
+            <button
+              class="list-item"
+              :class="{ active: selectedNodeId === cat.id }"
+              @click="selectNode(cat, 'spec-category')"
+            >
+              <span class="dot dot-api"></span>
+              <span class="item-label">{{ cat.nameJa || cat.name }}</span>
+            </button>
+          </li>
+        </ul>
+      </template>
+
+      <p v-if="features.length === 0 && syntaxCategories.length === 0 && apiCategories.length === 0" class="empty">データなし</p>
     </nav>
   </aside>
 </template>
@@ -249,203 +137,91 @@ function selectNode(item, level) {
   font-size: 0.95rem;
   font-weight: 600;
   background: #fff;
-  margin-bottom: 12px;
 }
 
-.mode-toggle {
-  display: flex;
-  gap: 6px;
-}
-
-.mode-btn {
-  flex: 1;
-  padding: 6px 12px;
-  border: 1px solid #ddd;
-  border-radius: 16px;
-  background: #fff;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #888;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.mode-btn:hover {
-  border-color: #bbb;
-  color: #555;
-}
-
-.mode-btn.active {
-  background: #1976d2;
-  border-color: #1976d2;
-  color: #fff;
-}
-
-/* ツリー構造 */
 .sidebar-tree {
   flex: 1;
   overflow-y: auto;
-  padding: 8px 0;
+  padding: 0 0 16px;
 }
 
-.tree-root {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.tree-branch {
-  margin-bottom: 2px;
-}
-
-.tree-children {
-  list-style: none;
-  padding: 0 0 0 12px;
-  margin: 0;
-  border-left: 1px solid #ddd;
-  margin-left: 19px;
-}
-
-.tree-child {
-  margin: 0;
-}
-
-/* ツリーアイテム共通 */
-.tree-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 12px;
-  border-radius: 4px;
-  margin: 1px 8px 1px 0;
-  transition: background 0.15s;
-}
-
-.tree-item:hover {
-  background: #eeeeee;
-}
-
-.tree-item.active {
-  background: #e3f2fd;
-}
-
-/* ドットインジケータ */
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.dot-char {
-  background: #1976d2;
-}
-
-.dot-concept {
-  background: #2e7d32;
-  width: 6px;
-  height: 6px;
-}
-
-.dot-term {
-  background: #e65100;
-  width: 5px;
-  height: 5px;
-}
-
-/* 折りたたみトグル */
-.collapse-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  line-height: 1;
-  color: #999;
-  font-size: 0.6rem;
-  width: 12px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.collapse-toggle:hover {
-  color: #555;
-}
-
-/* ラベル */
-.tree-label {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  text-align: left;
-  font-size: 0.85rem;
-  color: #333;
-  line-height: 1.4;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  min-width: 0;
-}
-
-.tree-label:hover {
-  color: #1976d2;
-}
-
-.char-label {
-  font-weight: 700;
-  font-size: 0.85rem;
-  color: #1a1a1a;
-}
-
-.concept-label {
-  font-weight: 500;
-  font-size: 0.82rem;
-  color: #444;
-}
-
-.term-label {
-  font-weight: 400;
-  font-size: 0.78rem;
-  color: #666;
-}
-
-/* 言語仕様セクション */
-.spec-divider {
-  margin: 16px 12px 8px;
-  border-top: 1px solid #ddd;
+.section-divider {
+  margin: 16px 16px 6px;
   padding-top: 8px;
+  border-top: 1px solid #e0e0e0;
 }
 
-.spec-divider-label {
+.section-divider:first-child {
+  border-top: none;
+  margin-top: 8px;
+}
+
+.section-label {
   font-size: 0.7rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #999;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
-.dot-spec-cat {
+.section-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 6px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.84rem;
+  color: #333;
+  line-height: 1.4;
+  transition: background 0.15s;
+}
+
+.list-item:hover {
+  background: #eeeeee;
+}
+
+.list-item.active {
+  background: #e3f2fd;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot-feature {
+  background: #1976d2;
+}
+
+.dot-concept {
+  background: #2e7d32;
+}
+
+.dot-syntax {
+  background: #e65100;
+}
+
+.dot-api {
   background: #7b1fa2;
 }
 
-.dot-spec {
-  background: #9c27b0;
-  width: 5px;
-  height: 5px;
-}
-
-.spec-cat-label {
-  font-weight: 700;
-  font-size: 0.85rem;
-  color: #1a1a1a;
-}
-
-.spec-label {
-  font-weight: 400;
-  font-size: 0.78rem;
-  color: #666;
+.item-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .empty {
