@@ -1,16 +1,136 @@
 import { BaseScraper } from './base.js'
 import { fetchWithRetry, sleep } from '../utils/fetcher.js'
-import { parseHTML, extractText, generateId } from '../utils/parser.js'
+import { generateId } from '../utils/parser.js'
 
 const MDN_BASE = 'https://developer.mozilla.org'
 
-// MDN で取得するカテゴリとパス
-const REFERENCE_PATHS = [
-  { path: '/ja/docs/Web/JavaScript/Reference/Statements', category: 'statement' },
-  { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects', category: 'object' },
-  { path: '/ja/docs/Web/JavaScript/Reference/Operators', category: 'operator' },
-  { path: '/ja/docs/Web/JavaScript/Reference/Functions', category: 'function' }
-]
+// ECMAScript バージョンごとの主要機能とMDNパス
+const ES_FEATURES = {
+  'ES2024': {
+    releaseDate: '2024-06',
+    features: [
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Object/groupBy', type: 'api', category: 'object' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Map/groupBy', type: 'api', category: 'object' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise/withResolvers', type: 'api', category: 'async' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Atomics/waitAsync', type: 'api', category: 'concurrency' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/String/isWellFormed', type: 'api', category: 'string' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/String/toWellFormed', type: 'api', category: 'string' }
+    ]
+  },
+  'ES2023': {
+    releaseDate: '2023-06',
+    features: [
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast', type: 'api', category: 'array' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex', type: 'api', category: 'array' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed', type: 'api', category: 'array' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted', type: 'api', category: 'array' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/toSpliced', type: 'api', category: 'array' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/with', type: 'api', category: 'array' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Symbol/hasInstance', type: 'api', category: 'symbol' }
+    ]
+  },
+  'ES2022': {
+    releaseDate: '2022-06',
+    features: [
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/at', type: 'api', category: 'array' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwn', type: 'api', category: 'object' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Error/cause', type: 'api', category: 'error' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Statements/class', type: 'syntax', category: 'class' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Operators/await', type: 'syntax', category: 'async' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/RegExp/hasIndices', type: 'api', category: 'regexp' }
+    ]
+  },
+  'ES2021': {
+    releaseDate: '2021-06',
+    features: [
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll', type: 'api', category: 'string' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise/any', type: 'api', category: 'async' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/WeakRef', type: 'api', category: 'memory' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/FinalizationRegistry', type: 'api', category: 'memory' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Operators/Logical_AND_assignment', type: 'syntax', category: 'operator' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Operators/Logical_OR_assignment', type: 'syntax', category: 'operator' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_assignment', type: 'syntax', category: 'operator' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Number', type: 'api', category: 'number' }
+    ]
+  },
+  'ES2020': {
+    releaseDate: '2020-06',
+    features: [
+      { path: '/ja/docs/Web/JavaScript/Reference/Operators/Optional_chaining', type: 'syntax', category: 'operator' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing', type: 'syntax', category: 'operator' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/BigInt', type: 'api', category: 'number' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled', type: 'api', category: 'async' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/globalThis', type: 'api', category: 'global' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Statements/import', type: 'syntax', category: 'module' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/String/matchAll', type: 'api', category: 'string' }
+    ]
+  },
+  'ES2019': {
+    releaseDate: '2019-06',
+    features: [
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/flat', type: 'api', category: 'array' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap', type: 'api', category: 'array' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Object/fromEntries', type: 'api', category: 'object' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/String/trimStart', type: 'api', category: 'string' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/String/trimEnd', type: 'api', category: 'string' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Statements/try...catch', type: 'syntax', category: 'error' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Symbol/description', type: 'api', category: 'symbol' }
+    ]
+  },
+  'ES2018': {
+    releaseDate: '2018-06',
+    features: [
+      { path: '/ja/docs/Web/JavaScript/Reference/Statements/for-await...of', type: 'syntax', category: 'async' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally', type: 'api', category: 'async' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Operators/Spread_syntax', type: 'syntax', category: 'operator' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/RegExp', type: 'api', category: 'regexp' }
+    ]
+  },
+  'ES2017': {
+    releaseDate: '2017-06',
+    features: [
+      { path: '/ja/docs/Web/JavaScript/Reference/Statements/async_function', type: 'syntax', category: 'async' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Operators/await', type: 'syntax', category: 'async' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Object/values', type: 'api', category: 'object' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Object/entries', type: 'api', category: 'object' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/String/padStart', type: 'api', category: 'string' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/String/padEnd', type: 'api', category: 'string' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptors', type: 'api', category: 'object' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer', type: 'api', category: 'concurrency' }
+    ]
+  },
+  'ES2016': {
+    releaseDate: '2016-06',
+    features: [
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/includes', type: 'api', category: 'array' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Operators/Exponentiation', type: 'syntax', category: 'operator' }
+    ]
+  },
+  'ES2015': {
+    releaseDate: '2015-06',
+    features: [
+      { path: '/ja/docs/Web/JavaScript/Reference/Functions/Arrow_functions', type: 'syntax', category: 'function' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Statements/let', type: 'syntax', category: 'variable' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Statements/const', type: 'syntax', category: 'variable' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Statements/class', type: 'syntax', category: 'class' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Template_literals', type: 'syntax', category: 'string' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment', type: 'syntax', category: 'operator' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Functions/Default_parameters', type: 'syntax', category: 'function' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Functions/rest_parameters', type: 'syntax', category: 'function' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Operators/Spread_syntax', type: 'syntax', category: 'operator' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise', type: 'concept', category: 'async' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Map', type: 'api', category: 'collection' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Set', type: 'api', category: 'collection' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/WeakMap', type: 'api', category: 'collection' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Symbol', type: 'concept', category: 'primitive' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy', type: 'api', category: 'metaprogramming' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Statements/for...of', type: 'syntax', category: 'iteration' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Statements/import', type: 'syntax', category: 'module' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Statements/export', type: 'syntax', category: 'module' },
+      { path: '/ja/docs/Web/JavaScript/Reference/Global_Objects/Generator', type: 'concept', category: 'iteration' }
+    ]
+  }
+}
 
 export class JavaScriptScraper extends BaseScraper {
   constructor() {
@@ -18,125 +138,47 @@ export class JavaScriptScraper extends BaseScraper {
   }
 
   async scrape() {
-    const termsByVersion = new Map()
+    const versions = []
 
-    for (const ref of REFERENCE_PATHS) {
-      console.log(`Scraping ${ref.path}...`)
-      try {
-        const listHtml = await fetchWithRetry(`${MDN_BASE}${ref.path}`)
-        const $ = parseHTML(listHtml)
+    for (const [version, config] of Object.entries(ES_FEATURES)) {
+      console.log(`Scraping ${version} (${config.features.length} features)...`)
+      const terms = []
 
-        // サブページのリンクを取得
-        const links = []
-        $('ol a, .sidebar a, section a').each((_, el) => {
-          const href = $(el).attr('href')
-          if (href && href.startsWith('/ja/docs/Web/JavaScript/Reference/')) {
-            const fullUrl = `${MDN_BASE}${href}`
-            if (!links.includes(fullUrl)) {
-              links.push(fullUrl)
-            }
-          }
-        })
+      for (const feature of config.features) {
+        try {
+          await sleep(200)
+          const url = `${MDN_BASE}${feature.path}/index.json`
+          const json = await fetchWithRetry(url)
+          const data = JSON.parse(json)
+          const doc = data.doc
 
-        console.log(`  Found ${links.length} pages in ${ref.category}`)
+          if (!doc) continue
 
-        // 各ページから詳細を取得
-        for (const url of links.slice(0, 50)) {
-          try {
-            await sleep(300)
-            const pageHtml = await fetchWithRetry(url)
-            const page$ = parseHTML(pageHtml)
-
-            const title = extractText(page$('h1').first())
-            if (!title) continue
-
-            const description = extractText(page$('.section-content p').first())
-
-            // ECMAScript 仕様セクションからバージョンを取得
-            let esVersion = ''
-            page$('table').each((_, table) => {
-              const tableText = page$(table).text()
-              if (tableText.includes('ECMAScript')) {
-                const match = tableText.match(/ECMAScript\s+(\d{4}|\d+(?:th|st|nd|rd)?\s*Edition)/i)
-                if (match) {
-                  esVersion = this.normalizeVersion(match[1])
-                }
-              }
-            })
-
-            if (!esVersion) continue
-
-            if (!termsByVersion.has(esVersion)) {
-              termsByVersion.set(esVersion, [])
-            }
-
-            const example = extractText(page$('pre code').first())
-
-            termsByVersion.get(esVersion).push({
-              id: generateId('javascript', esVersion, title),
-              term: title,
-              termJa: '',
-              type: this.inferType(title, ref.category),
-              category: ref.category,
-              meaning: description,
-              example: example.substring(0, 200),
-              tags: [],
-              sourceUrl: url
-            })
-          } catch (error) {
-            console.warn(`  Failed: ${url}: ${error.message}`)
-          }
+          terms.push({
+            id: generateId('javascript', version, doc.title),
+            term: doc.short_title || doc.title,
+            termJa: doc.title !== doc.short_title ? doc.title : '',
+            type: feature.type,
+            category: feature.category,
+            meaning: doc.summary || '',
+            example: '',
+            tags: [],
+            sourceUrl: `${MDN_BASE}${feature.path}`
+          })
+        } catch (error) {
+          console.warn(`  Failed: ${feature.path}: ${error.message}`)
         }
-      } catch (error) {
-        console.warn(`Failed to scrape ${ref.path}: ${error.message}`)
+      }
+
+      if (terms.length > 0) {
+        versions.push({
+          version,
+          releaseDate: config.releaseDate,
+          terms
+        })
       }
     }
 
-    return this.sortVersions(termsByVersion)
-  }
-
-  normalizeVersion(raw) {
-    const yearMatch = raw.match(/(\d{4})/)
-    if (yearMatch) return `ES${yearMatch[1]}`
-
-    const editionMatch = raw.match(/(\d+)/)
-    if (editionMatch) {
-      const edition = parseInt(editionMatch[1])
-      if (edition >= 2015) return `ES${edition}`
-      const yearMap = { 1: 'ES1', 2: 'ES2', 3: 'ES3', 5: 'ES5', 6: 'ES2015' }
-      return yearMap[edition] || `ES${edition}`
-    }
-
-    return raw
-  }
-
-  inferType(title, category) {
-    if (title.includes('()') || title.includes('.prototype.')) return 'api'
-    if (category === 'statement' || category === 'operator') return 'syntax'
-    return 'concept'
-  }
-
-  sortVersions(termsByVersion) {
-    return Array.from(termsByVersion.entries())
-      .sort((a, b) => {
-        const ya = parseInt(a[0].replace('ES', '')) || 0
-        const yb = parseInt(b[0].replace('ES', '')) || 0
-        return yb - ya
-      })
-      .map(([version, terms]) => ({
-        version,
-        releaseDate: this.getReleaseDateForVersion(version),
-        terms
-      }))
-  }
-
-  getReleaseDateForVersion(version) {
-    const dates = {
-      'ES2024': '2024-06', 'ES2023': '2023-06', 'ES2022': '2022-06',
-      'ES2021': '2021-06', 'ES2020': '2020-06', 'ES2019': '2019-06',
-      'ES2018': '2018-06', 'ES2017': '2017-06', 'ES2016': '2016-06',
-      'ES2015': '2015-06', 'ES5': '2009-12', 'ES3': '1999-12'
-    }
-    return dates[version] || ''
+    return versions
   }
 }

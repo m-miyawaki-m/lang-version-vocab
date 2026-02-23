@@ -4,19 +4,308 @@
   "source": "https://api.jquery.com/",
   "versions": [
     {
+      "version": "3.7",
+      "releaseDate": "2024-05",
+      "terms": [
+        {
+          "id": "jquery-37-jquerydeferredgeterrorhook",
+          "term": "jQuery.Deferred.getErrorHook()",
+          "termJa": "",
+          "type": "api",
+          "category": "Deferred Object",
+          "meaning": "Return an Error instance with a defined stack.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.Deferred.getErrorHook/"
+        },
+        {
+          "id": "jquery-37-uniquesort",
+          "term": ".uniqueSort()",
+          "termJa": "",
+          "type": "api",
+          "category": "Utilities",
+          "meaning": "Sorts a jQuery object of DOM elements, in place, with the duplicates removed. Note that this only works on jQuery objects consisting of DOM elements, not strings or numbers.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/uniqueSort/"
+        }
+      ]
+    },
+    {
+      "version": "3.5",
+      "releaseDate": "2020-04",
+      "terms": [
+        {
+          "id": "jquery-35-even",
+          "term": ".even()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Reduce the set of matched elements to the even ones in the set, numbered from zero.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/even/"
+        },
+        {
+          "id": "jquery-35-odd",
+          "term": ".odd()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Reduce the set of matched elements to the odd ones in the set, numbered from zero.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/odd/"
+        }
+      ]
+    },
+    {
+      "version": "3.1",
+      "releaseDate": "2016-07",
+      "terms": [
+        {
+          "id": "jquery-31-jqueryreadyexception",
+          "term": "jQuery.readyException()",
+          "termJa": "",
+          "type": "api",
+          "category": "Core",
+          "meaning": "Handles errors thrown synchronously in functions wrapped in jQuery().",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.readyException/"
+        }
+      ]
+    },
+    {
       "version": "3.0",
       "releaseDate": "2016-06",
       "terms": [
         {
-          "id": "jquery-3.0-for-of",
-          "term": "for...of loop support",
-          "termJa": "for...of ループ対応",
-          "type": "concept",
-          "category": "iteration",
-          "meaning": "jQuery オブジェクトが for...of ループで反復可能になった",
-          "example": "for (let element of $('li')) { console.log(element); }",
-          "tags": ["反復", "ES2015"],
-          "sourceUrl": "https://blog.jquery.com/2016/06/09/jquery-3-0-final-released/"
+          "id": "jquery-30-deferredcatch",
+          "term": "deferred.catch()",
+          "termJa": "",
+          "type": "api",
+          "category": "Deferred Object",
+          "meaning": "Add handlers to be called when the Deferred object is rejected.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/deferred.catch/"
+        },
+        {
+          "id": "jquery-30-jquerydeferredexceptionhook",
+          "term": "jQuery.Deferred.exceptionHook()",
+          "termJa": "",
+          "type": "api",
+          "category": "Deferred Object",
+          "meaning": "Handle errors produced by Deferreds.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.Deferred.exceptionHook/"
+        },
+        {
+          "id": "jquery-30-jqueryescapeselector",
+          "term": "jQuery.escapeSelector()",
+          "termJa": "",
+          "type": "api",
+          "category": "CSS",
+          "meaning": "Escapes any character that has a special meaning in a CSS selector.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.escapeSelector/"
+        }
+      ]
+    },
+    {
+      "version": "1.12",
+      "releaseDate": "2016-01",
+      "terms": [
+        {
+          "id": "jquery-112-jqueryhtmlprefilter",
+          "term": "jQuery.htmlPrefilter()",
+          "termJa": "",
+          "type": "api",
+          "category": "Manipulation",
+          "meaning": "Modify and filter HTML strings passed through jQuery manipulation methods.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.htmlPrefilter/"
+        },
+        {
+          "id": "jquery-112-jqueryuniquesort",
+          "term": "jQuery.uniqueSort()",
+          "termJa": "",
+          "type": "api",
+          "category": "Utilities",
+          "meaning": "Sorts an array or an array-like object of DOM elements, in place, with the duplicates removed. Note that this only works on arrays/array-likes of DOM elements, not strings or numbers.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.uniqueSort/"
+        }
+      ]
+    },
+    {
+      "version": "1.9",
+      "releaseDate": "2013-01",
+      "terms": [
+        {
+          "id": "jquery-19-finish",
+          "term": ".finish()",
+          "termJa": "",
+          "type": "api",
+          "category": "Effects",
+          "meaning": "Stop the currently-running animation, remove all queued animations, and complete all animations for the matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/finish/"
+        },
+        {
+          "id": "jquery-19-first-of-type-selector",
+          "term": ":first-of-type Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements that are the first among siblings of the same element name.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/first-of-type-selector/"
+        },
+        {
+          "id": "jquery-19-lang-selector",
+          "term": ":lang() Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements of the specified language.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/lang-selector/"
+        },
+        {
+          "id": "jquery-19-last-of-type-selector",
+          "term": ":last-of-type Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements that are the last among siblings of the same element name.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/last-of-type-selector/"
+        },
+        {
+          "id": "jquery-19-nth-last-child-selector",
+          "term": ":nth-last-child() Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements that are the nth-child of their parent, counting from the last element to the first.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/nth-last-child-selector/"
+        },
+        {
+          "id": "jquery-19-nth-last-of-type-selector",
+          "term": ":nth-last-of-type() Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all the elements that are the nth-child of their parent in relation to siblings with the same element name, counting from the last element to the first.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/nth-last-of-type-selector/"
+        },
+        {
+          "id": "jquery-19-nth-of-type-selector",
+          "term": ":nth-of-type() Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements that are the nth child of their parent in relation to siblings with the same element name.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/nth-of-type-selector/"
+        },
+        {
+          "id": "jquery-19-only-of-type-selector",
+          "term": ":only-of-type Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements that have no siblings with the same element name.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/only-of-type-selector/"
+        },
+        {
+          "id": "jquery-19-root-selector",
+          "term": ":root Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects the element that is the root of the document.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/root-selector/"
+        },
+        {
+          "id": "jquery-19-target-selector",
+          "term": ":target Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects the target element indicated by the fragment identifier of the document’s URI.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/target-selector/"
+        }
+      ]
+    },
+    {
+      "version": "1.8",
+      "releaseDate": "2012-08",
+      "terms": [
+        {
+          "id": "jquery-18-addback",
+          "term": ".addBack()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Add the previous set of elements on the stack to the current set, optionally filtered by a selector.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/addBack/"
+        },
+        {
+          "id": "jquery-18-deferredthen",
+          "term": "deferred.then()",
+          "termJa": "",
+          "type": "api",
+          "category": "Deferred Object",
+          "meaning": "Add handlers to be called when the Deferred object is resolved, rejected, or still in progress.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/deferred.then/"
+        },
+        {
+          "id": "jquery-18-jqueryparsehtml",
+          "term": "jQuery.parseHTML()",
+          "termJa": "",
+          "type": "api",
+          "category": "Utilities",
+          "meaning": "Parses a string into an array of DOM nodes.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.parseHTML/"
+        },
+        {
+          "id": "jquery-18-jqueryready",
+          "term": "jQuery.ready",
+          "termJa": "",
+          "type": "api",
+          "category": "Core",
+          "meaning": "A Promise-like object (or “thenable”) that resolves when the document is ready.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.ready/"
         }
       ]
     },
@@ -25,26 +314,2938 @@
       "releaseDate": "2011-11",
       "terms": [
         {
-          "id": "jquery-1.7-on",
-          "term": ".on()",
-          "termJa": "イベントバインド",
+          "id": "jquery-17-ajaxcomplete-event",
+          "term": "ajaxComplete event",
+          "termJa": "",
           "type": "api",
-          "category": "events",
-          "meaning": "イベントハンドラを要素にバインドする統一メソッド。bind/live/delegate を置換",
-          "example": "$('button').on('click', function() { alert('clicked'); });",
-          "tags": ["イベント", "DOM"],
+          "category": "Ajax",
+          "meaning": "Register a handler to be called when Ajax requests complete. This is an AjaxEvent.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/ajaxComplete/"
+        },
+        {
+          "id": "jquery-17-ajaxerror-event",
+          "term": "ajaxError event",
+          "termJa": "",
+          "type": "api",
+          "category": "Ajax",
+          "meaning": "Register a handler to be called when Ajax requests complete with an error. This is an Ajax Event.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/ajaxError/"
+        },
+        {
+          "id": "jquery-17-ajaxsend-event",
+          "term": "ajaxSend event",
+          "termJa": "",
+          "type": "api",
+          "category": "Ajax",
+          "meaning": "Attach a function to be executed before an Ajax request is sent. This is an Ajax Event.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/ajaxSend/"
+        },
+        {
+          "id": "jquery-17-ajaxstart-event",
+          "term": "ajaxStart event",
+          "termJa": "",
+          "type": "api",
+          "category": "Ajax",
+          "meaning": "Register a handler to be called when the first Ajax request begins. This is an Ajax Event.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/ajaxStart/"
+        },
+        {
+          "id": "jquery-17-ajaxstop-event",
+          "term": "ajaxStop event",
+          "termJa": "",
+          "type": "api",
+          "category": "Ajax",
+          "meaning": "Register a handler to be called when all Ajax requests have completed. This is an Ajax Event.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/ajaxStop/"
+        },
+        {
+          "id": "jquery-17-ajaxsuccess-event",
+          "term": "ajaxSuccess event",
+          "termJa": "",
+          "type": "api",
+          "category": "Ajax",
+          "meaning": "Attach a function to be executed whenever an Ajax request completes successfully. This is an Ajax Event.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/ajaxSuccess/"
+        },
+        {
+          "id": "jquery-17-blur-event",
+          "term": "blur event",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Bind an event handler to the “blur” event, or trigger that event on an element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/blur/"
+        },
+        {
+          "id": "jquery-17-callbacksadd",
+          "term": "callbacks.add()",
+          "termJa": "",
+          "type": "api",
+          "category": "Callbacks Object",
+          "meaning": "Add a callback or a collection of callbacks to a callback list.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/callbacks.add/"
+        },
+        {
+          "id": "jquery-17-callbacksdisable",
+          "term": "callbacks.disable()",
+          "termJa": "",
+          "type": "api",
+          "category": "Callbacks Object",
+          "meaning": "Disable a callback list from doing anything more.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/callbacks.disable/"
+        },
+        {
+          "id": "jquery-17-callbacksdisabled",
+          "term": "callbacks.disabled()",
+          "termJa": "",
+          "type": "api",
+          "category": "Callbacks Object",
+          "meaning": "Determine if the callbacks list has been disabled.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/callbacks.disabled/"
+        },
+        {
+          "id": "jquery-17-callbacksempty",
+          "term": "callbacks.empty()",
+          "termJa": "",
+          "type": "api",
+          "category": "Callbacks Object",
+          "meaning": "Remove all of the callbacks from a list.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/callbacks.empty/"
+        },
+        {
+          "id": "jquery-17-callbacksfire",
+          "term": "callbacks.fire()",
+          "termJa": "",
+          "type": "api",
+          "category": "Callbacks Object",
+          "meaning": "Call all of the callbacks with the given arguments.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/callbacks.fire/"
+        },
+        {
+          "id": "jquery-17-callbacksfired",
+          "term": "callbacks.fired()",
+          "termJa": "",
+          "type": "api",
+          "category": "Callbacks Object",
+          "meaning": "Determine if the callbacks have already been called at least once.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/callbacks.fired/"
+        },
+        {
+          "id": "jquery-17-callbacksfirewith",
+          "term": "callbacks.fireWith()",
+          "termJa": "",
+          "type": "api",
+          "category": "Callbacks Object",
+          "meaning": "Call all callbacks in a list with the given context and arguments.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/callbacks.fireWith/"
+        },
+        {
+          "id": "jquery-17-callbackshas",
+          "term": "callbacks.has()",
+          "termJa": "",
+          "type": "api",
+          "category": "Callbacks Object",
+          "meaning": "Determine whether or not the list has any callbacks attached. If a callback is provided as an argument, determine whether it is in a list.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/callbacks.has/"
+        },
+        {
+          "id": "jquery-17-callbackslock",
+          "term": "callbacks.lock()",
+          "termJa": "",
+          "type": "api",
+          "category": "Callbacks Object",
+          "meaning": "Lock a callback list in its current state.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/callbacks.lock/"
+        },
+        {
+          "id": "jquery-17-callbackslocked",
+          "term": "callbacks.locked()",
+          "termJa": "",
+          "type": "api",
+          "category": "Callbacks Object",
+          "meaning": "Determine if the callbacks list has been locked.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/callbacks.locked/"
+        },
+        {
+          "id": "jquery-17-callbacksremove",
+          "term": "callbacks.remove()",
+          "termJa": "",
+          "type": "api",
+          "category": "Callbacks Object",
+          "meaning": "Remove a callback or a collection of callbacks from a callback list.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/callbacks.remove/"
+        },
+        {
+          "id": "jquery-17-change-event",
+          "term": "change event",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Bind an event handler to the “change” event, or trigger that event on an element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/change/"
+        },
+        {
+          "id": "jquery-17-click-event",
+          "term": "click event",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Bind an event handler to the “click” event, or trigger that event on an element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/click/"
+        },
+        {
+          "id": "jquery-17-dblclick-event",
+          "term": "dblclick event",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Bind an event handler to the “dblclick” event, or trigger that event on an element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/dblclick/"
+        },
+        {
+          "id": "jquery-17-deferrednotify",
+          "term": "deferred.notify()",
+          "termJa": "",
+          "type": "api",
+          "category": "Deferred Object",
+          "meaning": "Call the progressCallbacks on a Deferred object with the given args.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/deferred.notify/"
+        },
+        {
+          "id": "jquery-17-deferrednotifywith",
+          "term": "deferred.notifyWith()",
+          "termJa": "",
+          "type": "api",
+          "category": "Deferred Object",
+          "meaning": "Call the progressCallbacks on a Deferred object with the given context and args.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/deferred.notifyWith/"
+        },
+        {
+          "id": "jquery-17-deferredprogress",
+          "term": "deferred.progress()",
+          "termJa": "",
+          "type": "api",
+          "category": "Deferred Object",
+          "meaning": "Add handlers to be called when the Deferred object generates progress notifications.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/deferred.progress/"
+        },
+        {
+          "id": "jquery-17-deferredstate",
+          "term": "deferred.state()",
+          "termJa": "",
+          "type": "api",
+          "category": "Deferred Object",
+          "meaning": "Determine the current state of a Deferred object.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/deferred.state/"
+        },
+        {
+          "id": "jquery-17-error-event",
+          "term": "error event",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Bind an event handler to the “error” event, or trigger that event on an element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/error/"
+        },
+        {
+          "id": "jquery-17-eventdelegatetarget",
+          "term": "event.delegateTarget",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "The element where the currently-called jQuery event handler was attached.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/event.delegateTarget/"
+        },
+        {
+          "id": "jquery-17-focus-event",
+          "term": "focus event",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Bind an event handler to the “focus” event, or trigger that event on an element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/focus/"
+        },
+        {
+          "id": "jquery-17-focusin-event",
+          "term": "focusin event",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Bind an event handler to the “focusin” event, or trigger that event on an element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/focusin/"
+        },
+        {
+          "id": "jquery-17-focusout-event",
+          "term": "focusout event",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Bind an event handler to the “focusout” event, or trigger that event on an element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/focusout/"
+        },
+        {
+          "id": "jquery-17-jquerycallbacks",
+          "term": "jQuery.Callbacks()",
+          "termJa": "",
+          "type": "api",
+          "category": "Callbacks Object",
+          "meaning": "A multi-purpose callbacks list object that provides a powerful way to manage callback lists.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.Callbacks/"
+        },
+        {
+          "id": "jquery-17-keydown-event",
+          "term": "keydown event",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Bind an event handler to the “keydown” event, or trigger that event on an element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/keydown/"
+        },
+        {
+          "id": "jquery-17-keypress-event",
+          "term": "keypress event",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Bind an event handler to the “keypress” event, or trigger that event on an element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/keypress/"
+        },
+        {
+          "id": "jquery-17-keyup-event",
+          "term": "keyup event",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Bind an event handler to the “keyup” event, or trigger that event on an element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/keyup/"
+        },
+        {
+          "id": "jquery-17-load-event",
+          "term": "load event",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Bind an event handler to the “load” event, or trigger that event on an element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/load-event/"
+        },
+        {
+          "id": "jquery-17-mousedown-event",
+          "term": "mousedown event",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Bind an event handler to the “mousedown” event, or trigger that event on an element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/mousedown/"
+        },
+        {
+          "id": "jquery-17-mouseenter-event",
+          "term": "mouseenter event",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Bind an event handler to be fired when the mouse enters an element, or trigger that handler on an element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/mouseenter/"
+        },
+        {
+          "id": "jquery-17-mouseleave-event",
+          "term": "mouseleave event",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Bind an event handler to be fired when the mouse leaves an element, or trigger that handler on an element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/mouseleave/"
+        },
+        {
+          "id": "jquery-17-mousemove-event",
+          "term": "mousemove event",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Bind an event handler to the “mousemove” event, or trigger that event on an element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/mousemove/"
+        },
+        {
+          "id": "jquery-17-mouseout-event",
+          "term": "mouseout event",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Bind an event handler to the “mouseout” event, or trigger that event on an element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/mouseout/"
+        },
+        {
+          "id": "jquery-17-mouseover-event",
+          "term": "mouseover event",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Bind an event handler to the “mouseover” event, or trigger that event on an element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/mouseover/"
+        },
+        {
+          "id": "jquery-17-mouseup-event",
+          "term": "mouseup event",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Bind an event handler to the “mouseup” event, or trigger that event on an element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/mouseup/"
+        },
+        {
+          "id": "jquery-17-off",
+          "term": ".off()",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Remove an event handler.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/off/"
+        },
+        {
+          "id": "jquery-17-on",
+          "term": ".on()",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Attach an event handler function for one or more events to the selected elements.",
+          "example": "",
+          "tags": [],
           "sourceUrl": "https://api.jquery.com/on/"
         },
         {
-          "id": "jquery-1.7-off",
-          "term": ".off()",
-          "termJa": "イベントアンバインド",
+          "id": "jquery-17-resize-event",
+          "term": "resize event",
+          "termJa": "",
           "type": "api",
-          "category": "events",
-          "meaning": "イベントハンドラを要素から取り除く統一メソッド。unbind/die/undelegate を置換",
-          "example": "$('button').off('click');",
-          "tags": ["イベント", "DOM"],
-          "sourceUrl": "https://api.jquery.com/off/"
+          "category": "Events",
+          "meaning": "Bind an event handler to the “resize” event, or trigger that event on an element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/resize/"
+        },
+        {
+          "id": "jquery-17-scroll-event",
+          "term": "scroll event",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Bind an event handler to the “scroll” event, or trigger that event on an element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/scroll/"
+        },
+        {
+          "id": "jquery-17-select-event",
+          "term": "select event",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Bind an event handler to the “select” event, or trigger that event on an element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/select/"
+        },
+        {
+          "id": "jquery-17-submit-event",
+          "term": "submit event",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Bind an event handler to the “submit” event, or trigger that event on an element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/submit/"
+        },
+        {
+          "id": "jquery-17-unload-event",
+          "term": "unload event",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Bind an event handler to the “unload” event, or trigger that event on an element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/unload/"
+        }
+      ]
+    },
+    {
+      "version": "1.6",
+      "releaseDate": "2011-05",
+      "terms": [
+        {
+          "id": "jquery-16-deferredalways",
+          "term": "deferred.always()",
+          "termJa": "",
+          "type": "api",
+          "category": "Deferred Object",
+          "meaning": "Add handlers to be called when the Deferred object is either resolved or rejected.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/deferred.always/"
+        },
+        {
+          "id": "jquery-16-focus-selector",
+          "term": ":focus Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects element if it is currently focused.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/focus-selector/"
+        },
+        {
+          "id": "jquery-16-promise",
+          "term": ".promise()",
+          "termJa": "",
+          "type": "api",
+          "category": "Deferred Object",
+          "meaning": "Return a Promise object to observe when all actions of a certain type bound to the collection, queued or not, have finished.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/promise/"
+        },
+        {
+          "id": "jquery-16-prop",
+          "term": ".prop()",
+          "termJa": "",
+          "type": "api",
+          "category": "Attributes",
+          "meaning": "Get the value of a property for the first element in the set of matched elements or set one or more properties for every matched element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/prop/"
+        },
+        {
+          "id": "jquery-16-removeprop",
+          "term": ".removeProp()",
+          "termJa": "",
+          "type": "api",
+          "category": "Attributes",
+          "meaning": "Remove a property for the set of matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/removeProp/"
+        }
+      ]
+    },
+    {
+      "version": "1.5",
+      "releaseDate": "2011-01",
+      "terms": [
+        {
+          "id": "jquery-15-deferreddone",
+          "term": "deferred.done()",
+          "termJa": "",
+          "type": "api",
+          "category": "Deferred Object",
+          "meaning": "Add handlers to be called when the Deferred object is resolved.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/deferred.done/"
+        },
+        {
+          "id": "jquery-15-deferredfail",
+          "term": "deferred.fail()",
+          "termJa": "",
+          "type": "api",
+          "category": "Deferred Object",
+          "meaning": "Add handlers to be called when the Deferred object is rejected.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/deferred.fail/"
+        },
+        {
+          "id": "jquery-15-deferredpromise",
+          "term": "deferred.promise()",
+          "termJa": "",
+          "type": "api",
+          "category": "Deferred Object",
+          "meaning": "Return a Deferred’s Promise object.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/deferred.promise/"
+        },
+        {
+          "id": "jquery-15-deferredreject",
+          "term": "deferred.reject()",
+          "termJa": "",
+          "type": "api",
+          "category": "Deferred Object",
+          "meaning": "Reject a Deferred object and call any failCallbacks with the given args.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/deferred.reject/"
+        },
+        {
+          "id": "jquery-15-deferredrejectwith",
+          "term": "deferred.rejectWith()",
+          "termJa": "",
+          "type": "api",
+          "category": "Deferred Object",
+          "meaning": "Reject a Deferred object and call any failCallbacks with the given context and args.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/deferred.rejectWith/"
+        },
+        {
+          "id": "jquery-15-deferredresolve",
+          "term": "deferred.resolve()",
+          "termJa": "",
+          "type": "api",
+          "category": "Deferred Object",
+          "meaning": "Resolve a Deferred object and call any doneCallbacks with the given args.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/deferred.resolve/"
+        },
+        {
+          "id": "jquery-15-deferredresolvewith",
+          "term": "deferred.resolveWith()",
+          "termJa": "",
+          "type": "api",
+          "category": "Deferred Object",
+          "meaning": "Resolve a Deferred object and call any doneCallbacks with the given context and args.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/deferred.resolveWith/"
+        },
+        {
+          "id": "jquery-15-jqueryajax",
+          "term": "jQuery.ajax()",
+          "termJa": "",
+          "type": "api",
+          "category": "Ajax",
+          "meaning": "Perform an asynchronous HTTP (Ajax) request.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.ajax/"
+        },
+        {
+          "id": "jquery-15-jqueryajaxprefilter",
+          "term": "jQuery.ajaxPrefilter()",
+          "termJa": "",
+          "type": "api",
+          "category": "Ajax",
+          "meaning": "Handle custom Ajax options or modify existing options before each request is sent and before they are processed by $.ajax().",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.ajaxPrefilter/"
+        },
+        {
+          "id": "jquery-15-jqueryajaxtransport",
+          "term": "jQuery.ajaxTransport()",
+          "termJa": "",
+          "type": "api",
+          "category": "Ajax",
+          "meaning": "Creates an object that handles the actual transmission of Ajax data.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.ajaxTransport/"
+        },
+        {
+          "id": "jquery-15-jquerydeferred",
+          "term": "jQuery.Deferred()",
+          "termJa": "",
+          "type": "api",
+          "category": "Deferred Object",
+          "meaning": "A factory function that returns a chainable utility object with methods to register multiple callbacks into callback queues, invoke callback queues, and relay the success or failure state of any synchronous or asynchronous function.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.Deferred/"
+        },
+        {
+          "id": "jquery-15-jqueryhasdata",
+          "term": "jQuery.hasData()",
+          "termJa": "",
+          "type": "api",
+          "category": "Data",
+          "meaning": "Determine whether an element has any jQuery data associated with it.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.hasData/"
+        },
+        {
+          "id": "jquery-15-jqueryparsexml",
+          "term": "jQuery.parseXML()",
+          "termJa": "",
+          "type": "api",
+          "category": "Utilities",
+          "meaning": "Parses a string into an XML document.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.parseXML/"
+        },
+        {
+          "id": "jquery-15-jquerywhen",
+          "term": "jQuery.when()",
+          "termJa": "",
+          "type": "api",
+          "category": "Core",
+          "meaning": "Provides a way to execute callback functions based on zero or more Thenable objects, usually Deferred objects that represent asynchronous events.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.when/"
+        }
+      ]
+    },
+    {
+      "version": "1.4.4",
+      "releaseDate": "",
+      "terms": [
+        {
+          "id": "jquery-144-fadetoggle",
+          "term": ".fadeToggle()",
+          "termJa": "",
+          "type": "api",
+          "category": "Effects",
+          "meaning": "Display or hide the matched elements by animating their opacity.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/fadeToggle/"
+        }
+      ]
+    },
+    {
+      "version": "1.4.3",
+      "releaseDate": "",
+      "terms": [
+        {
+          "id": "jquery-143-eventnamespace",
+          "term": "event.namespace",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "The namespace specified when the event was triggered.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/event.namespace/"
+        },
+        {
+          "id": "jquery-143-jquerycsshooks",
+          "term": "jQuery.cssHooks",
+          "termJa": "",
+          "type": "api",
+          "category": "CSS",
+          "meaning": "Hook directly into jQuery to override how particular CSS properties are retrieved or set, normalize CSS property naming, or create custom properties.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.cssHooks/"
+        }
+      ]
+    },
+    {
+      "version": "1.4.1",
+      "releaseDate": "",
+      "terms": [
+        {
+          "id": "jquery-141-jqueryerror",
+          "term": "jQuery.error()",
+          "termJa": "",
+          "type": "api",
+          "category": "Internals",
+          "meaning": "Takes a string and throws an exception containing it.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.error/"
+        }
+      ]
+    },
+    {
+      "version": "1.4",
+      "releaseDate": "2010-01",
+      "terms": [
+        {
+          "id": "jquery-14-clearqueue",
+          "term": ".clearQueue()",
+          "termJa": "",
+          "type": "api",
+          "category": "Effects",
+          "meaning": "Remove from the queue all items that have not yet been run.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/clearQueue/"
+        },
+        {
+          "id": "jquery-14-delay",
+          "term": ".delay()",
+          "termJa": "",
+          "type": "api",
+          "category": "Effects",
+          "meaning": "Set a timer to delay execution of subsequent items in the queue.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/delay/"
+        },
+        {
+          "id": "jquery-14-detach",
+          "term": ".detach()",
+          "termJa": "",
+          "type": "api",
+          "category": "Manipulation",
+          "meaning": "Remove the set of matched elements from the DOM.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/detach/"
+        },
+        {
+          "id": "jquery-14-first",
+          "term": ".first()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Reduce the set of matched elements to the first in the set.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/first/"
+        },
+        {
+          "id": "jquery-14-has",
+          "term": ".has()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Reduce the set of matched elements to those that have a descendant that matches the selector or DOM element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/has/"
+        },
+        {
+          "id": "jquery-14-index",
+          "term": ".index()",
+          "termJa": "",
+          "type": "api",
+          "category": "Miscellaneous",
+          "meaning": "Search for a given element from among the matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/index/"
+        },
+        {
+          "id": "jquery-14-jquerycontains",
+          "term": "jQuery.contains()",
+          "termJa": "",
+          "type": "api",
+          "category": "Utilities",
+          "meaning": "Check to see if a DOM element is a descendant of another DOM element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.contains/"
+        },
+        {
+          "id": "jquery-14-jqueryisemptyobject",
+          "term": "jQuery.isEmptyObject()",
+          "termJa": "",
+          "type": "api",
+          "category": "Utilities",
+          "meaning": "Check to see if an object is empty (contains no enumerable properties).",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.isEmptyObject/"
+        },
+        {
+          "id": "jquery-14-jqueryisplainobject",
+          "term": "jQuery.isPlainObject()",
+          "termJa": "",
+          "type": "api",
+          "category": "Utilities",
+          "meaning": "Check to see if an object is a plain object (created using “{}” or “new Object”).",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.isPlainObject/"
+        },
+        {
+          "id": "jquery-14-jquerynoop",
+          "term": "jQuery.noop()",
+          "termJa": "",
+          "type": "api",
+          "category": "Utilities",
+          "meaning": "An empty function.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.noop/"
+        },
+        {
+          "id": "jquery-14-last",
+          "term": ".last()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Reduce the set of matched elements to the final one in the set.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/last/"
+        },
+        {
+          "id": "jquery-14-nextuntil",
+          "term": ".nextUntil()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Get all following siblings of each element up to but not including the element matched by the selector, DOM node, or jQuery object passed.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/nextUntil/"
+        },
+        {
+          "id": "jquery-14-parentsuntil",
+          "term": ".parentsUntil()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Get the ancestors of each element in the current set of matched elements, up to but not including the element matched by the selector, DOM node, or jQuery object.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/parentsUntil/"
+        },
+        {
+          "id": "jquery-14-prevuntil",
+          "term": ".prevUntil()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Get all preceding siblings of each element up to but not including the element matched by the selector, DOM node, or jQuery object.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/prevUntil/"
+        },
+        {
+          "id": "jquery-14-toarray",
+          "term": ".toArray()",
+          "termJa": "",
+          "type": "api",
+          "category": "Miscellaneous",
+          "meaning": "Retrieve all the elements contained in the jQuery set, as an array.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/toArray/"
+        },
+        {
+          "id": "jquery-14-unwrap",
+          "term": ".unwrap()",
+          "termJa": "",
+          "type": "api",
+          "category": "Manipulation",
+          "meaning": "Remove the parents of the set of matched elements from the DOM, leaving the matched elements in their place.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/unwrap/"
+        }
+      ]
+    },
+    {
+      "version": "1.3",
+      "releaseDate": "2009-01",
+      "terms": [
+        {
+          "id": "jquery-13-closest",
+          "term": ".closest()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "For each element in the set, get the first element that matches the selector by testing the element itself and traversing up through its ancestors in the DOM tree.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/closest/"
+        },
+        {
+          "id": "jquery-13-eventcurrenttarget",
+          "term": "event.currentTarget",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "The current DOM element within the event bubbling phase.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/event.currentTarget/"
+        },
+        {
+          "id": "jquery-13-eventisdefaultprevented",
+          "term": "event.isDefaultPrevented()",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Returns whether event.preventDefault() was ever called on this event object.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/event.isDefaultPrevented/"
+        },
+        {
+          "id": "jquery-13-eventisimmediatepropagationsto",
+          "term": "event.isImmediatePropagationStopped()",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Returns whether event.stopImmediatePropagation() was ever called on this event object.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/event.isImmediatePropagationStopped/"
+        },
+        {
+          "id": "jquery-13-eventispropagationstopped",
+          "term": "event.isPropagationStopped()",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Returns whether event.stopPropagation() was ever called on this event object.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/event.isPropagationStopped/"
+        },
+        {
+          "id": "jquery-13-eventresult",
+          "term": "event.result",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "The last value returned by an event handler that was triggered by this event, unless the value was undefined.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/event.result/"
+        },
+        {
+          "id": "jquery-13-eventstopimmediatepropagation",
+          "term": "event.stopImmediatePropagation()",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Keeps the rest of the handlers from being executed and prevents the event from bubbling up the DOM tree.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/event.stopImmediatePropagation/"
+        },
+        {
+          "id": "jquery-13-jquerydequeue",
+          "term": "jQuery.dequeue()",
+          "termJa": "",
+          "type": "api",
+          "category": "Data",
+          "meaning": "Execute the next function on the queue for the matched element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.dequeue/"
+        },
+        {
+          "id": "jquery-13-jqueryfxoff",
+          "term": "jQuery.fx.off",
+          "termJa": "",
+          "type": "api",
+          "category": "Effects",
+          "meaning": "Globally disable all animations.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.fx.off/"
+        },
+        {
+          "id": "jquery-13-jqueryqueue",
+          "term": "jQuery.queue()",
+          "termJa": "",
+          "type": "api",
+          "category": "Data",
+          "meaning": "Show or manipulate the queue of functions to be executed on the matched element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.queue/"
+        }
+      ]
+    },
+    {
+      "version": "1.2.6",
+      "releaseDate": "",
+      "terms": [
+        {
+          "id": "jquery-126-eventtimestamp",
+          "term": "event.timeStamp",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "The difference in milliseconds between the time the browser created the event and January 1, 1970.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/event.timeStamp/"
+        },
+        {
+          "id": "jquery-126-innerheight",
+          "term": ".innerHeight()",
+          "termJa": "",
+          "type": "api",
+          "category": "CSS",
+          "meaning": "Get the current computed inner height (including padding but not border) for the first element in the set of matched elements or set the inner height of every matched element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/innerHeight/"
+        },
+        {
+          "id": "jquery-126-innerwidth",
+          "term": ".innerWidth()",
+          "termJa": "",
+          "type": "api",
+          "category": "CSS",
+          "meaning": "Get the current computed inner width (including padding but not border) for the first element in the set of matched elements or set the inner width of every matched element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/innerWidth/"
+        },
+        {
+          "id": "jquery-126-offsetparent",
+          "term": ".offsetParent()",
+          "termJa": "",
+          "type": "api",
+          "category": "Offset",
+          "meaning": "Get the closest ancestor element that is positioned.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/offsetParent/"
+        },
+        {
+          "id": "jquery-126-outerheight",
+          "term": ".outerHeight()",
+          "termJa": "",
+          "type": "api",
+          "category": "CSS",
+          "meaning": "Get the current computed outer height (including padding, border, and optionally margin) for the first element in the set of matched elements or set the outer height of every matched element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/outerHeight/"
+        },
+        {
+          "id": "jquery-126-outerwidth",
+          "term": ".outerWidth()",
+          "termJa": "",
+          "type": "api",
+          "category": "CSS",
+          "meaning": "Get the current computed outer width (including padding, border, and optionally margin) for the first element in the set of matched elements or set the outer width of every matched element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/outerWidth/"
+        },
+        {
+          "id": "jquery-126-scrollleft",
+          "term": ".scrollLeft()",
+          "termJa": "",
+          "type": "api",
+          "category": "CSS",
+          "meaning": "Get the current horizontal position of the scroll bar for the first element in the set of matched elements or set the horizontal position of the scroll bar for every matched element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/scrollLeft/"
+        },
+        {
+          "id": "jquery-126-scrolltop",
+          "term": ".scrollTop()",
+          "termJa": "",
+          "type": "api",
+          "category": "CSS",
+          "meaning": "Get the current vertical position of the scroll bar for the first element in the set of matched elements or set the vertical position of the scroll bar for every matched element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/scrollTop/"
+        }
+      ]
+    },
+    {
+      "version": "1.2.3",
+      "releaseDate": "",
+      "terms": [
+        {
+          "id": "jquery-123-data",
+          "term": ".data()",
+          "termJa": "",
+          "type": "api",
+          "category": "Data",
+          "meaning": "Store arbitrary data associated with the matched elements or return the value at the named data store for the first element in the set of matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/data/"
+        },
+        {
+          "id": "jquery-123-jquerydata",
+          "term": "jQuery.data()",
+          "termJa": "",
+          "type": "api",
+          "category": "Data",
+          "meaning": "Store arbitrary data associated with the specified element and/or return the value that was set.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.data/"
+        },
+        {
+          "id": "jquery-123-jqueryremovedata",
+          "term": "jQuery.removeData()",
+          "termJa": "",
+          "type": "api",
+          "category": "Data",
+          "meaning": "Remove a previously-stored piece of data.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.removeData/"
+        },
+        {
+          "id": "jquery-123-removedata",
+          "term": ".removeData()",
+          "termJa": "",
+          "type": "api",
+          "category": "Data",
+          "meaning": "Remove a previously-stored piece of data.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/removeData/"
+        }
+      ]
+    },
+    {
+      "version": "1.2",
+      "releaseDate": "2007-09",
+      "terms": [
+        {
+          "id": "jquery-12-animated-selector",
+          "term": ":animated Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Select all elements that are in the progress of an animation at the time the selector is run.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/animated-selector/"
+        },
+        {
+          "id": "jquery-12-contents",
+          "term": ".contents()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Get the children of each element in the set of matched elements, including text and comment nodes.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/contents/"
+        },
+        {
+          "id": "jquery-12-dequeue",
+          "term": ".dequeue()",
+          "termJa": "",
+          "type": "api",
+          "category": "Effects",
+          "meaning": "Execute the next function on the queue for the matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/dequeue/"
+        },
+        {
+          "id": "jquery-12-hasclass",
+          "term": ".hasClass()",
+          "termJa": "",
+          "type": "api",
+          "category": "Attributes",
+          "meaning": "Determine whether any of the matched elements are assigned the given class.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/hasClass/"
+        },
+        {
+          "id": "jquery-12-header-selector",
+          "term": ":header Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements that are headers, like h1, h2, h3 and so on.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/header-selector/"
+        },
+        {
+          "id": "jquery-12-jqueryinarray",
+          "term": "jQuery.inArray()",
+          "termJa": "",
+          "type": "api",
+          "category": "Utilities",
+          "meaning": "Search for a specified value within an array and return its index (or -1 if not found).",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.inArray/"
+        },
+        {
+          "id": "jquery-12-jquerymakearray",
+          "term": "jQuery.makeArray()",
+          "termJa": "",
+          "type": "api",
+          "category": "Utilities",
+          "meaning": "Convert an array-like object into a true JavaScript array.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.makeArray/"
+        },
+        {
+          "id": "jquery-12-jqueryparam",
+          "term": "jQuery.param()",
+          "termJa": "",
+          "type": "api",
+          "category": "Miscellaneous",
+          "meaning": "Create a serialized representation of an array, a plain object, or a jQuery object suitable for use in a URL query string or Ajax request. In case a jQuery object is passed, it should contain input elements with name/value properties.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.param/"
+        },
+        {
+          "id": "jquery-12-map",
+          "term": ".map()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Pass each element in the current matched set through a function, producing a new jQuery object containing the return values.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/map/"
+        },
+        {
+          "id": "jquery-12-nextall",
+          "term": ".nextAll()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Get all following siblings of each element in the set of matched elements, optionally filtered by a selector.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/nextAll/"
+        },
+        {
+          "id": "jquery-12-offset",
+          "term": ".offset()",
+          "termJa": "",
+          "type": "api",
+          "category": "CSS",
+          "meaning": "Get the current coordinates of the first element, or set the coordinates of every element, in the set of matched elements, relative to the document.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/offset/"
+        },
+        {
+          "id": "jquery-12-position",
+          "term": ".position()",
+          "termJa": "",
+          "type": "api",
+          "category": "CSS",
+          "meaning": "Get the current coordinates of the first element in the set of matched elements, relative to the offset parent.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/position/"
+        },
+        {
+          "id": "jquery-12-prevall",
+          "term": ".prevAll()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Get all preceding siblings of each element in the set of matched elements, optionally filtered by a selector, in the reverse document order.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/prevAll/"
+        },
+        {
+          "id": "jquery-12-queue",
+          "term": ".queue()",
+          "termJa": "",
+          "type": "api",
+          "category": "Effects",
+          "meaning": "Show or manipulate the queue of functions to be executed on the matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/queue/"
+        },
+        {
+          "id": "jquery-12-replaceall",
+          "term": ".replaceAll()",
+          "termJa": "",
+          "type": "api",
+          "category": "Manipulation",
+          "meaning": "Replace each target element with the set of matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/replaceAll/"
+        },
+        {
+          "id": "jquery-12-replacewith",
+          "term": ".replaceWith()",
+          "termJa": "",
+          "type": "api",
+          "category": "Manipulation",
+          "meaning": "Replace each element in the set of matched elements with the provided new content and return the set of elements that was removed.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/replaceWith/"
+        },
+        {
+          "id": "jquery-12-serializearray",
+          "term": ".serializeArray()",
+          "termJa": "",
+          "type": "api",
+          "category": "Forms",
+          "meaning": "Encode a set of form elements as an array of names and values.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/serializeArray/"
+        },
+        {
+          "id": "jquery-12-stop",
+          "term": ".stop()",
+          "termJa": "",
+          "type": "api",
+          "category": "Effects",
+          "meaning": "Stop the currently-running animation on the matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/stop/"
+        },
+        {
+          "id": "jquery-12-triggerhandler",
+          "term": ".triggerHandler()",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Execute all handlers attached to an element for an event.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/triggerHandler/"
+        },
+        {
+          "id": "jquery-12-wrapall",
+          "term": ".wrapAll()",
+          "termJa": "",
+          "type": "api",
+          "category": "Manipulation",
+          "meaning": "Wrap an HTML structure around all elements in the set of matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/wrapAll/"
+        },
+        {
+          "id": "jquery-12-wrapinner",
+          "term": ".wrapInner()",
+          "termJa": "",
+          "type": "api",
+          "category": "Manipulation",
+          "meaning": "Wrap an HTML structure around the content of each element in the set of matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/wrapInner/"
+        }
+      ]
+    },
+    {
+      "version": "1.1.4",
+      "releaseDate": "",
+      "terms": [
+        {
+          "id": "jquery-114-contains-selector",
+          "term": ":contains() Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Select all elements that contain the specified text.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/contains-selector/"
+        },
+        {
+          "id": "jquery-114-eventrelatedtarget",
+          "term": "event.relatedTarget",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "The other DOM element involved in the event, if any.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/event.relatedTarget/"
+        },
+        {
+          "id": "jquery-114-first-child-selector",
+          "term": ":first-child Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements that are the first child of their parent.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/first-child-selector/"
+        },
+        {
+          "id": "jquery-114-has-selector",
+          "term": ":has() Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects elements which contain at least one element that matches the specified selector.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/has-selector/"
+        },
+        {
+          "id": "jquery-114-jqueryisxmldoc",
+          "term": "jQuery.isXMLDoc()",
+          "termJa": "",
+          "type": "api",
+          "category": "Utilities",
+          "meaning": "Check to see if a DOM node is within an XML document (or is an XML document).",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.isXMLDoc/"
+        },
+        {
+          "id": "jquery-114-last-child-selector",
+          "term": ":last-child Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements that are the last child of their parent.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/last-child-selector/"
+        },
+        {
+          "id": "jquery-114-nth-child-selector",
+          "term": ":nth-child() Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements that are the nth-child of their parent.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/nth-child-selector/"
+        },
+        {
+          "id": "jquery-114-only-child-selector",
+          "term": ":only-child Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements that are the only child of their parent.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/only-child-selector/"
+        },
+        {
+          "id": "jquery-114-slice",
+          "term": ".slice()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Reduce the set of matched elements to a subset specified by a range of indices.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/slice/"
+        }
+      ]
+    },
+    {
+      "version": "1.1.3",
+      "releaseDate": "",
+      "terms": [
+        {
+          "id": "jquery-113-eventwhich",
+          "term": "event.which",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "For key or mouse events, this property indicates the specific key or button that was pressed.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/event.which/"
+        }
+      ]
+    },
+    {
+      "version": "1.1.2",
+      "releaseDate": "",
+      "terms": [
+        {
+          "id": "jquery-112-eq",
+          "term": ".eq()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Reduce the set of matched elements to the one at the specified index.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/eq/"
+        }
+      ]
+    },
+    {
+      "version": "1.1",
+      "releaseDate": "2007-01",
+      "terms": [
+        {
+          "id": "jquery-11-eventdata",
+          "term": "event.data",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "An optional object of data passed to an event method when the current executing handler is bound.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/event.data/"
+        },
+        {
+          "id": "jquery-11-jqueryajaxsetup",
+          "term": "jQuery.ajaxSetup()",
+          "termJa": "",
+          "type": "api",
+          "category": "Ajax",
+          "meaning": "Set default values for future Ajax requests. Its use is not recommended.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.ajaxSetup/"
+        },
+        {
+          "id": "jquery-11-one",
+          "term": ".one()",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Attach a handler to an event for the elements. The handler is executed at most once per element per event type.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/one/"
+        }
+      ]
+    },
+    {
+      "version": "1.0.4",
+      "releaseDate": "",
+      "terms": [
+        {
+          "id": "jquery-104-eventmetakey",
+          "term": "event.metaKey",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Indicates whether the META key was pressed when the event fired.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/event.metaKey/"
+        },
+        {
+          "id": "jquery-104-eventpagex",
+          "term": "event.pageX",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "The mouse position relative to the left edge of the document.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/event.pageX/"
+        },
+        {
+          "id": "jquery-104-eventpagey",
+          "term": "event.pageY",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "The mouse position relative to the top edge of the document.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/event.pageY/"
+        },
+        {
+          "id": "jquery-104-jqueryglobaleval",
+          "term": "jQuery.globalEval()",
+          "termJa": "",
+          "type": "api",
+          "category": "Utilities",
+          "meaning": "Execute some JavaScript code globally.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.globalEval/"
+        }
+      ]
+    },
+    {
+      "version": "1.0",
+      "releaseDate": "2006-08",
+      "terms": [
+        {
+          "id": "jquery-10-add",
+          "term": ".add()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Create a new jQuery object with elements added to the set of matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/add/"
+        },
+        {
+          "id": "jquery-10-addclass",
+          "term": ".addClass()",
+          "termJa": "",
+          "type": "api",
+          "category": "Attributes",
+          "meaning": "Adds the specified class(es) to each element in the set of matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/addClass/"
+        },
+        {
+          "id": "jquery-10-after",
+          "term": ".after()",
+          "termJa": "",
+          "type": "api",
+          "category": "Manipulation",
+          "meaning": "Insert content, specified by the parameter, after each element in the set of matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/after/"
+        },
+        {
+          "id": "jquery-10-all-selector-",
+          "term": "All Selector (“*”)",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/all-selector/"
+        },
+        {
+          "id": "jquery-10-animate",
+          "term": ".animate()",
+          "termJa": "",
+          "type": "api",
+          "category": "Effects",
+          "meaning": "Perform a custom animation of a set of CSS properties.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/animate/"
+        },
+        {
+          "id": "jquery-10-append",
+          "term": ".append()",
+          "termJa": "",
+          "type": "api",
+          "category": "Manipulation",
+          "meaning": "Insert content, specified by the parameter, to the end of each element in the set of matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/append/"
+        },
+        {
+          "id": "jquery-10-appendto",
+          "term": ".appendTo()",
+          "termJa": "",
+          "type": "api",
+          "category": "Manipulation",
+          "meaning": "Insert every element in the set of matched elements to the end of the target.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/appendTo/"
+        },
+        {
+          "id": "jquery-10-attr",
+          "term": ".attr()",
+          "termJa": "",
+          "type": "api",
+          "category": "Attributes",
+          "meaning": "Get the value of an attribute for the first element in the set of matched elements or set one or more attributes for every matched element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/attr/"
+        },
+        {
+          "id": "jquery-10-attribute-contains-prefix-sele",
+          "term": "Attribute Contains Prefix Selector [name|=”value”]",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects elements that have the specified attribute with a value either equal to a given string or starting with that string followed by a hyphen (-).",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/attribute-contains-prefix-selector/"
+        },
+        {
+          "id": "jquery-10-attribute-contains-selector-na",
+          "term": "Attribute Contains Selector [name*=”value”]",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects elements that have the specified attribute with a value containing a given substring.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/attribute-contains-selector/"
+        },
+        {
+          "id": "jquery-10-attribute-contains-word-select",
+          "term": "Attribute Contains Word Selector [name~=”value”]",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects elements that have the specified attribute with a value containing a given word, delimited by spaces.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/attribute-contains-word-selector/"
+        },
+        {
+          "id": "jquery-10-attribute-ends-with-selector-n",
+          "term": "Attribute Ends With Selector [name$=”value”]",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects elements that have the specified attribute with a value ending exactly with a given string. The comparison is case sensitive.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/attribute-ends-with-selector/"
+        },
+        {
+          "id": "jquery-10-attribute-equals-selector-name",
+          "term": "Attribute Equals Selector [name=”value”]",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects elements that have the specified attribute with a value exactly equal to a certain value.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/attribute-equals-selector/"
+        },
+        {
+          "id": "jquery-10-attribute-not-equal-selector-n",
+          "term": "Attribute Not Equal Selector [name!=”value”]",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Select elements that either don’t have the specified attribute, or do have the specified attribute but not with a certain value.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/attribute-not-equal-selector/"
+        },
+        {
+          "id": "jquery-10-attribute-starts-with-selector",
+          "term": "Attribute Starts With Selector [name^=”value”]",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects elements that have the specified attribute with a value beginning exactly with a given string.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/attribute-starts-with-selector/"
+        },
+        {
+          "id": "jquery-10-before",
+          "term": ".before()",
+          "termJa": "",
+          "type": "api",
+          "category": "Manipulation",
+          "meaning": "Insert content, specified by the parameter, before each element in the set of matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/before/"
+        },
+        {
+          "id": "jquery-10-button-selector",
+          "term": ":button Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all button elements and elements of type button.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/button-selector/"
+        },
+        {
+          "id": "jquery-10-checkbox-selector",
+          "term": ":checkbox Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements of type checkbox.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/checkbox-selector/"
+        },
+        {
+          "id": "jquery-10-checked-selector",
+          "term": ":checked Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Matches all elements that are checked or selected.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/checked-selector/"
+        },
+        {
+          "id": "jquery-10-child-selector-parent-child",
+          "term": "Child Selector (“parent > child”)",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all direct child elements specified by “child” of elements specified by “parent”.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/child-selector/"
+        },
+        {
+          "id": "jquery-10-children",
+          "term": ".children()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Get the children of each element in the set of matched elements, optionally filtered by a selector.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/children/"
+        },
+        {
+          "id": "jquery-10-class-selector-class",
+          "term": "Class Selector (“.class”)",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements with the given class.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/class-selector/"
+        },
+        {
+          "id": "jquery-10-clone",
+          "term": ".clone()",
+          "termJa": "",
+          "type": "api",
+          "category": "Manipulation",
+          "meaning": "Create a deep copy of the set of matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/clone/"
+        },
+        {
+          "id": "jquery-10-contextmenu-event",
+          "term": "contextmenu event",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Bind an event handler to the “contextmenu” event, or trigger that event on an element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/contextmenu/"
+        },
+        {
+          "id": "jquery-10-css",
+          "term": ".css()",
+          "termJa": "",
+          "type": "api",
+          "category": "CSS",
+          "meaning": "Get the value of a computed style property for the first element in the set of matched elements or set one or more CSS properties for every matched element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/css/"
+        },
+        {
+          "id": "jquery-10-descendant-selector-ancestor-d",
+          "term": "Descendant Selector (“ancestor descendant”)",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements that are descendants of a given ancestor.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/descendant-selector/"
+        },
+        {
+          "id": "jquery-10-disabled-selector",
+          "term": ":disabled Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements that are disabled.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/disabled-selector/"
+        },
+        {
+          "id": "jquery-10-each",
+          "term": ".each()",
+          "termJa": "",
+          "type": "api",
+          "category": "Miscellaneous",
+          "meaning": "Iterate over a jQuery object, executing a function for each matched element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/each/"
+        },
+        {
+          "id": "jquery-10-element-selector-element",
+          "term": "Element Selector (“element”)",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements with the given tag name.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/element-selector/"
+        },
+        {
+          "id": "jquery-10-empty",
+          "term": ".empty()",
+          "termJa": "",
+          "type": "api",
+          "category": "Manipulation",
+          "meaning": "Remove all child nodes of the set of matched elements from the DOM.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/empty/"
+        },
+        {
+          "id": "jquery-10-empty-selector",
+          "term": ":empty Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Select all elements that have no children (including text nodes).",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/empty-selector/"
+        },
+        {
+          "id": "jquery-10-enabled-selector",
+          "term": ":enabled Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements that are enabled.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/enabled-selector/"
+        },
+        {
+          "id": "jquery-10-end",
+          "term": ".end()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "End the most recent filtering operation in the current chain and return the set of matched elements to its previous state.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/end/"
+        },
+        {
+          "id": "jquery-10-eventpreventdefault",
+          "term": "event.preventDefault()",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "If this method is called, the default action of the event will not be triggered.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/event.preventDefault/"
+        },
+        {
+          "id": "jquery-10-eventstoppropagation",
+          "term": "event.stopPropagation()",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Prevents the event from bubbling up the DOM tree, preventing any parent handlers from being notified of the event.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/event.stopPropagation/"
+        },
+        {
+          "id": "jquery-10-eventtarget",
+          "term": "event.target",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "The DOM element that initiated the event.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/event.target/"
+        },
+        {
+          "id": "jquery-10-eventtype",
+          "term": "event.type",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Describes the nature of the event.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/event.type/"
+        },
+        {
+          "id": "jquery-10-fadein",
+          "term": ".fadeIn()",
+          "termJa": "",
+          "type": "api",
+          "category": "Effects",
+          "meaning": "Display the matched elements by fading them to opaque.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/fadeIn/"
+        },
+        {
+          "id": "jquery-10-fadeout",
+          "term": ".fadeOut()",
+          "termJa": "",
+          "type": "api",
+          "category": "Effects",
+          "meaning": "Hide the matched elements by fading them to transparent.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/fadeOut/"
+        },
+        {
+          "id": "jquery-10-fadeto",
+          "term": ".fadeTo()",
+          "termJa": "",
+          "type": "api",
+          "category": "Effects",
+          "meaning": "Adjust the opacity of the matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/fadeTo/"
+        },
+        {
+          "id": "jquery-10-file-selector",
+          "term": ":file Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements of type file.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/file-selector/"
+        },
+        {
+          "id": "jquery-10-filter",
+          "term": ".filter()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Reduce the set of matched elements to those that match the selector or pass the function’s test.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/filter/"
+        },
+        {
+          "id": "jquery-10-find",
+          "term": ".find()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Get the descendants of each element in the current set of matched elements, filtered by a selector, jQuery object, or element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/find/"
+        },
+        {
+          "id": "jquery-10-get",
+          "term": ".get()",
+          "termJa": "",
+          "type": "api",
+          "category": "Miscellaneous",
+          "meaning": "Retrieve the DOM elements matched by the jQuery object.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/get/"
+        },
+        {
+          "id": "jquery-10-has-attribute-selector-name",
+          "term": "Has Attribute Selector [name]",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects elements that have the specified attribute, with any value.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/has-attribute-selector/"
+        },
+        {
+          "id": "jquery-10-height",
+          "term": ".height()",
+          "termJa": "",
+          "type": "api",
+          "category": "CSS",
+          "meaning": "Get the current computed height for the first element in the set of matched elements or set the height of every matched element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/height/"
+        },
+        {
+          "id": "jquery-10-hidden-selector",
+          "term": ":hidden Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements that are hidden.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/hidden-selector/"
+        },
+        {
+          "id": "jquery-10-hide",
+          "term": ".hide()",
+          "termJa": "",
+          "type": "api",
+          "category": "Effects",
+          "meaning": "Hide the matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/hide/"
+        },
+        {
+          "id": "jquery-10-html",
+          "term": ".html()",
+          "termJa": "",
+          "type": "api",
+          "category": "Attributes",
+          "meaning": "Get the HTML contents of the first element in the set of matched elements or set the HTML contents of every matched element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/html/"
+        },
+        {
+          "id": "jquery-10-id-selector-id",
+          "term": "ID Selector (“#id”)",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects a single element with the given id attribute.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/id-selector/"
+        },
+        {
+          "id": "jquery-10-image-selector",
+          "term": ":image Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements of type image.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/image-selector/"
+        },
+        {
+          "id": "jquery-10-input-selector",
+          "term": ":input Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all input, textarea, select and button elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/input-selector/"
+        },
+        {
+          "id": "jquery-10-insertafter",
+          "term": ".insertAfter()",
+          "termJa": "",
+          "type": "api",
+          "category": "Manipulation",
+          "meaning": "Insert every element in the set of matched elements after the target.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/insertAfter/"
+        },
+        {
+          "id": "jquery-10-insertbefore",
+          "term": ".insertBefore()",
+          "termJa": "",
+          "type": "api",
+          "category": "Manipulation",
+          "meaning": "Insert every element in the set of matched elements before the target.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/insertBefore/"
+        },
+        {
+          "id": "jquery-10-is",
+          "term": ".is()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Check the current matched set of elements against a selector, element, or jQuery object and return true if at least one of these elements matches the given arguments.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/is/"
+        },
+        {
+          "id": "jquery-10-jquery",
+          "term": "jQuery()",
+          "termJa": "",
+          "type": "api",
+          "category": "Core",
+          "meaning": "Return a collection of matched elements either found in the DOM based on passed argument(s) or created by passing an HTML string.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery/"
+        },
+        {
+          "id": "jquery-10-jquery",
+          "term": ".jquery",
+          "termJa": "",
+          "type": "api",
+          "category": "Internals",
+          "meaning": "A string containing the jQuery version number.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jquery-2/"
+        },
+        {
+          "id": "jquery-10-jqueryeach",
+          "term": "jQuery.each()",
+          "termJa": "",
+          "type": "api",
+          "category": "Utilities",
+          "meaning": "A generic iterator function, which can be used to seamlessly iterate over both objects and arrays. Arrays and array-like objects with a length property (such as a function’s arguments object) are iterated by numeric index, from 0 to length-1. Other objects are iterated via their named properties.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.each/"
+        },
+        {
+          "id": "jquery-10-jqueryextend",
+          "term": "jQuery.extend()",
+          "termJa": "",
+          "type": "api",
+          "category": "Utilities",
+          "meaning": "Merge the contents of two or more objects together into the first object.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.extend/"
+        },
+        {
+          "id": "jquery-10-jqueryfnextend",
+          "term": "jQuery.fn.extend()",
+          "termJa": "",
+          "type": "api",
+          "category": "Utilities",
+          "meaning": "Merge the contents of an object onto the jQuery prototype to provide new jQuery instance methods.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.fn.extend/"
+        },
+        {
+          "id": "jquery-10-jqueryget",
+          "term": "jQuery.get()",
+          "termJa": "",
+          "type": "api",
+          "category": "Ajax",
+          "meaning": "Load data from the server using a HTTP GET request.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.get/"
+        },
+        {
+          "id": "jquery-10-jquerygetjson",
+          "term": "jQuery.getJSON()",
+          "termJa": "",
+          "type": "api",
+          "category": "Ajax",
+          "meaning": "Load JSON-encoded data from the server using a GET HTTP request.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.getJSON/"
+        },
+        {
+          "id": "jquery-10-jquerygetscript",
+          "term": "jQuery.getScript()",
+          "termJa": "",
+          "type": "api",
+          "category": "Ajax",
+          "meaning": "Load a JavaScript file from the server using a GET HTTP request, then execute it.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.getScript/"
+        },
+        {
+          "id": "jquery-10-jquerygrep",
+          "term": "jQuery.grep()",
+          "termJa": "",
+          "type": "api",
+          "category": "Utilities",
+          "meaning": "Finds the elements of an array which satisfy a filter function. The original array is not affected.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.grep/"
+        },
+        {
+          "id": "jquery-10-jquerymap",
+          "term": "jQuery.map()",
+          "termJa": "",
+          "type": "api",
+          "category": "Utilities",
+          "meaning": "Translate all items in an array or object to new array of items.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.map/"
+        },
+        {
+          "id": "jquery-10-jquerymerge",
+          "term": "jQuery.merge()",
+          "termJa": "",
+          "type": "api",
+          "category": "Utilities",
+          "meaning": "Merge the contents of two arrays together into the first array.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.merge/"
+        },
+        {
+          "id": "jquery-10-jquerynoconflict",
+          "term": "jQuery.noConflict()",
+          "termJa": "",
+          "type": "api",
+          "category": "Core",
+          "meaning": "Relinquish jQuery’s control of the $ variable.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.noConflict/"
+        },
+        {
+          "id": "jquery-10-jquerypost",
+          "term": "jQuery.post()",
+          "termJa": "",
+          "type": "api",
+          "category": "Ajax",
+          "meaning": "Send data to the server using a HTTP POST request.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.post/"
+        },
+        {
+          "id": "jquery-10-jqueryspeed",
+          "term": "jQuery.speed",
+          "termJa": "",
+          "type": "api",
+          "category": "Effects",
+          "meaning": "Creates an object containing a set of properties ready to be used in the definition of custom animations.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/jQuery.speed/"
+        },
+        {
+          "id": "jquery-10-length",
+          "term": ".length",
+          "termJa": "",
+          "type": "api",
+          "category": "Properties",
+          "meaning": "The number of elements in the jQuery object.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/length/"
+        },
+        {
+          "id": "jquery-10-load",
+          "term": ".load()",
+          "termJa": "",
+          "type": "api",
+          "category": "Ajax",
+          "meaning": "Load data from the server and place the returned HTML into the matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/load/"
+        },
+        {
+          "id": "jquery-10-multiple-attribute-selector-na",
+          "term": "Multiple Attribute Selector [name=”value”][name2=”value2″]",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Matches elements that match all of the specified attribute filters.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/multiple-attribute-selector/"
+        },
+        {
+          "id": "jquery-10-multiple-selector-selector1-se",
+          "term": "Multiple Selector (“selector1, selector2, selectorN”)",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects the combined results of all the specified selectors.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/multiple-selector/"
+        },
+        {
+          "id": "jquery-10-next",
+          "term": ".next()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Get the immediately following sibling of each element in the set of matched elements. If a selector is provided, it retrieves the next sibling only if it matches that selector.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/next/"
+        },
+        {
+          "id": "jquery-10-next-adjacent-selector-prev-ne",
+          "term": "Next Adjacent Selector (“prev + next”)",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all next elements matching “next” that are immediately preceded by a sibling “prev”.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/next-adjacent-selector/"
+        },
+        {
+          "id": "jquery-10-next-siblings-selector-prev-si",
+          "term": "Next Siblings Selector (“prev ~ siblings”)",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all sibling elements that follow after the “prev” element, have the same parent, and match the filtering “siblings” selector.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/next-siblings-selector/"
+        },
+        {
+          "id": "jquery-10-not",
+          "term": ".not()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Remove elements from the set of matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/not/"
+        },
+        {
+          "id": "jquery-10-not-selector",
+          "term": ":not() Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements that do not match the given selector.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/not-selector/"
+        },
+        {
+          "id": "jquery-10-parent",
+          "term": ".parent()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Get the parent of each element in the current set of matched elements, optionally filtered by a selector.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/parent/"
+        },
+        {
+          "id": "jquery-10-parent-selector",
+          "term": ":parent Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Select all elements that have at least one child node (either an element or text).",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/parent-selector/"
+        },
+        {
+          "id": "jquery-10-parents",
+          "term": ".parents()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Get the ancestors of each element in the current set of matched elements, optionally filtered by a selector.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/parents/"
+        },
+        {
+          "id": "jquery-10-password-selector",
+          "term": ":password Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements of type password.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/password-selector/"
+        },
+        {
+          "id": "jquery-10-prepend",
+          "term": ".prepend()",
+          "termJa": "",
+          "type": "api",
+          "category": "Manipulation",
+          "meaning": "Insert content, specified by the parameter, to the beginning of each element in the set of matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/prepend/"
+        },
+        {
+          "id": "jquery-10-prependto",
+          "term": ".prependTo()",
+          "termJa": "",
+          "type": "api",
+          "category": "Manipulation",
+          "meaning": "Insert every element in the set of matched elements to the beginning of the target.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/prependTo/"
+        },
+        {
+          "id": "jquery-10-prev",
+          "term": ".prev()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Get the immediately preceding sibling of each element in the set of matched elements. If a selector is provided, it retrieves the previous sibling only if it matches that selector.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/prev/"
+        },
+        {
+          "id": "jquery-10-pushstack",
+          "term": ".pushStack()",
+          "termJa": "",
+          "type": "api",
+          "category": "Internals",
+          "meaning": "Add a collection of DOM elements onto the jQuery stack.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/pushStack/"
+        },
+        {
+          "id": "jquery-10-radio-selector",
+          "term": ":radio Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all  elements of type radio.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/radio-selector/"
+        },
+        {
+          "id": "jquery-10-ready",
+          "term": ".ready()",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Specify a function to execute when the DOM is fully loaded.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/ready/"
+        },
+        {
+          "id": "jquery-10-remove",
+          "term": ".remove()",
+          "termJa": "",
+          "type": "api",
+          "category": "Manipulation",
+          "meaning": "Remove the set of matched elements from the DOM.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/remove/"
+        },
+        {
+          "id": "jquery-10-removeattr",
+          "term": ".removeAttr()",
+          "termJa": "",
+          "type": "api",
+          "category": "Attributes",
+          "meaning": "Remove an attribute from each element in the set of matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/removeAttr/"
+        },
+        {
+          "id": "jquery-10-removeclass",
+          "term": ".removeClass()",
+          "termJa": "",
+          "type": "api",
+          "category": "Attributes",
+          "meaning": "Remove a single class, multiple classes, or all classes from each element in the set of matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/removeClass/"
+        },
+        {
+          "id": "jquery-10-reset-selector",
+          "term": ":reset Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements of type reset.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/reset-selector/"
+        },
+        {
+          "id": "jquery-10-selected-selector",
+          "term": ":selected Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements that are selected.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/selected-selector/"
+        },
+        {
+          "id": "jquery-10-serialize",
+          "term": ".serialize()",
+          "termJa": "",
+          "type": "api",
+          "category": "Forms",
+          "meaning": "Encode a set of form elements as a string for submission.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/serialize/"
+        },
+        {
+          "id": "jquery-10-show",
+          "term": ".show()",
+          "termJa": "",
+          "type": "api",
+          "category": "Effects",
+          "meaning": "Display the matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/show/"
+        },
+        {
+          "id": "jquery-10-siblings",
+          "term": ".siblings()",
+          "termJa": "",
+          "type": "api",
+          "category": "Traversing",
+          "meaning": "Get the siblings of each element in the set of matched elements, optionally filtered by a selector.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/siblings/"
+        },
+        {
+          "id": "jquery-10-slidedown",
+          "term": ".slideDown()",
+          "termJa": "",
+          "type": "api",
+          "category": "Effects",
+          "meaning": "Display the matched elements with a sliding motion.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/slideDown/"
+        },
+        {
+          "id": "jquery-10-slidetoggle",
+          "term": ".slideToggle()",
+          "termJa": "",
+          "type": "api",
+          "category": "Effects",
+          "meaning": "Display or hide the matched elements with a sliding motion.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/slideToggle/"
+        },
+        {
+          "id": "jquery-10-slideup",
+          "term": ".slideUp()",
+          "termJa": "",
+          "type": "api",
+          "category": "Effects",
+          "meaning": "Hide the matched elements with a sliding motion.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/slideUp/"
+        },
+        {
+          "id": "jquery-10-submit-selector",
+          "term": ":submit Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements of type submit.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/submit-selector/"
+        },
+        {
+          "id": "jquery-10-text",
+          "term": ".text()",
+          "termJa": "",
+          "type": "api",
+          "category": "Manipulation",
+          "meaning": "Get the combined text contents of each element in the set of matched elements, including their descendants, or set the text contents of the matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/text/"
+        },
+        {
+          "id": "jquery-10-text-selector",
+          "term": ":text Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all input elements of type text.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/text-selector/"
+        },
+        {
+          "id": "jquery-10-toggle",
+          "term": ".toggle()",
+          "termJa": "",
+          "type": "api",
+          "category": "Effects",
+          "meaning": "Display or hide the matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/toggle/"
+        },
+        {
+          "id": "jquery-10-toggleclass",
+          "term": ".toggleClass()",
+          "termJa": "",
+          "type": "api",
+          "category": "Attributes",
+          "meaning": "Add or remove one or more classes from each element in the set of matched elements, depending on either the class’s presence or the value of the state argument.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/toggleClass/"
+        },
+        {
+          "id": "jquery-10-trigger",
+          "term": ".trigger()",
+          "termJa": "",
+          "type": "api",
+          "category": "Events",
+          "meaning": "Execute all handlers and behaviors attached to the matched elements for the given event type.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/trigger/"
+        },
+        {
+          "id": "jquery-10-val",
+          "term": ".val()",
+          "termJa": "",
+          "type": "api",
+          "category": "Attributes",
+          "meaning": "Get the current value of the first element in the set of matched elements or set the value of every matched element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/val/"
+        },
+        {
+          "id": "jquery-10-visible-selector",
+          "term": ":visible Selector",
+          "termJa": "",
+          "type": "api",
+          "category": "Selectors",
+          "meaning": "Selects all elements that are visible.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/visible-selector/"
+        },
+        {
+          "id": "jquery-10-width",
+          "term": ".width()",
+          "termJa": "",
+          "type": "api",
+          "category": "CSS",
+          "meaning": "Get the current computed width for the first element in the set of matched elements or set the width of every matched element.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/width/"
+        },
+        {
+          "id": "jquery-10-wrap",
+          "term": ".wrap()",
+          "termJa": "",
+          "type": "api",
+          "category": "Manipulation",
+          "meaning": "Wrap an HTML structure around each element in the set of matched elements.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://api.jquery.com/wrap/"
         }
       ]
     }

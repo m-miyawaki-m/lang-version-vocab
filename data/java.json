@@ -4,30 +4,196 @@
   "source": "https://docs.oracle.com/en/java/",
   "versions": [
     {
-      "version": "21",
-      "releaseDate": "2023-09",
+      "version": "8",
+      "releaseDate": "2014-03",
       "terms": [
         {
-          "id": "java-21-virtual-threads",
-          "term": "Virtual Threads",
-          "termJa": "仮想スレッド",
-          "type": "concept",
-          "category": "concurrency",
-          "meaning": "軽量なスレッド実装。OS スレッドではなく JVM が管理する",
-          "example": "Thread.startVirtualThread(() -> { System.out.println(\"Hello\"); });",
-          "tags": ["スレッド", "並行処理", "Project Loom"],
-          "sourceUrl": "https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html"
+          "id": "java-8-lambda-expressions",
+          "term": "Lambda Expressions",
+          "termJa": "ラムダ式",
+          "type": "syntax",
+          "category": "function",
+          "meaning": "匿名関数を簡潔に記述する構文。(a, b) -> a + b",
+          "example": "",
+          "tags": [],
+          "sourceUrl": ""
         },
         {
-          "id": "java-21-pattern-matching-switch",
-          "term": "Pattern Matching for switch",
-          "termJa": "switch のパターンマッチング",
+          "id": "java-8-stream-api",
+          "term": "Stream API",
+          "termJa": "ストリーム API",
+          "type": "api",
+          "category": "collection",
+          "meaning": "コレクションの要素を関数型スタイルで処理するAPI。filter, map, reduce 等",
+          "example": "",
+          "tags": [],
+          "sourceUrl": ""
+        },
+        {
+          "id": "java-8-optional",
+          "term": "Optional",
+          "termJa": "Optional クラス",
+          "type": "api",
+          "category": "collection",
+          "meaning": "null参照を安全に扱うためのコンテナクラス。NullPointerException防止",
+          "example": "",
+          "tags": [],
+          "sourceUrl": ""
+        },
+        {
+          "id": "java-8-default-methods",
+          "term": "Default Methods",
+          "termJa": "デフォルトメソッド",
           "type": "syntax",
-          "category": "control-flow",
-          "meaning": "switch 式でパターンマッチングを使用できる機能",
-          "example": "switch (obj) { case Integer i -> System.out.println(i); case String s -> System.out.println(s); }",
-          "tags": ["switch", "パターンマッチング"],
-          "sourceUrl": "https://docs.oracle.com/en/java/javase/21/language/pattern-matching.html"
+          "category": "class",
+          "meaning": "インターフェースにデフォルト実装を持つメソッドを定義可能に",
+          "example": "",
+          "tags": [],
+          "sourceUrl": ""
+        },
+        {
+          "id": "java-8-method-references",
+          "term": "Method References",
+          "termJa": "メソッド参照",
+          "type": "syntax",
+          "category": "function",
+          "meaning": "既存メソッドをラムダ式の代わりに参照する構文。String::toLowerCase",
+          "example": "",
+          "tags": [],
+          "sourceUrl": ""
+        },
+        {
+          "id": "java-8-javatime-api",
+          "term": "java.time API",
+          "termJa": "日時 API",
+          "type": "api",
+          "category": "datetime",
+          "meaning": "新しい日時API。LocalDate, LocalTime, LocalDateTime, ZonedDateTime 等",
+          "example": "",
+          "tags": [],
+          "sourceUrl": ""
+        },
+        {
+          "id": "java-8-completablefuture",
+          "term": "CompletableFuture",
+          "termJa": "非同期処理",
+          "type": "api",
+          "category": "concurrency",
+          "meaning": "非同期プログラミングのためのFuture実装。コールバックチェーンやエラーハンドリング",
+          "example": "",
+          "tags": [],
+          "sourceUrl": ""
+        }
+      ]
+    },
+    {
+      "version": "9",
+      "releaseDate": "2017-09",
+      "terms": [
+        {
+          "id": "java-9-java-platform-module-system",
+          "term": "Java Platform Module System",
+          "termJa": "モジュールシステム",
+          "type": "concept",
+          "category": "module",
+          "meaning": "Project Jigsawによるモジュールシステム。module-info.javaでモジュール定義",
+          "example": "",
+          "tags": [],
+          "sourceUrl": ""
+        },
+        {
+          "id": "java-9-jshell",
+          "term": "JShell",
+          "termJa": "Java REPL",
+          "type": "concept",
+          "category": "tooling",
+          "meaning": "Javaの対話型実行環境(REPL)。コードスニペットを即座に実行可能",
+          "example": "",
+          "tags": [],
+          "sourceUrl": ""
+        },
+        {
+          "id": "java-9-private-interface-methods",
+          "term": "Private Interface Methods",
+          "termJa": "インターフェースのプライベートメソッド",
+          "type": "syntax",
+          "category": "class",
+          "meaning": "インターフェースにprivateメソッドを定義可能に。defaultメソッドの共通処理を抽出",
+          "example": "",
+          "tags": [],
+          "sourceUrl": ""
+        },
+        {
+          "id": "java-9-stream-api-enhancements",
+          "term": "Stream API Enhancements",
+          "termJa": "Stream API 拡張",
+          "type": "api",
+          "category": "collection",
+          "meaning": "takeWhile, dropWhile, ofNullable, iterate(seed, predicate, operator) メソッドを追加",
+          "example": "",
+          "tags": [],
+          "sourceUrl": ""
+        },
+        {
+          "id": "java-9-optional-enhancements",
+          "term": "Optional Enhancements",
+          "termJa": "Optional 拡張",
+          "type": "api",
+          "category": "collection",
+          "meaning": "ifPresentOrElse, or, stream メソッドを追加",
+          "example": "",
+          "tags": [],
+          "sourceUrl": ""
+        }
+      ]
+    },
+    {
+      "version": "11",
+      "releaseDate": "2018-09",
+      "terms": [
+        {
+          "id": "java-11-http-client-api",
+          "term": "HTTP Client API",
+          "termJa": "HTTP クライアント API",
+          "type": "api",
+          "category": "network",
+          "meaning": "新しい標準HTTPクライアント。HTTP/2とWebSocketをサポート。java.net.http パッケージ",
+          "example": "",
+          "tags": [],
+          "sourceUrl": ""
+        },
+        {
+          "id": "java-11-stringlines-strip-isblank",
+          "term": "String::lines, strip, isBlank",
+          "termJa": "String メソッド追加",
+          "type": "api",
+          "category": "string",
+          "meaning": "String クラスに lines(), strip(), stripLeading(), stripTrailing(), isBlank(), repeat() メソッドを追加",
+          "example": "",
+          "tags": [],
+          "sourceUrl": ""
+        },
+        {
+          "id": "java-11-var-in-lambda-parameters",
+          "term": "var in Lambda Parameters",
+          "termJa": "ラムダ引数での var",
+          "type": "syntax",
+          "category": "function",
+          "meaning": "ラムダ式のパラメータに var を使用可能に。アノテーション付与に有用",
+          "example": "",
+          "tags": [],
+          "sourceUrl": ""
+        },
+        {
+          "id": "java-11-collectiontoarrayintfunction",
+          "term": "Collection.toArray(IntFunction)",
+          "termJa": "コレクション配列変換",
+          "type": "api",
+          "category": "collection",
+          "meaning": "コレクションから型付き配列への変換を簡潔に記述。list.toArray(String[]::new)",
+          "example": "",
+          "tags": [],
+          "sourceUrl": ""
         }
       ]
     },
@@ -41,10 +207,165 @@
           "termJa": "シールクラス",
           "type": "syntax",
           "category": "class",
-          "meaning": "継承を許可するクラスを明示的に制限する機能",
-          "example": "public sealed class Shape permits Circle, Rectangle { }",
-          "tags": ["クラス", "継承"],
+          "meaning": "Sealed classes and interfaces restrict which other classes or interfaces may\n        extend or implement them.",
+          "example": "",
+          "tags": [],
           "sourceUrl": "https://docs.oracle.com/en/java/javase/17/language/sealed-classes-and-interfaces.html"
+        },
+        {
+          "id": "java-17-pattern-matching-for-instanceo",
+          "term": "Pattern Matching for instanceof",
+          "termJa": "instanceof のパターンマッチング",
+          "type": "syntax",
+          "category": "control-flow",
+          "meaning": "Pattern matching involves testing whether an object has a particular\n        structure, then extracting data from that object if there's a match. You can already do this\n        with Java; however, pattern matching introduces new language enhancements that enable you to\n        conditionally extract",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://docs.oracle.com/en/java/javase/17/language/pattern-matching-instanceof.html"
+        },
+        {
+          "id": "java-17-switch-expressions",
+          "term": "Switch Expressions",
+          "termJa": "switch 式",
+          "type": "syntax",
+          "category": "control-flow",
+          "meaning": "Like all expressions, switch expressions evaluate to a\n        single value and can be used in statements. They may contain \"case L ->\"\n        labels that eliminate the need for break statements to prevent fall\n        through. You can use a yield statement to specify the value of a switch\n        ",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://docs.oracle.com/en/java/javase/17/language/switch-expressions-and-statements.html"
+        },
+        {
+          "id": "java-17-records",
+          "term": "Records",
+          "termJa": "レコード",
+          "type": "syntax",
+          "category": "class",
+          "meaning": "Record classes, which are a special kind of class, help to model plain\n        data aggregates with less ceremony than normal classes.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://docs.oracle.com/en/java/javase/17/language/records.html"
+        },
+        {
+          "id": "java-17-text-blocks",
+          "term": "Text Blocks",
+          "termJa": "テキストブロック",
+          "type": "syntax",
+          "category": "string",
+          "meaning": "",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://docs.oracle.com/en/java/javase/17/language/text-blocks.html"
+        },
+        {
+          "id": "java-17-local-variable-type-inference-",
+          "term": "Local Variable Type Inference (var)",
+          "termJa": "ローカル変数の型推論",
+          "type": "syntax",
+          "category": "variable",
+          "meaning": "In JDK 10 and later, you can declare local variables with non-null initializers with the var identifier, which can help you write code that’s easier to read.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://docs.oracle.com/en/java/javase/17/language/local-variable-type-inference.html"
+        }
+      ]
+    },
+    {
+      "version": "21",
+      "releaseDate": "2023-09",
+      "terms": [
+        {
+          "id": "java-21-pattern-matching-for-switch",
+          "term": "Pattern Matching for switch",
+          "termJa": "switch のパターンマッチング",
+          "type": "syntax",
+          "category": "control-flow",
+          "meaning": "A switch statement transfers control to one of several\n        statements or expressions, depending on the value of its selector expression. In earlier\n        releases, the selector expression must evaluate to a number, string or enum\n        constant, and case labels must be constants. However, in",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://docs.oracle.com/en/java/javase/21/language/pattern-matching-switch.html"
+        },
+        {
+          "id": "java-21-record-patterns",
+          "term": "Record Patterns",
+          "termJa": "レコードパターン",
+          "type": "syntax",
+          "category": "class",
+          "meaning": "You can use a record pattern to test whether a value is an instance of a\n            record class type (see Record Classes) and, if it is, to recursively perform pattern matching on its\n            component values.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://docs.oracle.com/en/java/javase/21/language/record-patterns.html"
+        },
+        {
+          "id": "java-21-sealed-classes-and-interfaces",
+          "term": "Sealed Classes and Interfaces",
+          "termJa": "シールクラス・インターフェース",
+          "type": "syntax",
+          "category": "class",
+          "meaning": "Sealed classes and interfaces restrict which other classes or interfaces may\n        extend or implement them.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://docs.oracle.com/en/java/javase/21/language/sealed-classes-and-interfaces.html"
+        },
+        {
+          "id": "java-21-virtual-threads",
+          "term": "Virtual Threads",
+          "termJa": "仮想スレッド",
+          "type": "concept",
+          "category": "concurrency",
+          "meaning": "軽量なスレッド実装。OSスレッドではなくJVMが管理する。Project Loomの成果",
+          "example": "",
+          "tags": [],
+          "sourceUrl": ""
+        },
+        {
+          "id": "java-21-sequenced-collections",
+          "term": "Sequenced Collections",
+          "termJa": "シーケンスコレクション",
+          "type": "api",
+          "category": "collection",
+          "meaning": "要素の順序を持つコレクションの統一インターフェース。SequencedCollection, SequencedSet, SequencedMap",
+          "example": "",
+          "tags": [],
+          "sourceUrl": ""
+        }
+      ]
+    },
+    {
+      "version": "23",
+      "releaseDate": "2024-09",
+      "terms": [
+        {
+          "id": "java-23-implicitly-declared-classes",
+          "term": "Implicitly Declared Classes",
+          "termJa": "暗黙的クラス宣言",
+          "type": "syntax",
+          "category": "class",
+          "meaning": "The features Instance Main Methods and Implicitly Declared Classes\n        enable students to write their first programs without needing to understand the full set of\n        language features designed for large programs.",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://docs.oracle.com/en/java/javase/23/language/implicitly-declared-classes-and-instance-main-methods.html"
+        },
+        {
+          "id": "java-23-unnamed-variables-and-patterns",
+          "term": "Unnamed Variables and Patterns",
+          "termJa": "無名変数とパターン",
+          "type": "syntax",
+          "category": "variable",
+          "meaning": "Unnamed variables are variables that can be initialized but not used. Unnamed\n            patterns can appear in a pattern list of a record pattern, and always match the\n        corresponding record component. You can use them instead of a type pattern. They remove the\n        burden of having to wr",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://docs.oracle.com/en/java/javase/23/language/unnamed-variables-and-patterns.html"
+        },
+        {
+          "id": "java-23-string-templates-preview",
+          "term": "String Templates (Preview)",
+          "termJa": "文字列テンプレート",
+          "type": "syntax",
+          "category": "string",
+          "meaning": "",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://docs.oracle.com/en/java/javase/23/language/string-templates.html"
         }
       ]
     }

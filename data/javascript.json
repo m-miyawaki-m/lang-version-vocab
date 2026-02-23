@@ -8,26 +8,70 @@
       "releaseDate": "2024-06",
       "terms": [
         {
-          "id": "js-es2024-groupby",
-          "term": "Object.groupBy()",
-          "termJa": "グループ化",
+          "id": "ja-es2024-objectgroupby",
+          "term": "groupBy()",
+          "termJa": "Object.groupBy()",
           "type": "api",
           "category": "object",
-          "meaning": "イテラブルの要素をコールバック関数の戻り値でグループ化する静的メソッド",
-          "example": "Object.groupBy([1,2,3,4], n => n % 2 === 0 ? 'even' : 'odd')",
-          "tags": ["Object", "配列操作"],
+          "meaning": "Object.groupBy() は静的メソッドで、指定されたコールバック関数によって返された文字列値に従って、指定された反復可能な要素をグループ化します。返されるオブジェクトには、グループごとに個別のプロパティがあり、グループ内の要素を含む配列が格納されます。",
+          "example": "",
+          "tags": [],
           "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Object/groupBy"
         },
         {
-          "id": "js-es2024-promise-withresolvers",
-          "term": "Promise.withResolvers()",
-          "termJa": "プロミスリゾルバ",
+          "id": "ja-es2024-mapgroupby",
+          "term": "groupBy()",
+          "termJa": "Map.groupBy()",
+          "type": "api",
+          "category": "object",
+          "meaning": "Map.groupBy() は静的メソッドで、指定されたコールバック関数によって返された値を使用して、指定された反復可能な要素をグループ化します。最終的に返される Map は、テスト関数からの一意な値をキーとして使用し、各グループの要素の配列を取得するために使用できます。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Map/groupBy"
+        },
+        {
+          "id": "ja-es2024-promisewithresolvers",
+          "term": "withResolvers()",
+          "termJa": "Promise.withResolvers()",
           "type": "api",
           "category": "async",
-          "meaning": "Promise の resolve/reject 関数を外部から取得できる静的メソッド",
-          "example": "const { promise, resolve, reject } = Promise.withResolvers()",
-          "tags": ["Promise", "非同期"],
+          "meaning": "Promise.withResolvers() 静的メソッドは、新しい Promise オブジェクトと、Promise() コンストラクターの実行子に渡す 2 つの引数に対応する、解決または拒否の 2 つの関数を含むオブジェクトを返します。",
+          "example": "",
+          "tags": [],
           "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise/withResolvers"
+        },
+        {
+          "id": "ja-es2024-atomicswaitasync",
+          "term": "waitAsync()",
+          "termJa": "Atomics.waitAsync()",
+          "type": "api",
+          "category": "concurrency",
+          "meaning": "Atomics.waitAsync() 静的メソッドは、共有メモリー位置が指定された値を含むことを確認し、メモリー位置が指定された値と一致しない場合は文字列 \"not-equal\" を含む value プロパティを持つオブジェクトを即座に返し、タイムアウトが 0 に設定されている場合は \"timed-out\" を返します。それ以外の場合、このメソッドは、value プロパティが Promise であるオブジェクトを返し、これは Atomics.notify() が呼び出されたときに \"ok\"、またはタイムアウトが切れたときに \"timed-out\" で履行されます。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Atomics/waitAsync"
+        },
+        {
+          "id": "ja-es2024-stringprototypeiswellformed",
+          "term": "isWellFormed()",
+          "termJa": "String.prototype.isWellFormed()",
+          "type": "api",
+          "category": "string",
+          "meaning": "isWellFormed() は String 値のメソッドで、この文字列に孤立サロゲートがあるかどうかを示す論理値を返します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/String/isWellFormed"
+        },
+        {
+          "id": "ja-es2024-stringprototypetowellformed",
+          "term": "toWellFormed()",
+          "termJa": "String.prototype.toWellFormed()",
+          "type": "api",
+          "category": "string",
+          "meaning": "toWellFormed() は String 値のメソッドで、この文字列のすべての孤立サロゲートを Unicode 置換文字 U+FFFD に置き換えた文字列を返します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/String/toWellFormed"
         }
       ]
     },
@@ -36,26 +80,585 @@
       "releaseDate": "2023-06",
       "terms": [
         {
-          "id": "js-es2023-findlast",
-          "term": "Array.prototype.findLast()",
-          "termJa": "配列末尾検索",
+          "id": "ja-es2023-arrayprototypefindlast",
+          "term": "findLast()",
+          "termJa": "Array.prototype.findLast()",
           "type": "api",
           "category": "array",
-          "meaning": "配列の末尾から条件に合致する最初の要素を返すメソッド",
-          "example": "[1, 2, 3, 4].findLast(n => n % 2 === 0) // 4",
-          "tags": ["Array", "検索"],
+          "meaning": "findLast() は Array インスタンスのメソッドで、配列を逆順に反復処理し、指定されたテスト関数を満たす最初の要素の値を返します。\nテスト関数を満たす要素がない場合は undefined が返されます。",
+          "example": "",
+          "tags": [],
           "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast"
         },
         {
-          "id": "js-es2023-toSorted",
-          "term": "Array.prototype.toSorted()",
-          "termJa": "非破壊ソート",
+          "id": "ja-es2023-arrayprototypefindlastindex",
+          "term": "findLastIndex()",
+          "termJa": "Array.prototype.findLastIndex()",
           "type": "api",
           "category": "array",
-          "meaning": "元の配列を変更せずにソートされた新しい配列を返すメソッド",
-          "example": "[3, 1, 2].toSorted() // [1, 2, 3]",
-          "tags": ["Array", "ソート", "イミュータブル"],
+          "meaning": "findLastIndex() は Array のメソッドで、この配列を逆順に反復処理し、指定されたテスト関数を満たす配列の最後の要素のインデックスを返します。\nテスト関数を満たす要素がなかった場合は、 -1 を返します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex"
+        },
+        {
+          "id": "ja-es2023-arrayprototypetoreversed",
+          "term": "toReversed()",
+          "termJa": "Array.prototype.toReversed()",
+          "type": "api",
+          "category": "array",
+          "meaning": "toReversed() は Array インスタンスのメソッドで、 reverse() メソッドに対応するコピーメソッドです。これは、要素を逆順に並べた新しい配列を返します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed"
+        },
+        {
+          "id": "ja-es2023-arrayprototypetosorted",
+          "term": "toSorted()",
+          "termJa": "Array.prototype.toSorted()",
+          "type": "api",
+          "category": "array",
+          "meaning": "toSorted() は Array インスタンスのメソッドで、 sort() メソッドに対応するコピーメソッドです。これは、要素を昇順にソートした新しい配列を返します。",
+          "example": "",
+          "tags": [],
           "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted"
+        },
+        {
+          "id": "ja-es2023-arrayprototypetospliced",
+          "term": "toSpliced()",
+          "termJa": "Array.prototype.toSpliced()",
+          "type": "api",
+          "category": "array",
+          "meaning": "toSpliced() は Array インスタンスのメソッドで、 splice() メソッドに対応するコピーメソッドです。これは、指定された位置の要素を除去したり置き換えたりした新しい配列を返します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/toSpliced"
+        },
+        {
+          "id": "ja-es2023-arrayprototypewith",
+          "term": "with()",
+          "termJa": "Array.prototype.with()",
+          "type": "api",
+          "category": "array",
+          "meaning": "with() は Array インスタンスのメソッドで、ブラケット記法に対応するコピーメソッドです。これは、指定された位置の要素を指定された値で置き換えた新しい配列を返します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/with"
+        },
+        {
+          "id": "ja-es2023-symbolhasinstance",
+          "term": "hasInstance",
+          "termJa": "Symbol.hasInstance",
+          "type": "api",
+          "category": "symbol",
+          "meaning": "Symbol.hasInstance は静的データプロパティで、ウェルノウンシンボルの Symbol.hasInstance を表します。instanceof 演算子は右辺オペランドに対して、コンストラクターオブジェクトがオブジェクトをそのインスタンスとして認識するかどうかを判断する際に使用されるメソッドを、このシンボルで探します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Symbol/hasInstance"
+        }
+      ]
+    },
+    {
+      "version": "ES2022",
+      "releaseDate": "2022-06",
+      "terms": [
+        {
+          "id": "ja-es2022-arrayprototypeat",
+          "term": "at()",
+          "termJa": "Array.prototype.at()",
+          "type": "api",
+          "category": "array",
+          "meaning": "at() は Array インスタンスのメソッドで、整数値を受け取り、そのインデックスにある項目を返します。正の整数値と負の整数値が使用できます。負の整数は、配列の最後の項目から前へ数えます。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/at"
+        },
+        {
+          "id": "ja-es2022-objecthasown",
+          "term": "hasOwn()",
+          "termJa": "Object.hasOwn()",
+          "type": "api",
+          "category": "object",
+          "meaning": "Object.hasOwn() は静的メソッドで、指定されたオブジェクトが、指定されたプロパティを自身のプロパティとして持っている場合に true を返します。そのプロパティが継承されている場合、または存在しない場合、このメソッドは false を返します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwn"
+        },
+        {
+          "id": "ja-es2022-error-cause",
+          "term": "cause",
+          "termJa": "Error: cause",
+          "type": "api",
+          "category": "error",
+          "meaning": "cause は Error インスタンスのデータプロパティで、エラーの元の原因を示します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Error/cause"
+        },
+        {
+          "id": "ja-es2022-class",
+          "term": "class",
+          "termJa": "",
+          "type": "syntax",
+          "category": "class",
+          "meaning": "class 宣言は、プロトタイプベースの継承を使って、指定された名前の新しいクラスを作成します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/class"
+        },
+        {
+          "id": "ja-es2022-await-",
+          "term": "await 演算子",
+          "termJa": "",
+          "type": "syntax",
+          "category": "async",
+          "meaning": "await 演算子はプロミス (Promise) を待ち、履行値を取得するために使用します。非同期関数の中、またはモジュールの最上位でのみ使用することができます。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/await"
+        },
+        {
+          "id": "ja-es2022-regexpprototypehasindices",
+          "term": "hasIndices",
+          "termJa": "RegExp.prototype.hasIndices",
+          "type": "api",
+          "category": "regexp",
+          "meaning": "hasIndices は RegExp インスタンスのプロパティで、その正規表現で d フラグが使用されたかどうかを示します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/RegExp/hasIndices"
+        }
+      ]
+    },
+    {
+      "version": "ES2021",
+      "releaseDate": "2021-06",
+      "terms": [
+        {
+          "id": "ja-es2021-stringprototypereplaceall",
+          "term": "replaceAll()",
+          "termJa": "String.prototype.replaceAll()",
+          "type": "api",
+          "category": "string",
+          "meaning": "replaceAll() は String 値のメソッドで、pattern に一致したすべての文字列を replacement で置き換えた新しい文字列を返します。pattern には文字列または RegExp を指定することができ、replacement は文字列または各一致に対して呼び出される関数を指定することができます。元の文字列は変更されません。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll"
+        },
+        {
+          "id": "ja-es2021-promiseany",
+          "term": "any()",
+          "termJa": "Promise.any()",
+          "type": "api",
+          "category": "async",
+          "meaning": "Promise.any() は静的メソッドで、入力としてプロミスの反復可能オブジェクトを取り、単一の Promise を返します。この返されたプロミスは、入力のプロミスのいずれかが履行されたときに、この最初の履行値で履行されます。入力のプロミスがすべて拒否された場合（空の反復可能オブジェクトが渡された場合を含む）、拒否理由の配列を格納した AggregateError で、拒否されます。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise/any"
+        },
+        {
+          "id": "ja-es2021-weakref",
+          "term": "WeakRef",
+          "termJa": "",
+          "type": "api",
+          "category": "memory",
+          "meaning": "WeakRef オブジェクトは、ガベージコレクションを受けることを妨げない他のオブジェクトへの弱い参照を保持します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/WeakRef"
+        },
+        {
+          "id": "ja-es2021-finalizationregistry",
+          "term": "FinalizationRegistry",
+          "termJa": "",
+          "type": "api",
+          "category": "memory",
+          "meaning": "FinalizationRegistry オブジェクトにより、オブジェクトがガベージコレクションで回収されるときにコールバックを要求することができます。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/FinalizationRegistry"
+        },
+        {
+          "id": "ja-es2021--",
+          "term": "論理積代入演算子 (&&=)",
+          "termJa": "",
+          "type": "syntax",
+          "category": "operator",
+          "meaning": "論理積代入演算子 (&&=) は、左オペランドが真値の場合にのみ右オペランドを評価し、左オペランドに代入します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Logical_AND_assignment"
+        },
+        {
+          "id": "ja-es2021--",
+          "term": "論理和代入演算子 (||=)",
+          "termJa": "",
+          "type": "syntax",
+          "category": "operator",
+          "meaning": "論理和代入演算子 (||=) は、左オペランドが偽値の場合にのみ右オペランドを評価し、左オペランドに代入します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Logical_OR_assignment"
+        },
+        {
+          "id": "ja-es2021--",
+          "term": "ヌル値合体代入演算子 (??=)",
+          "termJa": "",
+          "type": "syntax",
+          "category": "operator",
+          "meaning": "ヌル値合体代入演算子 (??=) は、論理ヌル代入とも呼ばれ、左オペランドがヌル値（null または undefined）の場合にのみ右オペランドを評価し、左オペランドに代入します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_assignment"
+        },
+        {
+          "id": "ja-es2021-number",
+          "term": "Number",
+          "termJa": "",
+          "type": "api",
+          "category": "number",
+          "meaning": "Number （数値）の値は 37 や -9.25 のような浮動小数点数を表します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Number"
+        }
+      ]
+    },
+    {
+      "version": "ES2020",
+      "releaseDate": "2020-06",
+      "terms": [
+        {
+          "id": "ja-es2020--",
+          "term": "オプショナルチェーン演算子 (?.)",
+          "termJa": "",
+          "type": "syntax",
+          "category": "operator",
+          "meaning": "オプショナルチェーン演算子 (?.) (optional chaining) は、オブジェクトのプロパティにアクセスしたり、関数を呼び出したりします。この演算子を使用してアクセスするオブジェクトまたは呼び出される関数が undefined または null の場合、エラーが発生することなく、式が途中で終了し、undefined と評価されます。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Optional_chaining"
+        },
+        {
+          "id": "ja-es2020--",
+          "term": "ヌル値合体演算子 (??)",
+          "termJa": "",
+          "type": "syntax",
+          "category": "operator",
+          "meaning": "ヌル値合体演算子 (??) は論理演算子の一種です。この演算子は左辺が null または undefined の場合に右辺のオペランドを返し、それ以外の場合に左辺のオペランドを返します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing"
+        },
+        {
+          "id": "ja-es2020-bigint",
+          "term": "BigInt",
+          "termJa": "",
+          "type": "api",
+          "category": "number",
+          "meaning": "BigInt は、大きすぎてまたは小さすぎて数値 (number) プリミティブで表すことができない数を表現します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/BigInt"
+        },
+        {
+          "id": "ja-es2020-promiseallsettled",
+          "term": "allSettled()",
+          "termJa": "Promise.allSettled()",
+          "type": "api",
+          "category": "async",
+          "meaning": "Promise.allSettled() は静的メソッドで、入力としてプロミスの反復可能オブジェクトを受け取り、単一の Promise を返します。この返されたプロミスは、入力のすべてのプロミスが決定したとき（空の反復可能オブジェクトが渡された場合を含む）に履行され、各プロミスの結果を記述するオブジェクトの配列が返されます。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled"
+        },
+        {
+          "id": "ja-es2020-globalthis",
+          "term": "globalThis",
+          "termJa": "",
+          "type": "api",
+          "category": "global",
+          "meaning": "globalThis はグローバルプロパティで、グローバルオブジェクトと同等であるグローバルな thisが格納されています。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/globalThis"
+        },
+        {
+          "id": "ja-es2020-import",
+          "term": "import",
+          "termJa": "",
+          "type": "syntax",
+          "category": "module",
+          "meaning": "静的な import 宣言は、他のモジュールによってエクスポートされた読み込み専用の動的バインドをインポートするために使用します。インポートしたバインドは、バインドをエクスポートしたモジュールによって更新される一方、インポートしているモジュールによって再割り当てすることができないために、「動的バインド」と呼ばれています。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/import"
+        },
+        {
+          "id": "ja-es2020-stringprototypematchall",
+          "term": "matchAll()",
+          "termJa": "String.prototype.matchAll()",
+          "type": "api",
+          "category": "string",
+          "meaning": "matchAll() は String 値のメソッドで、この文字列と正規表現を照合したすべての結果を、キャプチャグループを含み、イテレーターで返すメソッドです。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/String/matchAll"
+        }
+      ]
+    },
+    {
+      "version": "ES2019",
+      "releaseDate": "2019-06",
+      "terms": [
+        {
+          "id": "ja-es2019-arrayprototypeflat",
+          "term": "flat()",
+          "termJa": "Array.prototype.flat()",
+          "type": "api",
+          "category": "array",
+          "meaning": "flat() は Array インスタンスのメソッドで、すべてのサブ配列の要素を指定した深さで再帰的に結合した新しい配列を生成します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/flat"
+        },
+        {
+          "id": "ja-es2019-arrayprototypeflatmap",
+          "term": "flatMap()",
+          "termJa": "Array.prototype.flatMap()",
+          "type": "api",
+          "category": "array",
+          "meaning": "flatMap() は Array インスタンスのメソッドで、最初にマッピング関数を使用してそれぞれの要素をマップした後、結果を新しい配列内に平坦化します。これは、 map() の後に深さ 1 の flat() を行うのと同じですが (arr.map(...args).flat())、これら 2 つのメソッドを別々に呼び出すよりもわずかに効率的です。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap"
+        },
+        {
+          "id": "ja-es2019-objectfromentries",
+          "term": "fromEntries()",
+          "termJa": "Object.fromEntries()",
+          "type": "api",
+          "category": "object",
+          "meaning": "Object.fromEntries() は静的メソッドで、キーと値の組み合わせのリストをオブジェクトに変換します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Object/fromEntries"
+        },
+        {
+          "id": "ja-es2019-stringprototypetrimstart",
+          "term": "trimStart()",
+          "termJa": "String.prototype.trimStart()",
+          "type": "api",
+          "category": "string",
+          "meaning": "trimStart() は String 値のメソッドで、元の文字列を変更せずに、文字列の先頭のホワイトスペースを削除した新しい文字列を返します。trimLeft() はこのメソッドの別名です。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/String/trimStart"
+        },
+        {
+          "id": "ja-es2019-stringprototypetrimend",
+          "term": "trimEnd()",
+          "termJa": "String.prototype.trimEnd()",
+          "type": "api",
+          "category": "string",
+          "meaning": "trimEnd() は String 値のメソッドで、元の文字列を変更せずに、文字列の末尾のホワイトスペースを削除した新しい文字列を返します。trimRight() はこのメソッドの別名です。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/String/trimEnd"
+        },
+        {
+          "id": "ja-es2019-trycatch",
+          "term": "try...catch",
+          "termJa": "",
+          "type": "syntax",
+          "category": "error",
+          "meaning": "try...catch 文は try ブロックと、catch ブロックか finally ブロックか、その両方から構成されます。まず try ブロック内のコードが実行され、そこで例外が発生すると、catch ブロック内のコードが実行されます。finally ブロック内のコードは、制御する流れが構造全体を抜ける前に、常に実行されます。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/try...catch"
+        },
+        {
+          "id": "ja-es2019-symbolprototypedescription",
+          "term": "description",
+          "termJa": "Symbol.prototype.description",
+          "type": "api",
+          "category": "symbol",
+          "meaning": "description は Symbol 値のアクセサープロパティで、このシンボルの説明を格納した文字列を返し、シンボルに説明がない場合は undefined を返します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Symbol/description"
+        }
+      ]
+    },
+    {
+      "version": "ES2018",
+      "releaseDate": "2018-06",
+      "terms": [
+        {
+          "id": "ja-es2018-for-awaitof",
+          "term": "for await...of",
+          "termJa": "",
+          "type": "syntax",
+          "category": "async",
+          "meaning": "for await...of 文は、非同期反復可能オブジェクトを、同期反復可能オブジェクトと同様に反復処理するループを作成します。この文は await が使用できるコンテキスト、例えば非同期関数の本体やモジュール内などでのみ使用できます。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/for-await...of"
+        },
+        {
+          "id": "ja-es2018-promiseprototypefinally",
+          "term": "finally()",
+          "termJa": "Promise.prototype.finally()",
+          "type": "api",
+          "category": "async",
+          "meaning": "finally() は Promise インスタンスのメソッドで、プロミスが決定したとき（履行されたか拒否されたかのどちらか）に呼び出される関数を準備します。直ちに他の Promise オブジェクトを返すため、プロミスの他のメソッドを連鎖呼び出しすることができます。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally"
+        },
+        {
+          "id": "ja-es2018--",
+          "term": "スプレッド構文 (...)",
+          "termJa": "",
+          "type": "syntax",
+          "category": "operator",
+          "meaning": "スプレッド構文 (...) 構文を使うと、配列式や文字列などの反復可能オブジェクトを、0 個以上の引数（関数呼び出しの場合）や要素（配列リテラルの場合）を目的の場所に展開することができます。オブジェクトリテラルでは、スプレッド構文によりオブジェクトのプロパティを列挙し、作成するオブジェクトにキーと値の組を追加します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Spread_syntax"
+        },
+        {
+          "id": "ja-es2018-regexp",
+          "term": "RegExp",
+          "termJa": "",
+          "type": "api",
+          "category": "regexp",
+          "meaning": "RegExp オブジェクトは、テキストをパターンと照合するために使用します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/RegExp"
+        }
+      ]
+    },
+    {
+      "version": "ES2017",
+      "releaseDate": "2017-06",
+      "terms": [
+        {
+          "id": "ja-es2017-async-function",
+          "term": "async function",
+          "termJa": "",
+          "type": "syntax",
+          "category": "async",
+          "meaning": "async function 宣言は、与えられた名前で新しい非同期関数のバインドを作成します。その関数の本体の中では await キーワードを使うことができ、ます。async および await キーワードを使用することで、プロミスベースの非同期の動作を、プロミスチェーンを明示的に構成する必要なく、よりすっきりとした方法で書くことができます。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function"
+        },
+        {
+          "id": "ja-es2017-await-",
+          "term": "await 演算子",
+          "termJa": "",
+          "type": "syntax",
+          "category": "async",
+          "meaning": "await 演算子はプロミス (Promise) を待ち、履行値を取得するために使用します。非同期関数の中、またはモジュールの最上位でのみ使用することができます。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/await"
+        },
+        {
+          "id": "ja-es2017-objectvalues",
+          "term": "values()",
+          "termJa": "Object.values()",
+          "type": "api",
+          "category": "object",
+          "meaning": "Object.values() は静的メソッドで、指定されたオブジェクトが持つ列挙可能なプロパティの文字列キーのプロパティ値を配列で返します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Object/values"
+        },
+        {
+          "id": "ja-es2017-objectentries",
+          "term": "entries()",
+          "termJa": "Object.entries()",
+          "type": "api",
+          "category": "object",
+          "meaning": "Object.entries() は静的メソッドで、与えられたオブジェクトが所有する、文字列をキーとした列挙可能なプロパティのキーと値の組の配列を返します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Object/entries"
+        },
+        {
+          "id": "ja-es2017-stringprototypepadstart",
+          "term": "padStart()",
+          "termJa": "String.prototype.padStart()",
+          "type": "api",
+          "category": "string",
+          "meaning": "padStart() は String 値のメソッドで、指定された文字列でこの文字列をパディングし（必要に応じて繰り返したり切り捨てたりして）、結果の文字列が指定された長さを示すようにします。パディングは、この文字列の先頭から適用されます。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/String/padStart"
+        },
+        {
+          "id": "ja-es2017-stringprototypepadend",
+          "term": "padEnd()",
+          "termJa": "String.prototype.padEnd()",
+          "type": "api",
+          "category": "string",
+          "meaning": "padEnd() は String 値のメソッドで、結果の文字列が指定した長さになるように、現在の文字列を他の文字列で（必要に応じて繰り返して）延長します。延長は、現在の文字列の末尾から適用されます。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/String/padEnd"
+        },
+        {
+          "id": "ja-es2017-objectgetownpropertydescriptor",
+          "term": "getOwnPropertyDescriptors()",
+          "termJa": "Object.getOwnPropertyDescriptors()",
+          "type": "api",
+          "category": "object",
+          "meaning": "Object.getOwnPropertyDescriptors() は静的メソッドで、指定したオブジェクトのすべてのプロパティ記述子を返します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptors"
+        },
+        {
+          "id": "ja-es2017-sharedarraybuffer",
+          "term": "SharedArrayBuffer",
+          "termJa": "",
+          "type": "api",
+          "category": "concurrency",
+          "meaning": "SharedArrayBuffer オブジェクトは、一般的な、生のバイナリーデータバッファーを表すために使用されます。ArrayBuffer オブジェクトと似ていますが、こちらは共有メモリー上にビューを生成するために使用されます。SharedArrayBuffer は移譲可能オブジェクトではありません。この点では ArrayBuffer が移譲可能であるのとは異なります。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer"
+        }
+      ]
+    },
+    {
+      "version": "ES2016",
+      "releaseDate": "2016-06",
+      "terms": [
+        {
+          "id": "ja-es2016-arrayprototypeincludes",
+          "term": "includes()",
+          "termJa": "Array.prototype.includes()",
+          "type": "api",
+          "category": "array",
+          "meaning": "includes() は Array インスタンスのメソッドで、特定の要素が配列に含まれているかどうかを true または false で返します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/includes"
+        },
+        {
+          "id": "ja-es2016--",
+          "term": "べき乗演算子 (**)",
+          "termJa": "",
+          "type": "syntax",
+          "category": "operator",
+          "meaning": "べき乗演算子 (**) は、1 つ目のオペランドを 2 つ目のオペランドで累乗した結果を返します。これは Math.pow() と同等ですが、オペランドとして長整数も受け入れます。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Exponentiation"
         }
       ]
     },
@@ -64,37 +667,213 @@
       "releaseDate": "2015-06",
       "terms": [
         {
-          "id": "js-es2015-arrow-function",
-          "term": "Arrow Function",
-          "termJa": "アロー関数",
+          "id": "ja-es2015-",
+          "term": "アロー関数式",
+          "termJa": "",
           "type": "syntax",
           "category": "function",
-          "meaning": "=> を使った簡潔な関数式。this を外側のスコープから継承する",
-          "example": "const add = (a, b) => a + b;",
-          "tags": ["関数", "構文"],
+          "meaning": "アロー関数式は、従来の関数式の簡潔な代替構文ですが、意味的な違いや意図的な使用上の制限もあります。",
+          "example": "",
+          "tags": [],
           "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/Arrow_functions"
         },
         {
-          "id": "js-es2015-let-const",
-          "term": "let / const",
-          "termJa": "ブロックスコープ変数宣言",
+          "id": "ja-es2015-let",
+          "term": "let",
+          "termJa": "",
           "type": "syntax",
           "category": "variable",
-          "meaning": "ブロックスコープを持つ変数宣言。const は再代入不可",
-          "example": "let count = 0; const MAX = 100;",
-          "tags": ["変数", "スコープ"],
+          "meaning": "let 宣言は、再代入可能な、ブロックスコープのローカル変数を宣言します。任意で値を代入して初期化できます。",
+          "example": "",
+          "tags": [],
           "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/let"
         },
         {
-          "id": "js-es2015-promise",
+          "id": "ja-es2015-const",
+          "term": "const",
+          "termJa": "",
+          "type": "syntax",
+          "category": "variable",
+          "meaning": "const 宣言はブロックスコープのローカル変数（定数）を宣言します。定数の値は代入演算子を使用して再代入することができませんが、定数がオブジェクトであった場合、そのプロパティを追加したり、更新したり、削除したりすることができます。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/const"
+        },
+        {
+          "id": "ja-es2015-class",
+          "term": "class",
+          "termJa": "",
+          "type": "syntax",
+          "category": "class",
+          "meaning": "class 宣言は、プロトタイプベースの継承を使って、指定された名前の新しいクラスを作成します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/class"
+        },
+        {
+          "id": "ja-es2015--",
+          "term": "テンプレートリテラル (テンプレート文字列)",
+          "termJa": "",
+          "type": "syntax",
+          "category": "string",
+          "meaning": "テンプレートリテラルは逆引用符 (`) で区切られたリテラルで、複数行の文字列、埋め込み式による文字列の補間、タグ付きテンプレートと呼ばれる特殊な構文を許可します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Template_literals"
+        },
+        {
+          "id": "ja-es2015-",
+          "term": "構造分解（分割代入）",
+          "termJa": "",
+          "type": "syntax",
+          "category": "operator",
+          "meaning": "構造分解（destructuring、旧：分割代入）構文は、配列から値を取り出して、あるいはオブジェクトからプロパティを取り出して別個の変数に代入することを可能にする JavaScript の構文です。これは、データを受け取る場所（代入の左辺や、新しい識別子バインディングを作成する場所ならどこでも）で使用できます。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment"
+        },
+        {
+          "id": "ja-es2015-",
+          "term": "デフォルト引数",
+          "termJa": "",
+          "type": "syntax",
+          "category": "function",
+          "meaning": "関数のデフォルト引数は、値が渡されなかった場合や undefined が渡された場合に、名前付き引数を既定値で初期化するためのものです。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/Default_parameters"
+        },
+        {
+          "id": "ja-es2015-",
+          "term": "残余引数",
+          "termJa": "",
+          "type": "syntax",
+          "category": "function",
+          "meaning": "残余引数構文により、関数が不定数の引数を配列として受け入れることができ、可変長引数関数を JavaScript で表すことができます。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/rest_parameters"
+        },
+        {
+          "id": "ja-es2015--",
+          "term": "スプレッド構文 (...)",
+          "termJa": "",
+          "type": "syntax",
+          "category": "operator",
+          "meaning": "スプレッド構文 (...) 構文を使うと、配列式や文字列などの反復可能オブジェクトを、0 個以上の引数（関数呼び出しの場合）や要素（配列リテラルの場合）を目的の場所に展開することができます。オブジェクトリテラルでは、スプレッド構文によりオブジェクトのプロパティを列挙し、作成するオブジェクトにキーと値の組を追加します。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Spread_syntax"
+        },
+        {
+          "id": "ja-es2015-promise",
           "term": "Promise",
-          "termJa": "プロミス",
+          "termJa": "",
           "type": "concept",
           "category": "async",
-          "meaning": "非同期処理の最終的な完了または失敗を表すオブジェクト",
-          "example": "fetch(url).then(res => res.json()).catch(err => console.error(err))",
-          "tags": ["非同期", "コールバック"],
+          "meaning": "Promise オブジェクトは、非同期処理の完了（もしくは失敗）の結果およびその結果の値を表します。",
+          "example": "",
+          "tags": [],
           "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+        },
+        {
+          "id": "ja-es2015-map",
+          "term": "Map",
+          "termJa": "",
+          "type": "api",
+          "category": "collection",
+          "meaning": "Map オブジェクトはキーと値のペアを保持し、キーが最初に挿入された順序を覚えています。\nキーや値には任意の値（オブジェクトとプリミティブ値）を使用することができます。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Map"
+        },
+        {
+          "id": "ja-es2015-set",
+          "term": "Set",
+          "termJa": "",
+          "type": "api",
+          "category": "collection",
+          "meaning": "Set オブジェクトは、プリミティブ値やオブジェクト参照を問わず、あらゆる型で多数の一意の値を格納することができます。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Set"
+        },
+        {
+          "id": "ja-es2015-weakmap",
+          "term": "WeakMap",
+          "termJa": "",
+          "type": "api",
+          "category": "collection",
+          "meaning": "WeakMap はキーと値の組の集合ですが、キーはオブジェクトまたは非登録シンボルでなければならず、値は任意の JavaScript 型で、キーへの強い参照を生成しません。つまり、WeakMap 内のキーとしてのオブジェクトが存在しても、そのオブジェクトがガベージコレクションされる可能性があります。キーとして使用されたオブジェクトが回収されると、そのオブジェクトに対応する値は、他の場所で強く参照されていない限り、どの WeakMap においても同様にガベージコレクションの対象となります。WeakMap のキーとして使用することができる唯一のプリミティブ型はシンボル（正確に言えば、非登録シンボル）です。非登録シンボルは一意性が保証され、再生成されないためです。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/WeakMap"
+        },
+        {
+          "id": "ja-es2015-symbol",
+          "term": "Symbol",
+          "termJa": "",
+          "type": "concept",
+          "category": "primitive",
+          "meaning": "Symbol は組み込みオブジェクトであり、コンストラクターは一意であることが保証されているシンボルプリミティブ（シンボル値または単にシンボル）を返します。シンボルは、他のコードがオブジェクトに追加する可能性のあるキーと衝突しないように、また、他のコードがオブジェクトにアクセスするために通常使用するメカニズムから隠されるるように、一意のプロパティキーをオブジェクトに追加するためによく使用されます。これによって弱いカプセル化、または弱い形の情報隠蔽が実現できます。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Symbol"
+        },
+        {
+          "id": "ja-es2015-proxy",
+          "term": "Proxy",
+          "termJa": "",
+          "type": "api",
+          "category": "metaprogramming",
+          "meaning": "Proxy オブジェクトにより別なオブジェクトのプロキシーを作成することができ、そのオブジェクトの基本的な操作に介入したり再定義したりすることができます。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy"
+        },
+        {
+          "id": "ja-es2015-forof",
+          "term": "for...of",
+          "termJa": "",
+          "type": "syntax",
+          "category": "iteration",
+          "meaning": "for...of 文は、反復可能オブジェクトをソースとした一連の値を処理するループを実行します。反復可能オブジェクトには、\nたとえば組み込みの Array, String, TypedArray, Map, Set, NodeList（およびその他の DOM コレクション）、同様に arguments オブジェクトや、ジェネレーター関数から生成されるジェネレーター、ユーザー定義の反復可能オブジェクトなどがあります。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/for...of"
+        },
+        {
+          "id": "ja-es2015-import",
+          "term": "import",
+          "termJa": "",
+          "type": "syntax",
+          "category": "module",
+          "meaning": "静的な import 宣言は、他のモジュールによってエクスポートされた読み込み専用の動的バインドをインポートするために使用します。インポートしたバインドは、バインドをエクスポートしたモジュールによって更新される一方、インポートしているモジュールによって再割り当てすることができないために、「動的バインド」と呼ばれています。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/import"
+        },
+        {
+          "id": "ja-es2015-export",
+          "term": "export",
+          "termJa": "",
+          "type": "syntax",
+          "category": "module",
+          "meaning": "export 宣言は、JavaScript モジュールから値をエクスポートするために使用されます。エクスポートされた値は import 宣言やダイナミックインポートによって、他のプログラムにインポートすることができます。インポートされたバインディングの値は、それをエクスポートするモジュールの変更の対象となります。モジュールがエクスポートするバインディングの値を更新すると、その更新はインポートされた値として見えます。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/export"
+        },
+        {
+          "id": "ja-es2015-generator",
+          "term": "Generator",
+          "termJa": "",
+          "type": "concept",
+          "category": "iteration",
+          "meaning": "Generator オブジェクトはジェネレーター関数によって返され、反復可能プロトコルとイテレータープロトコルの両方に準拠しています。",
+          "example": "",
+          "tags": [],
+          "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Generator"
         }
       ]
     }
