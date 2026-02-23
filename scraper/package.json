@@ -1,0 +1,15 @@
+{
+  "name": "lang-version-vocab-scraper",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "scrape": "node src/index.js",
+    "scrape:js": "node src/index.js --lang javascript",
+    "scrape:java": "node src/index.js --lang java",
+    "scrape:jquery": "node src/index.js --lang jquery"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0"
+  }
+}
