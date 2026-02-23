@@ -104,6 +104,93 @@ export class JavaScraper extends BaseScraper {
     }
   }
 
+  async scrapeSpecification() {
+    console.log('Building Java specification...')
+
+    return {
+      categories: [
+        {
+          id: 'java-spec-primitive-types',
+          name: 'Primitive Types',
+          nameJa: '基本型',
+          items: [
+            { id: 'java-spec-int', term: 'int', termJa: '整数型', meaning: '32ビット符号付き整数。-2,147,483,648 から 2,147,483,647', example: 'int count = 42;', sourceUrl: 'https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html' },
+            { id: 'java-spec-long', term: 'long', termJa: '長整数型', meaning: '64ビット符号付き整数。大きな整数値に使用', example: 'long bigNum = 9876543210L;', sourceUrl: 'https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html' },
+            { id: 'java-spec-double', term: 'double', termJa: '倍精度浮動小数点型', meaning: '64ビット IEEE 754 浮動小数点数。デフォルトの小数型', example: 'double pi = 3.14159;', sourceUrl: 'https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html' },
+            { id: 'java-spec-boolean', term: 'boolean', termJa: '真偽値型', meaning: 'true または false の2値のみ', example: 'boolean isReady = true;', sourceUrl: 'https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html' },
+            { id: 'java-spec-char', term: 'char', termJa: '文字型', meaning: '16ビット Unicode 文字。シングルクォートで囲む', example: "char letter = 'A';", sourceUrl: 'https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html' }
+          ]
+        },
+        {
+          id: 'java-spec-control-flow',
+          name: 'Control Flow',
+          nameJa: '制御構文',
+          items: [
+            { id: 'java-spec-if-else', term: 'if...else', termJa: 'if...else 文', meaning: '条件分岐の基本構文。boolean 式で制御', example: 'if (score >= 60) {\n  System.out.println("Pass");\n} else {\n  System.out.println("Fail");\n}', sourceUrl: 'https://docs.oracle.com/javase/tutorial/java/nutsandbolts/if.html' },
+            { id: 'java-spec-switch', term: 'switch', termJa: 'switch 文', meaning: '式の値に基づく複数分岐。int, String, enum 等に対応', example: 'switch (day) {\n  case "MON": /* ... */ break;\n  case "FRI": /* ... */ break;\n  default: /* ... */\n}', sourceUrl: 'https://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html' },
+            { id: 'java-spec-for', term: 'for', termJa: 'for ループ', meaning: '初期化・条件・更新の3式で制御するループ', example: 'for (int i = 0; i < 10; i++) {\n  System.out.println(i);\n}', sourceUrl: 'https://docs.oracle.com/javase/tutorial/java/nutsandbolts/for.html' },
+            { id: 'java-spec-while', term: 'while / do...while', termJa: 'while ループ', meaning: 'while は条件が真の間ループ。do...while は最低1回実行', example: 'int i = 0;\nwhile (i < 5) {\n  i++;\n}', sourceUrl: 'https://docs.oracle.com/javase/tutorial/java/nutsandbolts/while.html' },
+            { id: 'java-spec-for-each', term: 'Enhanced for (for-each)', termJa: '拡張for文', meaning: '配列やコレクションの要素を順に処理する簡略構文', example: 'int[] nums = {1, 2, 3};\nfor (int n : nums) {\n  System.out.println(n);\n}', sourceUrl: 'https://docs.oracle.com/javase/tutorial/java/nutsandbolts/for.html' }
+          ]
+        },
+        {
+          id: 'java-spec-oop-basics',
+          name: 'OOP Basics',
+          nameJa: 'OOP基礎',
+          items: [
+            { id: 'java-spec-class', term: 'class', termJa: 'クラス', meaning: 'オブジェクトの設計図。フィールドとメソッドを定義', example: 'public class Person {\n  String name;\n  int age;\n}', sourceUrl: 'https://docs.oracle.com/javase/tutorial/java/javaOO/classes.html' },
+            { id: 'java-spec-interface', term: 'interface', termJa: 'インターフェース', meaning: 'メソッドのシグネチャを定義する型。多重実装が可能', example: 'public interface Drawable {\n  void draw();\n}', sourceUrl: 'https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html' },
+            { id: 'java-spec-abstract', term: 'abstract', termJa: '抽象クラス/メソッド', meaning: 'インスタンス化不可のクラス、または実装を持たないメソッド', example: 'public abstract class Shape {\n  abstract double area();\n}', sourceUrl: 'https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html' },
+            { id: 'java-spec-extends', term: 'extends', termJa: 'クラス継承', meaning: '他のクラスを継承する。単一継承のみ', example: 'public class Dog extends Animal {\n  // ...\n}', sourceUrl: 'https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html' },
+            { id: 'java-spec-implements', term: 'implements', termJa: 'インターフェース実装', meaning: 'インターフェースを実装する。複数実装可能', example: 'public class Circle implements Drawable {\n  public void draw() { /* ... */ }\n}', sourceUrl: 'https://docs.oracle.com/javase/tutorial/java/IandI/usinginterface.html' }
+          ]
+        },
+        {
+          id: 'java-spec-access-modifiers',
+          name: 'Access Modifiers',
+          nameJa: 'アクセス修飾子',
+          items: [
+            { id: 'java-spec-public', term: 'public', termJa: 'public', meaning: 'すべてのクラスからアクセス可能', example: 'public class MyClass {\n  public void method() {}\n}', sourceUrl: 'https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html' },
+            { id: 'java-spec-private', term: 'private', termJa: 'private', meaning: '同一クラス内からのみアクセス可能', example: 'public class MyClass {\n  private int secret = 42;\n}', sourceUrl: 'https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html' },
+            { id: 'java-spec-protected', term: 'protected', termJa: 'protected', meaning: '同一パッケージおよびサブクラスからアクセス可能', example: 'protected void helper() {\n  // ...\n}', sourceUrl: 'https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html' },
+            { id: 'java-spec-default-access', term: 'default (package-private)', termJa: 'パッケージプライベート', meaning: '修飾子なし。同一パッケージ内からのみアクセス可能', example: 'class PackageClass {\n  void packageMethod() {}\n}', sourceUrl: 'https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html' }
+          ]
+        },
+        {
+          id: 'java-spec-exception-handling',
+          name: 'Exception Handling',
+          nameJa: '例外処理',
+          items: [
+            { id: 'java-spec-try-catch', term: 'try...catch...finally', termJa: 'try...catch...finally 文', meaning: '例外処理。try で例外を捕捉、catch で処理、finally で後始末', example: 'try {\n  int result = 10 / 0;\n} catch (ArithmeticException e) {\n  System.err.println(e.getMessage());\n} finally {\n  System.out.println("done");\n}', sourceUrl: 'https://docs.oracle.com/javase/tutorial/essential/exceptions/try.html' },
+            { id: 'java-spec-throws', term: 'throws', termJa: 'throws 宣言', meaning: 'メソッドが投げる可能性のある検査例外を宣言', example: 'public void readFile() throws IOException {\n  // ...\n}', sourceUrl: 'https://docs.oracle.com/javase/tutorial/essential/exceptions/declaring.html' },
+            { id: 'java-spec-throw', term: 'throw', termJa: 'throw 文', meaning: '例外を明示的にスローする', example: 'throw new IllegalArgumentException("Invalid input");', sourceUrl: 'https://docs.oracle.com/javase/tutorial/essential/exceptions/throwing.html' }
+          ]
+        },
+        {
+          id: 'java-spec-collections',
+          name: 'Collections',
+          nameJa: 'コレクション',
+          items: [
+            { id: 'java-spec-list', term: 'List', termJa: 'リスト', meaning: '順序付きコレクション。インデックスでアクセス可能。ArrayList, LinkedList 等', example: 'List<String> list = new ArrayList<>();\nlist.add("hello");\nlist.get(0);', sourceUrl: 'https://docs.oracle.com/javase/tutorial/collections/interfaces/list.html' },
+            { id: 'java-spec-set', term: 'Set', termJa: 'セット', meaning: '重複を許さないコレクション。HashSet, TreeSet 等', example: 'Set<Integer> set = new HashSet<>();\nset.add(1);\nset.add(1); // 重複は無視', sourceUrl: 'https://docs.oracle.com/javase/tutorial/collections/interfaces/set.html' },
+            { id: 'java-spec-map', term: 'Map', termJa: 'マップ', meaning: 'キーと値のペアのコレクション。HashMap, TreeMap 等', example: 'Map<String, Integer> map = new HashMap<>();\nmap.put("age", 30);\nmap.get("age");', sourceUrl: 'https://docs.oracle.com/javase/tutorial/collections/interfaces/map.html' },
+            { id: 'java-spec-iterator', term: 'Iterator', termJa: 'イテレータ', meaning: 'コレクションの要素を順に走査するインターフェース', example: 'Iterator<String> it = list.iterator();\nwhile (it.hasNext()) {\n  System.out.println(it.next());\n}', sourceUrl: 'https://docs.oracle.com/javase/tutorial/collections/interfaces/collection.html' }
+          ]
+        },
+        {
+          id: 'java-spec-io',
+          name: 'I/O & Streams',
+          nameJa: '入出力',
+          items: [
+            { id: 'java-spec-inputstream', term: 'InputStream / OutputStream', termJa: 'バイトストリーム', meaning: 'バイト単位の入出力。ファイル、ネットワーク等のバイナリデータ処理', example: 'try (InputStream is = new FileInputStream("file.bin")) {\n  int data = is.read();\n}', sourceUrl: 'https://docs.oracle.com/javase/tutorial/essential/io/bytestreams.html' },
+            { id: 'java-spec-reader-writer', term: 'Reader / Writer', termJa: '文字ストリーム', meaning: '文字単位の入出力。テキストデータの処理に使用', example: 'try (BufferedReader br = new BufferedReader(new FileReader("file.txt"))) {\n  String line = br.readLine();\n}', sourceUrl: 'https://docs.oracle.com/javase/tutorial/essential/io/charstreams.html' },
+            { id: 'java-spec-files', term: 'Files (NIO.2)', termJa: 'Files ユーティリティ', meaning: 'java.nio.file.Files クラス。ファイル操作の静的メソッドを提供', example: 'String content = Files.readString(Path.of("file.txt"));\nFiles.write(Path.of("out.txt"), bytes);', sourceUrl: 'https://docs.oracle.com/javase/tutorial/essential/io/fileio.html' }
+          ]
+        }
+      ]
+    }
+  }
+
   async scrape() {
     const versions = []
 

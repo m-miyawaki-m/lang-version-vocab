@@ -38,6 +38,95 @@ export class JqueryScraper extends BaseScraper {
     }
   }
 
+  async scrapeSpecification() {
+    console.log('Building jQuery specification...')
+
+    return {
+      categories: [
+        {
+          id: 'jquery-spec-selectors',
+          name: 'Selectors',
+          nameJa: 'セレクタ',
+          items: [
+            { id: 'jquery-spec-id-selector', term: 'ID Selector (#id)', termJa: 'IDセレクタ', meaning: 'id 属性で要素を選択。ページ内で一意', example: '$("#myId")', sourceUrl: 'https://api.jquery.com/id-selector/' },
+            { id: 'jquery-spec-class-selector', term: 'Class Selector (.class)', termJa: 'クラスセレクタ', meaning: 'class 属性で要素を選択。複数要素にマッチ', example: '$(".myClass")', sourceUrl: 'https://api.jquery.com/class-selector/' },
+            { id: 'jquery-spec-element-selector', term: 'Element Selector (element)', termJa: '要素セレクタ', meaning: 'タグ名で要素を選択', example: '$("div")', sourceUrl: 'https://api.jquery.com/element-selector/' },
+            { id: 'jquery-spec-attribute-selector', term: 'Attribute Selector ([attr])', termJa: '属性セレクタ', meaning: '属性の有無や値で要素を選択', example: '$("input[type=text]")', sourceUrl: 'https://api.jquery.com/attribute-equals-selector/' },
+            { id: 'jquery-spec-pseudo-selectors', term: ':first, :last, :eq()', termJa: '疑似セレクタ', meaning: 'jQuery 独自の位置ベース疑似セレクタ', example: '$("li:first")\n$("li:eq(2)")', sourceUrl: 'https://api.jquery.com/first-selector/' }
+          ]
+        },
+        {
+          id: 'jquery-spec-dom-manipulation',
+          name: 'DOM Manipulation',
+          nameJa: 'DOM操作',
+          items: [
+            { id: 'jquery-spec-html', term: '.html()', termJa: '.html()', meaning: '要素の HTML コンテンツを取得・設定', example: '$("#el").html();\n$("#el").html("<b>new</b>");', sourceUrl: 'https://api.jquery.com/html/' },
+            { id: 'jquery-spec-text', term: '.text()', termJa: '.text()', meaning: '要素のテキストコンテンツを取得・設定', example: '$("#el").text();\n$("#el").text("new text");', sourceUrl: 'https://api.jquery.com/text/' },
+            { id: 'jquery-spec-val', term: '.val()', termJa: '.val()', meaning: 'フォーム要素の値を取得・設定', example: '$("input").val();\n$("input").val("new value");', sourceUrl: 'https://api.jquery.com/val/' },
+            { id: 'jquery-spec-append', term: '.append() / .prepend()', termJa: '.append() / .prepend()', meaning: '要素の末尾/先頭にコンテンツを追加', example: '$("#list").append("<li>new</li>");', sourceUrl: 'https://api.jquery.com/append/' },
+            { id: 'jquery-spec-remove', term: '.remove()', termJa: '.remove()', meaning: '要素をDOMから削除', example: '$(".item").remove();', sourceUrl: 'https://api.jquery.com/remove/' }
+          ]
+        },
+        {
+          id: 'jquery-spec-traversal',
+          name: 'Traversal',
+          nameJa: '走査',
+          items: [
+            { id: 'jquery-spec-find', term: '.find()', termJa: '.find()', meaning: '子孫要素からセレクタに一致する要素を検索', example: '$("#container").find(".item")', sourceUrl: 'https://api.jquery.com/find/' },
+            { id: 'jquery-spec-children', term: '.children()', termJa: '.children()', meaning: '直接の子要素を取得', example: '$("#list").children("li")', sourceUrl: 'https://api.jquery.com/children/' },
+            { id: 'jquery-spec-parent', term: '.parent() / .parents()', termJa: '.parent() / .parents()', meaning: '直接の親要素 / すべての祖先要素を取得', example: '$(".item").parent();\n$(".item").parents("div");', sourceUrl: 'https://api.jquery.com/parent/' },
+            { id: 'jquery-spec-siblings', term: '.siblings()', termJa: '.siblings()', meaning: '兄弟要素を取得', example: '$(".active").siblings()', sourceUrl: 'https://api.jquery.com/siblings/' },
+            { id: 'jquery-spec-closest', term: '.closest()', termJa: '.closest()', meaning: '自身から祖先方向に最も近い一致要素を取得', example: '$("td").closest("table")', sourceUrl: 'https://api.jquery.com/closest/' }
+          ]
+        },
+        {
+          id: 'jquery-spec-events',
+          name: 'Events',
+          nameJa: 'イベント',
+          items: [
+            { id: 'jquery-spec-on', term: '.on()', termJa: '.on()', meaning: 'イベントハンドラを登録。イベントデリゲーションにも対応', example: '$("#btn").on("click", function() {\n  alert("clicked");\n});', sourceUrl: 'https://api.jquery.com/on/' },
+            { id: 'jquery-spec-off', term: '.off()', termJa: '.off()', meaning: 'イベントハンドラを解除', example: '$("#btn").off("click");', sourceUrl: 'https://api.jquery.com/off/' },
+            { id: 'jquery-spec-trigger', term: '.trigger()', termJa: '.trigger()', meaning: 'イベントをプログラム的に発火', example: '$("#form").trigger("submit");', sourceUrl: 'https://api.jquery.com/trigger/' },
+            { id: 'jquery-spec-ready', term: '$(document).ready()', termJa: 'DOM Ready', meaning: 'DOM の読み込み完了後に処理を実行', example: '$(document).ready(function() {\n  // DOM ready\n});\n// 省略形: $(function() { });', sourceUrl: 'https://api.jquery.com/ready/' }
+          ]
+        },
+        {
+          id: 'jquery-spec-effects',
+          name: 'Effects',
+          nameJa: 'エフェクト',
+          items: [
+            { id: 'jquery-spec-show-hide', term: '.show() / .hide()', termJa: '.show() / .hide()', meaning: '要素の表示/非表示を切り替え', example: '$("#el").show();\n$("#el").hide();', sourceUrl: 'https://api.jquery.com/show/' },
+            { id: 'jquery-spec-fade', term: '.fadeIn() / .fadeOut()', termJa: '.fadeIn() / .fadeOut()', meaning: 'フェードイン/フェードアウトで表示/非表示', example: '$("#el").fadeIn(400);\n$("#el").fadeOut(400);', sourceUrl: 'https://api.jquery.com/fadeIn/' },
+            { id: 'jquery-spec-slide', term: '.slideUp() / .slideDown()', termJa: '.slideUp() / .slideDown()', meaning: 'スライドアニメーションで表示/非表示', example: '$("#el").slideDown();\n$("#el").slideUp();', sourceUrl: 'https://api.jquery.com/slideDown/' },
+            { id: 'jquery-spec-animate', term: '.animate()', termJa: '.animate()', meaning: 'CSSプロパティのカスタムアニメーション', example: '$("#el").animate({\n  opacity: 0.5,\n  left: "200px"\n}, 1000);', sourceUrl: 'https://api.jquery.com/animate/' }
+          ]
+        },
+        {
+          id: 'jquery-spec-ajax',
+          name: 'AJAX',
+          nameJa: '通信',
+          items: [
+            { id: 'jquery-spec-ajax', term: '$.ajax()', termJa: '$.ajax()', meaning: '非同期HTTPリクエストの汎用メソッド。最も柔軟', example: '$.ajax({\n  url: "/api/data",\n  method: "GET",\n  success: function(data) { /* ... */ }\n});', sourceUrl: 'https://api.jquery.com/jQuery.ajax/' },
+            { id: 'jquery-spec-get', term: '$.get()', termJa: '$.get()', meaning: 'GET リクエストの簡略メソッド', example: '$.get("/api/data", function(data) {\n  console.log(data);\n});', sourceUrl: 'https://api.jquery.com/jQuery.get/' },
+            { id: 'jquery-spec-post', term: '$.post()', termJa: '$.post()', meaning: 'POST リクエストの簡略メソッド', example: '$.post("/api/data", { name: "test" }, function(res) {\n  console.log(res);\n});', sourceUrl: 'https://api.jquery.com/jQuery.post/' },
+            { id: 'jquery-spec-getjson', term: '$.getJSON()', termJa: '$.getJSON()', meaning: 'JSON データを GET で取得する簡略メソッド', example: '$.getJSON("/api/data.json", function(data) {\n  console.log(data);\n});', sourceUrl: 'https://api.jquery.com/jQuery.getJSON/' }
+          ]
+        },
+        {
+          id: 'jquery-spec-utilities',
+          name: 'Utilities',
+          nameJa: 'ユーティリティ',
+          items: [
+            { id: 'jquery-spec-each', term: '$.each()', termJa: '$.each()', meaning: '配列やオブジェクトの各要素に対して関数を実行', example: '$.each([1, 2, 3], function(i, val) {\n  console.log(i, val);\n});', sourceUrl: 'https://api.jquery.com/jQuery.each/' },
+            { id: 'jquery-spec-extend', term: '$.extend()', termJa: '$.extend()', meaning: '複数のオブジェクトをマージ', example: 'var merged = $.extend({}, defaults, options);', sourceUrl: 'https://api.jquery.com/jQuery.extend/' },
+            { id: 'jquery-spec-isarray', term: '$.isArray()', termJa: '$.isArray()', meaning: '値が配列かどうかを判定', example: '$.isArray([1, 2]); // true\n$.isArray("str"); // false', sourceUrl: 'https://api.jquery.com/jQuery.isArray/' },
+            { id: 'jquery-spec-trim', term: '$.trim()', termJa: '$.trim()', meaning: '文字列の前後の空白を除去', example: '$.trim("  hello  "); // "hello"', sourceUrl: 'https://api.jquery.com/jQuery.trim/' }
+          ]
+        }
+      ]
+    }
+  }
+
   async scrape() {
     const html = await fetchWithRetry('https://api.jquery.com/')
     const $ = parseHTML(html)
