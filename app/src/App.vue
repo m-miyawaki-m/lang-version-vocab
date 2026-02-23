@@ -3,6 +3,7 @@ import { ref, computed, watch, nextTick } from 'vue'
 import SearchFilter from './components/SearchFilter.vue'
 import TabNav from './components/TabNav.vue'
 import OverviewTab from './components/OverviewTab.vue'
+import LearningPathTab from './components/LearningPathTab.vue'
 import TermList from './components/TermList.vue'
 
 import javascriptData from '@data/javascript.json'
@@ -40,6 +41,26 @@ const allTerms = computed(() => {
   return langData.value.versions.flatMap(v => v.terms)
 })
 
+async function jumpToCharacteristic(charId) {
+  activeTab.value = 'overview'
+  await nextTick()
+  const el = document.querySelector('.overview-tab .section:first-child')
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+}
+
+async function jumpToConcept(conceptId) {
+  activeTab.value = 'overview'
+  await nextTick()
+  const el = document.getElementById(`concept-${conceptId}`)
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    el.classList.add('highlight')
+    setTimeout(() => el.classList.remove('highlight'), 2000)
+  }
+}
+
 async function jumpToTerm(termId) {
   activeTab.value = 'timeline'
   highlightTermId.value = termId
@@ -74,6 +95,14 @@ async function jumpToTerm(termId) {
         :overview="langData.overview"
         :allTerms="allTerms"
         @jump-to-term="jumpToTerm"
+      />
+      <LearningPathTab
+        v-if="activeTab === 'learning-path'"
+        :overview="langData.overview"
+        :allTerms="allTerms"
+        @jump-to-term="jumpToTerm"
+        @jump-to-concept="jumpToConcept"
+        @jump-to-characteristic="jumpToCharacteristic"
       />
       <TermList
         v-if="activeTab === 'timeline'"
