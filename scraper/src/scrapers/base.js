@@ -16,11 +16,16 @@ export class BaseScraper {
     throw new Error('scrape() must be implemented by subclass')
   }
 
-  async save(versions) {
+  async scrapeOverview() {
+    return null
+  }
+
+  async save(versions, overview = null) {
     const data = {
       language: this.language,
       displayName: this.displayName,
       source: this.sourceUrl,
+      ...(overview ? { overview } : {}),
       versions
     }
 
@@ -33,10 +38,16 @@ export class BaseScraper {
 
   async run() {
     console.log(`Scraping ${this.displayName}...`)
+    const overview = await this.scrapeOverview()
+    if (overview) {
+      const charCount = overview.characteristics?.length || 0
+      const conceptCount = overview.concepts?.length || 0
+      console.log(`Found ${charCount} characteristics, ${conceptCount} concepts`)
+    }
     const versions = await this.scrape()
     const totalTerms = versions.reduce((sum, v) => sum + v.terms.length, 0)
     console.log(`Found ${totalTerms} terms across ${versions.length} versions`)
-    await this.save(versions)
+    await this.save(versions, overview)
     return versions
   }
 }
