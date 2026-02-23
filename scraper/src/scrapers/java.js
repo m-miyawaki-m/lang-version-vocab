@@ -73,6 +73,37 @@ export class JavaScraper extends BaseScraper {
     super('java', 'Java', 'https://docs.oracle.com/en/java/')
   }
 
+  async scrapeOverview() {
+    console.log('Scraping Java overview...')
+
+    const characteristics = [
+      { id: 'java-char-static-typing', term: 'Static Typing', termJa: '静的型付け', meaning: 'コンパイル時に型チェックが行われる。変数宣言時に型指定が必要（var による型推論も可能）', relatedConceptIds: ['java-concept-generics', 'java-concept-type-erasure'], sourceUrl: '' },
+      { id: 'java-char-oop', term: 'Object-oriented Programming', termJa: 'オブジェクト指向', meaning: 'クラスベースのオブジェクト指向言語。カプセル化、継承、ポリモーフィズムを完全サポート', relatedConceptIds: ['java-concept-inheritance', 'java-concept-polymorphism', 'java-concept-encapsulation', 'java-concept-interface'], sourceUrl: '' },
+      { id: 'java-char-platform-independent', term: 'Platform Independence', termJa: 'プラットフォーム非依存', meaning: 'JVM（Java Virtual Machine）上で動作し、Write Once, Run Anywhere を実現', relatedConceptIds: ['java-concept-jvm', 'java-concept-bytecode'], sourceUrl: '' },
+      { id: 'java-char-garbage-collection', term: 'Garbage Collection', termJa: 'ガベージコレクション', meaning: '不要になったオブジェクトのメモリを自動的に解放。手動メモリ管理が不要', relatedConceptIds: ['java-concept-jvm'], sourceUrl: '' },
+      { id: 'java-char-multithreading', term: 'Built-in Multithreading', termJa: 'マルチスレッド組み込み', meaning: '言語レベルでスレッドをサポート。synchronized, volatile, java.util.concurrent パッケージ', relatedConceptIds: ['java-concept-thread-safety', 'java-concept-synchronization'], sourceUrl: '' }
+    ]
+
+    const concepts = [
+      { id: 'java-concept-inheritance', term: 'Inheritance', termJa: '継承', characteristicId: 'java-char-oop', meaning: 'クラスが他のクラスの属性と振る舞いを引き継ぐ仕組み。extends キーワードで単一継承', relatedTermIds: ['java-17-sealed-classes', 'java-17-records'], sourceUrl: '' },
+      { id: 'java-concept-polymorphism', term: 'Polymorphism', termJa: 'ポリモーフィズム（多態性）', characteristicId: 'java-char-oop', meaning: '同一のインターフェースで異なる実装を扱える仕組み。オーバーライドとオーバーロード', relatedTermIds: ['java-17-pattern-matching-for-instanceo', 'java-21-pattern-matching-for-switch'], sourceUrl: '' },
+      { id: 'java-concept-encapsulation', term: 'Encapsulation', termJa: 'カプセル化', characteristicId: 'java-char-oop', meaning: 'データとメソッドをクラスにまとめ、アクセス修飾子で公開範囲を制御する仕組み', relatedTermIds: ['java-17-records', 'java-17-sealed-classes'], sourceUrl: '' },
+      { id: 'java-concept-interface', term: 'Interface', termJa: 'インターフェース', characteristicId: 'java-char-oop', meaning: 'メソッドのシグネチャのみを定義する型。多重実装が可能。Java 8 以降は default メソッドも可', relatedTermIds: ['java-8-default-methods', 'java-9-private-interface-methods'], sourceUrl: '' },
+      { id: 'java-concept-generics', term: 'Generics', termJa: 'ジェネリクス', characteristicId: 'java-char-static-typing', meaning: '型をパラメータ化して汎用的なクラスやメソッドを定義する仕組み。コンパイル時型安全性を提供', relatedTermIds: ['java-8-stream-api', 'java-8-optional'], sourceUrl: '' },
+      { id: 'java-concept-type-erasure', term: 'Type Erasure', termJa: '型消去', characteristicId: 'java-char-static-typing', meaning: 'ジェネリクスの型情報がコンパイル後に消去される仕組み。後方互換性のため', relatedTermIds: [], sourceUrl: '' },
+      { id: 'java-concept-jvm', term: 'JVM (Java Virtual Machine)', termJa: 'Java仮想マシン', characteristicId: 'java-char-platform-independent', meaning: 'バイトコードを実行する仮想マシン。JIT コンパイラ、ガベージコレクタを内蔵', relatedTermIds: ['java-21-virtual-threads'], sourceUrl: '' },
+      { id: 'java-concept-bytecode', term: 'Bytecode', termJa: 'バイトコード', characteristicId: 'java-char-platform-independent', meaning: 'Java ソースコードをコンパイルした中間コード。JVM が解釈実行する', relatedTermIds: [], sourceUrl: '' },
+      { id: 'java-concept-thread-safety', term: 'Thread Safety', termJa: 'スレッド安全性', characteristicId: 'java-char-multithreading', meaning: '複数スレッドから同時にアクセスされても正しく動作する性質', relatedTermIds: ['java-21-virtual-threads', 'java-8-completablefuture'], sourceUrl: '' },
+      { id: 'java-concept-synchronization', term: 'Synchronization', termJa: '同期化', characteristicId: 'java-char-multithreading', meaning: '複数スレッド間の排他制御。synchronized ブロック/メソッド、Lock インターフェース', relatedTermIds: ['java-21-virtual-threads'], sourceUrl: '' }
+    ]
+
+    return {
+      description: 'クラスベースの静的型付けオブジェクト指向言語。JVM 上で動作し、プラットフォーム非依存。ガベージコレクションとマルチスレッドを言語レベルでサポート',
+      characteristics,
+      concepts
+    }
+  }
+
   async scrape() {
     const versions = []
 
