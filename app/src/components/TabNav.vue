@@ -7,6 +7,7 @@ const emit = defineEmits(['update:activeTab'])
 
 const tabs = [
   { value: 'overview', label: '言語概要' },
+  { value: 'learning-path', label: '学習パス' },
   { value: 'timeline', label: 'バージョン履歴' }
 ]
 </script>
