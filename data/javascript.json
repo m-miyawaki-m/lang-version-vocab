@@ -2,6 +2,177 @@
   "language": "javascript",
   "displayName": "JavaScript",
   "source": "https://developer.mozilla.org/ja/docs/Web/JavaScript",
+  "overview": {
+    "description": "プロトタイプベースのマルチパラダイムスクリプト言語。動的型付け、第一級関数、イベント駆動モデルを特徴とする",
+    "characteristics": [
+      {
+        "id": "js-char-dynamic-typing",
+        "term": "Dynamic Typing",
+        "termJa": "動的型付け",
+        "meaning": "プログラミング言語には、どれにも組み込みデータ構造がありますが、ふつうは言語ごとに異なります。この記事では、JavaScript で使用可能な組み込みデータ構造の一覧と、他のデータ構造の構築にも使えるように、それらがどのような性質を持ち合わせているかについて述べることにします。",
+        "relatedConceptIds": [
+          "js-concept-type-coercion",
+          "js-concept-typeof"
+        ],
+        "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Data_structures"
+      },
+      {
+        "id": "js-char-prototype-based",
+        "term": "Prototype-based OOP",
+        "termJa": "プロトタイプベースOOP",
+        "meaning": "プログラミングにおいて、「継承」とは親から子へと特性を渡すことを指し、新しいコードが既存のコードの機能を再利用し、その上に構築できるようにします。 JavaScript では、オブジェクトを用いて継承が実装されています。それぞれのオブジェクトは、プロトタイプと呼ばれる別のオブジェクトへの内部リンクを保持しています。そのプロトタイプオブジェクトは、さらに自身のプロトタイプを持っており、 null をプロトタイプとして持つオブジェクトに到達するまで、このプロセスが繰り返されます。定義上、 null にはプロトタイプが存在せず、プロトタイプチェーンの最終リンクとして機能します。プロトタイプチェーンのメンバーを変更したり、実行時にプロトタイプを入れ替えたりすることも可能であるため、 JavaScript では静的呼び出しのような概念は存在しません。",
+        "relatedConceptIds": [
+          "js-concept-prototype-chain",
+          "js-concept-this"
+        ],
+        "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Inheritance_and_the_prototype_chain"
+      },
+      {
+        "id": "js-char-first-class-functions",
+        "term": "First-class Functions",
+        "termJa": "第一級関数",
+        "meaning": "あるプログラミング言語が第一級関数 (First-class functions) を持つと言われる場合、その言語の関数がその他の変数と同様に扱われることを表します。例えば、こうした言語では、関数を他の関数への引数として渡したり、他の関数から返却したり、変数の値として代入したりすることができます。",
+        "relatedConceptIds": [
+          "js-concept-closure",
+          "js-concept-callback",
+          "js-concept-higher-order-function"
+        ],
+        "sourceUrl": "https://developer.mozilla.org/ja/docs/Glossary/First-class_Function"
+      },
+      {
+        "id": "js-char-event-driven",
+        "term": "Event-driven",
+        "termJa": "イベント駆動",
+        "meaning": "JavaScript は、\"event loop\"に基づく同時実行モデルを持ちます。このモデルは C 言語や Java のような他の言語のモデルとかなり異なっています。",
+        "relatedConceptIds": [
+          "js-concept-event-loop",
+          "js-concept-callback"
+        ],
+        "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Event_loop"
+      },
+      {
+        "id": "js-char-multi-paradigm",
+        "term": "Multi-paradigm",
+        "termJa": "マルチパラダイム",
+        "meaning": "手続き型、オブジェクト指向、関数型プログラミングの複数パラダイムをサポート",
+        "relatedConceptIds": [
+          "js-concept-closure",
+          "js-concept-prototype-chain"
+        ],
+        "sourceUrl": ""
+      }
+    ],
+    "concepts": [
+      {
+        "id": "js-concept-closure",
+        "term": "Closure",
+        "termJa": "クロージャ",
+        "characteristicId": "js-char-first-class-functions",
+        "meaning": "クロージャは、組み合わされた（囲まれた）関数と、その周囲の状態（レキシカル環境）への参照の組み合わせです。言い換えれば、クロージャは関数にその外側のスコープにアクセスする機能を提供します。JavaScript では、クロージャは関数が作成されるたびに、関数作成時点で作成されます。",
+        "relatedTermIds": [
+          "js-es2015-arrow-functions"
+        ],
+        "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Closures"
+      },
+      {
+        "id": "js-concept-prototype-chain",
+        "term": "Prototype Chain",
+        "termJa": "プロトタイプチェーン",
+        "characteristicId": "js-char-prototype-based",
+        "meaning": "プログラミングにおいて、「継承」とは親から子へと特性を渡すことを指し、新しいコードが既存のコードの機能を再利用し、その上に構築できるようにします。 JavaScript では、オブジェクトを用いて継承が実装されています。それぞれのオブジェクトは、プロトタイプと呼ばれる別のオブジェクトへの内部リンクを保持しています。そのプロトタイプオブジェクトは、さらに自身のプロトタイプを持っており、 null をプロトタイプとして持つオブジェクトに到達するまで、このプロセスが繰り返されます。定義上、 null にはプロトタイプが存在せず、プロトタイプチェーンの最終リンクとして機能します。プロトタイプチェーンのメンバーを変更したり、実行時にプロトタイプを入れ替えたりすることも可能であるため、 JavaScript では静的呼び出しのような概念は存在しません。",
+        "relatedTermIds": [
+          "js-es2015-class"
+        ],
+        "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Inheritance_and_the_prototype_chain"
+      },
+      {
+        "id": "js-concept-this",
+        "term": "this Binding",
+        "termJa": "this の束縛",
+        "characteristicId": "js-char-prototype-based",
+        "meaning": "this キーワードは、関数本体などのコードを実行するコンテキストを指します。最も一般的な用途はオブジェクトメソッドで、この場合、this はメソッドが関連付けられているオブジェクトを指し、これにより、同じメソッドをさまざまなオブジェクトで再利用することができます。",
+        "relatedTermIds": [
+          "js-es2015-arrow-functions"
+        ],
+        "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/this"
+      },
+      {
+        "id": "js-concept-event-loop",
+        "term": "Event Loop",
+        "termJa": "イベントループ",
+        "characteristicId": "js-char-event-driven",
+        "meaning": "JavaScript は、\"event loop\"に基づく同時実行モデルを持ちます。このモデルは C 言語や Java のような他の言語のモデルとかなり異なっています。",
+        "relatedTermIds": [
+          "js-es2015-promise"
+        ],
+        "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Event_loop"
+      },
+      {
+        "id": "js-concept-callback",
+        "term": "Callback",
+        "termJa": "コールバック",
+        "characteristicId": "js-char-first-class-functions",
+        "meaning": "コールバック関数は、引数として他の関数に渡され、外側の関数の中で呼び出されて、何らかのルーチンやアクションを完了させる関数のことです。",
+        "relatedTermIds": [
+          "js-es2015-promise"
+        ],
+        "sourceUrl": "https://developer.mozilla.org/ja/docs/Glossary/Callback_function"
+      },
+      {
+        "id": "js-concept-hoisting",
+        "term": "Hoisting",
+        "termJa": "ホイスティング（巻き上げ）",
+        "characteristicId": "js-char-dynamic-typing",
+        "meaning": "JavaScript の巻き上げ (Hoisting) は、インタープリターがコードの実行前に、関数、変数、クラス、インポートの宣言をそのスコープの先頭に移動するように見えるプロセスを指します。",
+        "relatedTermIds": [
+          "js-es2015-let",
+          "js-es2015-const"
+        ],
+        "sourceUrl": "https://developer.mozilla.org/ja/docs/Glossary/Hoisting"
+      },
+      {
+        "id": "js-concept-scope",
+        "term": "Scope",
+        "termJa": "スコープ",
+        "characteristicId": "js-char-dynamic-typing",
+        "meaning": "実行の現在のコンテキスト。値 と式が「見える」、または参照できる文脈。**変数**や他の式が \"現在のスコープ内にない\" 場合、使用できません。スコープを階層構造で階層化して、子スコープから親スコープにアクセスできるようにすることもできますが、その逆はできません。",
+        "relatedTermIds": [
+          "js-es2015-let",
+          "js-es2015-const"
+        ],
+        "sourceUrl": "https://developer.mozilla.org/ja/docs/Glossary/Scope"
+      },
+      {
+        "id": "js-concept-type-coercion",
+        "term": "Type Coercion",
+        "termJa": "型変換（型強制）",
+        "characteristicId": "js-char-dynamic-typing",
+        "meaning": "型強制 (Type coercion) は、あるデータ型から他のデータ型への値の自動的または暗黙の変換です (文字列から数値など)。型変換と型強制はよく似ており、どちらもある型から他の型へ値を変換しますが、一つ重要な違いがあります。型強制は暗黙的であるのに対し、型変換は暗黙的または明示的のどちらかです。",
+        "relatedTermIds": [],
+        "sourceUrl": "https://developer.mozilla.org/ja/docs/Glossary/Type_coercion"
+      },
+      {
+        "id": "js-concept-typeof",
+        "term": "typeof Operator",
+        "termJa": "typeof 演算子",
+        "characteristicId": "js-char-dynamic-typing",
+        "meaning": "typeof 演算子は、オペランドの値の型を示す文字列を返します。",
+        "relatedTermIds": [],
+        "sourceUrl": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/typeof"
+      },
+      {
+        "id": "js-concept-higher-order-function",
+        "term": "Higher-order Function",
+        "termJa": "高階関数",
+        "characteristicId": "js-char-first-class-functions",
+        "meaning": "関数を引数に取る、または関数を返す関数。map, filter, reduce が代表例",
+        "relatedTermIds": [
+          "js-es2015-arrow-functions"
+        ],
+        "sourceUrl": ""
+      }
+    ]
+  },
   "versions": [
     {
       "version": "ES2024",
