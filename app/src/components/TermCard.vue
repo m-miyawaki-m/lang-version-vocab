@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="card">
+  <div class="card" :id="`term-${item.id}`">
     <div class="card-header">
       <span class="term">{{ item.term }}</span>
       <div class="badges">

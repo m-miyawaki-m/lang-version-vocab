@@ -1,6 +1,8 @@
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, computed, watch, nextTick } from 'vue'
 import SearchFilter from './components/SearchFilter.vue'
+import TabNav from './components/TabNav.vue'
+import OverviewTab from './components/OverviewTab.vue'
 import TermList from './components/TermList.vue'
 
 import javascriptData from '@data/javascript.json'
@@ -22,12 +24,36 @@ const searchQuery = ref('')
 const selectedType = ref('all')
 const selectedLang = ref('javascript')
 const langData = ref(dataMap['javascript'])
+const activeTab = ref(langData.value.overview ? 'overview' : 'timeline')
+const highlightTermId = ref(null)
 
 watch(selectedLang, (newLang) => {
   langData.value = dataMap[newLang]
   searchQuery.value = ''
   selectedType.value = 'all'
+  activeTab.value = langData.value.overview ? 'overview' : 'timeline'
+  highlightTermId.value = null
 })
+
+const allTerms = computed(() => {
+  if (!langData.value?.versions) return []
+  return langData.value.versions.flatMap(v => v.terms)
+})
+
+async function jumpToTerm(termId) {
+  activeTab.value = 'timeline'
+  highlightTermId.value = termId
+  await nextTick()
+  const el = document.getElementById(`term-${termId}`)
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    el.classList.add('highlight')
+    setTimeout(() => {
+      el.classList.remove('highlight')
+      highlightTermId.value = null
+    }, 2000)
+  }
+}
 </script>
 
 <template>
@@ -42,7 +68,15 @@ watch(selectedLang, (newLang) => {
         v-model:selectedType="selectedType"
         :languages="languages"
       />
+      <TabNav v-model:activeTab="activeTab" />
+      <OverviewTab
+        v-if="activeTab === 'overview'"
+        :overview="langData.overview"
+        :allTerms="allTerms"
+        @jump-to-term="jumpToTerm"
+      />
       <TermList
+        v-if="activeTab === 'timeline'"
         :langData="langData"
         :searchQuery="searchQuery"
         :selectedType="selectedType"

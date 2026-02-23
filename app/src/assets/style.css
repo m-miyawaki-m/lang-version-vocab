@@ -9,3 +9,13 @@ body {
   background: #f5f5f5;
   color: #333;
 }
+
+.card.highlight {
+  background: #fff9c4 !important;
+  border-color: #fdd835 !important;
+  transition: background 0.3s;
+}
+
+.concept-wrapper.highlight {
+  background: #fff9c4;
+}
