@@ -7,6 +7,37 @@ export class JqueryScraper extends BaseScraper {
     super('jquery', 'jQuery', 'https://api.jquery.com/')
   }
 
+  async scrapeOverview() {
+    console.log('Scraping jQuery overview...')
+
+    const characteristics = [
+      { id: 'jquery-char-dom-abstraction', term: 'DOM Abstraction', termJa: 'DOM 抽象化', meaning: 'ブラウザ間の DOM API の差異を吸収し、統一的なインターフェースでDOM操作を提供', relatedConceptIds: ['jquery-concept-dom-traversal', 'jquery-concept-dom-manipulation'], sourceUrl: 'https://api.jquery.com/' },
+      { id: 'jquery-char-css-selectors', term: 'CSS Selector Engine', termJa: 'CSSセレクタエンジン', meaning: 'CSSセレクタ構文で要素を選択。Sizzle エンジンによる高速マッチング', relatedConceptIds: ['jquery-concept-selector', 'jquery-concept-filtering'], sourceUrl: 'https://api.jquery.com/category/selectors/' },
+      { id: 'jquery-char-chaining', term: 'Method Chaining', termJa: 'メソッドチェーン', meaning: 'メソッドが jQuery オブジェクトを返すことで、連続したメソッド呼び出しが可能', relatedConceptIds: ['jquery-concept-dom-manipulation', 'jquery-concept-animation'], sourceUrl: '' },
+      { id: 'jquery-char-cross-browser', term: 'Cross-browser Compatibility', termJa: 'クロスブラウザ互換性', meaning: '主要ブラウザ間の動作差異を吸収し、統一的に動作するコードを記述可能', relatedConceptIds: ['jquery-concept-ajax', 'jquery-concept-event-handling'], sourceUrl: '' },
+      { id: 'jquery-char-plugin-system', term: 'Plugin Architecture', termJa: 'プラグインアーキテクチャ', meaning: '$.fn を拡張してカスタムメソッドを追加できるプラグインシステム', relatedConceptIds: ['jquery-concept-plugin'], sourceUrl: '' }
+    ]
+
+    const concepts = [
+      { id: 'jquery-concept-selector', term: 'Selector', termJa: 'セレクタ', characteristicId: 'jquery-char-css-selectors', meaning: 'CSS セレクタやカスタムセレクタで DOM 要素を選択する機能。$("selector") 構文', relatedTermIds: [], sourceUrl: 'https://api.jquery.com/category/selectors/' },
+      { id: 'jquery-concept-dom-traversal', term: 'DOM Traversal', termJa: 'DOM 走査', characteristicId: 'jquery-char-dom-abstraction', meaning: 'DOM ツリーを上下左右に移動して要素を取得。parent, children, find, siblings 等', relatedTermIds: [], sourceUrl: 'https://api.jquery.com/category/traversing/' },
+      { id: 'jquery-concept-dom-manipulation', term: 'DOM Manipulation', termJa: 'DOM 操作', characteristicId: 'jquery-char-dom-abstraction', meaning: '要素の追加、削除、変更、複製などの DOM 操作。append, remove, html, text 等', relatedTermIds: [], sourceUrl: 'https://api.jquery.com/category/manipulation/' },
+      { id: 'jquery-concept-event-handling', term: 'Event Handling', termJa: 'イベント処理', characteristicId: 'jquery-char-cross-browser', meaning: 'クロスブラウザ対応のイベント処理。on, off, trigger によるイベント管理', relatedTermIds: [], sourceUrl: 'https://api.jquery.com/category/events/' },
+      { id: 'jquery-concept-event-delegation', term: 'Event Delegation', termJa: 'イベントデリゲーション', characteristicId: 'jquery-char-cross-browser', meaning: '親要素でイベントを監視し、子要素のイベントを効率的に処理する手法', relatedTermIds: [], sourceUrl: 'https://api.jquery.com/on/' },
+      { id: 'jquery-concept-ajax', term: 'AJAX', termJa: '非同期通信', characteristicId: 'jquery-char-cross-browser', meaning: '非同期 HTTP リクエストの簡易API。$.ajax, $.get, $.post による通信', relatedTermIds: [], sourceUrl: 'https://api.jquery.com/category/ajax/' },
+      { id: 'jquery-concept-animation', term: 'Animation', termJa: 'アニメーション', characteristicId: 'jquery-char-chaining', meaning: 'CSS プロパティのアニメーション。fadeIn, slideUp, animate 等', relatedTermIds: [], sourceUrl: 'https://api.jquery.com/category/effects/' },
+      { id: 'jquery-concept-filtering', term: 'Filtering', termJa: 'フィルタリング', characteristicId: 'jquery-char-css-selectors', meaning: '選択した要素セットの絞り込み。filter, not, has, eq, first, last 等', relatedTermIds: [], sourceUrl: 'https://api.jquery.com/category/traversing/filtering/' },
+      { id: 'jquery-concept-deferred', term: 'Deferred / Promise', termJa: '遅延オブジェクト', characteristicId: 'jquery-char-cross-browser', meaning: '非同期処理のための Promise パターン実装。$.Deferred() と done/fail/always チェーン', relatedTermIds: [], sourceUrl: 'https://api.jquery.com/category/deferred-object/' },
+      { id: 'jquery-concept-plugin', term: 'Plugin Development', termJa: 'プラグイン開発', characteristicId: 'jquery-char-plugin-system', meaning: '$.fn.extend() でカスタムメソッドを追加するプラグイン開発パターン', relatedTermIds: [], sourceUrl: '' }
+    ]
+
+    return {
+      description: 'DOM 操作、イベント処理、AJAX 通信を簡潔に記述するための JavaScript ライブラリ。CSSセレクタベースの要素選択とメソッドチェーンが特徴',
+      characteristics,
+      concepts
+    }
+  }
+
   async scrape() {
     const html = await fetchWithRetry('https://api.jquery.com/')
     const $ = parseHTML(html)
